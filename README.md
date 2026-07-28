@@ -1,6 +1,6 @@
-# Evolvora Technologies — Website
+# Evolvora Technologies Website
 
-Multi-page static marketing site for **Evolvora Technologies** and its flagship product **Evolvora Campus**. Pure HTML/CSS/JS — no build step required to deploy.
+Multi-page static marketing site for **Evolvora Technologies** and its flagship product **Evolvora Campus**. Pure HTML/CSS/JS, with no build step required to deploy.
 
 ---
 
@@ -8,13 +8,13 @@ Multi-page static marketing site for **Evolvora Technologies** and its flagship 
 
 | URL | Purpose | SEO target |
 |-----|---------|-----------|
-| `/` | Home — **software house** (services, products, process) | brand "Evolvora", software house |
+| `/` | Home: **software house** (services, products, process) | brand "Evolvora", software house |
 | `/services/` | Software development services | software development services |
-| `/products/` | Product portfolio | — |
+| `/products/` | Product portfolio | |
 | `/products/evolvora-campus/` | Full product page | "Evolvora Campus" |
 | `/about/` | Company / about | brand "Evolvora" |
 | `/pricing/` | Evolvora Campus plans & pricing | pricing |
-| `/contact/` | Contact + project/demo form | — |
+| `/contact/` | Contact + project/demo form | |
 | `/school-management-system/` | SEO landing | **school management system** |
 | `/campus-management-system/` | SEO landing | **campus management system** |
 | `/school-erp/` | SEO landing | **school erp** |
@@ -28,7 +28,7 @@ Plus `404.html`, `sitemap.xml`, `robots.txt`, `netlify.toml`.
 
 ## 👀 Preview locally
 
-**Do not double-click `index.html`** — the site uses root-absolute paths (`/assets/...`) and clean folder URLs, so opening the raw file shows an unstyled page (a giant logo). It must be *served* from a small local server (this is exactly how Netlify serves it).
+**Do not double-click `index.html`**: the site uses root-absolute paths (`/assets/...`) and clean folder URLs, so opening the raw file shows an unstyled page (a giant logo). It must be *served* from a small local server (this is exactly how Netlify serves it).
 
 **Easiest:** double-click **`serve.bat`** (needs [Node.js](https://nodejs.org) installed). A browser tab opens at `http://localhost:8080/`. Keep the window open; close it or press Ctrl+C to stop.
 
@@ -56,7 +56,7 @@ python -m http.server 8080
 
 ---
 
-## 🔎 SEO — what's already built in
+## 🔎 SEO: what's already built in
 
 - **Unique title + meta description** on every page, keyword-optimised.
 - **Canonical URLs**, Open Graph + Twitter Card tags, social share image (`assets/img/og-image.png`).
@@ -67,13 +67,13 @@ python -m http.server 8080
 - Semantic HTML, one `<h1>` per page, fast & fully mobile-responsive.
 
 ### Do this after launch (important for ranking)
-1. **Google Search Console** — verify `evolvoratech.com`, then submit `https://evolvoratech.com/sitemap.xml`.
-2. **Bing Webmaster Tools** — same.
+1. **Google Search Console**: verify `evolvoratech.com`, then submit `https://evolvoratech.com/sitemap.xml`.
+2. **Bing Webmaster Tools**: same.
 3. Add a **Google Business Profile** for Evolvora Technologies (helps brand searches).
-4. Get a few real backlinks/mentions (directories, socials) — put those profile URLs into the `sameAs: []` array in `build-site.js` (`orgLD`) and rebuild.
+4. Get a few real backlinks/mentions (directories, socials). Put those profile URLs into the `sameAs: []` array in `build-site.js` (`orgLD`) and rebuild.
 5. Keep the domain consistent everywhere: always "Evolvora Technologies" / "Evolvora Campus".
 
-> SEO note: ranking for competitive terms like "school management system" takes time and ongoing content/backlinks — this site gives you a technically strong, keyword-targeted foundation, but no site can *guarantee* rank #1.
+> SEO note: ranking for competitive terms like "school management system" takes time and ongoing content/backlinks. This site gives you a technically strong, keyword-targeted foundation, but no site can *guarantee* rank #1.
 
 ---
 
@@ -85,7 +85,7 @@ The HTML is generated from **`build-site.js`** (plain Node, no dependencies) so 
 node build-site.js        # regenerates all HTML + sitemap + robots + netlify.toml
 ```
 
-Edit page copy/structure in `build-site.js`, or tweak styling in `assets/css/styles.css`. You *can* also edit the generated `.html` files directly, but a change to the nav/footer would then need repeating on every page — the generator avoids that.
+Edit page copy/structure in `build-site.js`, or tweak styling in `assets/css/styles.css`. You *can* also edit the generated `.html` files directly, but a change to the nav/footer would then need repeating on every page. The generator avoids that.
 
 `brand-assets.js` regenerates the logo/social images (needs `npm i sharp`).
 
@@ -99,7 +99,7 @@ The logo is a crisp inline **SVG** (defined once in `build-site.js`, used in the
 
 ## 📬 Contact form
 
-The contact form uses **Netlify Forms** (`data-netlify="true"`). Once deployed to Netlify it works automatically — submissions appear in your Netlify dashboard under **Forms**. Turn on notifications there to forward them to **contact@evolvoratech.com**. Locally the form won't submit (Netlify processes it at deploy). A `mailto:` fallback is shown too.
+The contact form uses **Netlify Forms** (`data-netlify="true"`). Once deployed to Netlify it works automatically. Submissions appear in your Netlify dashboard under **Forms**. Turn on notifications there to forward them to **contact@evolvoratech.com**. Locally the form won't submit (Netlify processes it at deploy). A `mailto:` fallback is shown too.
 
 ---
 

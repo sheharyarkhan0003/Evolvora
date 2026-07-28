@@ -2,6 +2,19 @@
 const themeToggle = document.getElementById('themeToggle');
 const THEME_KEY = 'evolvora-theme';
 
+// Show a clear broken-image state (icon + alt text) when an image fails to load
+document.querySelectorAll('img').forEach((img) => {
+  const markBroken = () => {
+    if (img.classList.contains('img-error')) return;
+    img.classList.add('img-error');
+    if (!img.getAttribute('alt')) {
+      img.setAttribute('alt', 'Image unavailable');
+    }
+  };
+  img.addEventListener('error', markBroken);
+  if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) markBroken();
+});
+
 function getTheme() {
   return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
 }
@@ -29,7 +42,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
   if (!localStorage.getItem(THEME_KEY)) applyTheme(e.matches ? 'dark' : 'light');
 });
 
-// Fixed nav — stays visible while scrolling
+// Fixed nav: stays visible while scrolling
 const nav = document.getElementById('nav');
 if (nav) {
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
@@ -99,7 +112,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// Services section — sticky scroll, 2 cards at a time
+// Services section: sticky scroll, 2 cards at a time
 (function initServicesScroll() {
   const section = document.querySelector('.services-scroll');
   if (!section) return;
@@ -145,7 +158,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   reduceMotion.addEventListener('change', setup);
 })();
 
-// Why Evolvora — sticky viewport, floating sliding images
+// Why Evolvora: sticky viewport, floating sliding images
 (function initWhyStory() {
   const section = document.querySelector('.why-story');
   if (!section) return;
@@ -303,7 +316,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 })();
 
-// Coverflow carousels — infinite loop, center card scales up & bold
+// Coverflow carousels: infinite loop, center card scales up & bold
 (function initCoverflowCarousels() {
   document.querySelectorAll('[data-coverflow]').forEach((root) => {
     const track = root.querySelector('.coverflow-track, .services-coverflow-track');
@@ -457,7 +470,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 })();
 
-// About page — subtle hero parallax
+// About page: subtle hero parallax
 (function initAboutPage() {
   const page = document.querySelector('.about-page');
   if (!page) return;

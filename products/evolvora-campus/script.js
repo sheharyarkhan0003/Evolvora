@@ -2,6 +2,19 @@
 const themeToggle = document.getElementById('themeToggle');
 const THEME_KEY = 'evolvora-theme';
 
+// Show a clear broken-image state (icon + alt text) when an image fails to load
+document.querySelectorAll('img').forEach((img) => {
+  const markBroken = () => {
+    if (img.classList.contains('img-error')) return;
+    img.classList.add('img-error');
+    if (!img.getAttribute('alt')) {
+      img.setAttribute('alt', 'Image unavailable');
+    }
+  };
+  img.addEventListener('error', markBroken);
+  if (img.complete && img.naturalWidth === 0 && img.getAttribute('src')) markBroken();
+});
+
 function getTheme() {
   return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
 }
@@ -29,7 +42,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e)
   if (!localStorage.getItem(THEME_KEY)) applyTheme(e.matches ? 'dark' : 'light');
 });
 
-// Fixed nav — stays visible while scrolling
+// Fixed nav: stays visible while scrolling
 const nav = document.getElementById('nav');
 if (nav) {
   const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 12);
@@ -85,7 +98,7 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// 3D tilt — hero + feature screenshots (press a side to tilt and hold)
+// 3D tilt: hero + feature screenshots (press a side to tilt and hold)
 (function initTilt3d() {
   const elements = document.querySelectorAll('[data-tilt-3d]');
   if (!elements.length) return;

@@ -1,4 +1,4 @@
-# Evolvora Technologies — static site
+# Evolvora Technologies static site
 [build]
   publish = "."
 

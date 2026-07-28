@@ -40,6 +40,6 @@ http.createServer((req, res) => {
 }).listen(PORT, () => {
   const url = `http://localhost:${PORT}/`;
   console.log("\n  Evolvora site is running at:  " + url);
-  console.log("  (leave this window open — press Ctrl+C to stop)\n");
+  console.log("  (leave this window open. Press Ctrl+C to stop)\n");
   try { exec(`start "" ${url}`); } catch (e) {}
 });

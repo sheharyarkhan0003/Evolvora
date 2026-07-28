@@ -56,7 +56,7 @@ const THEME_TOGGLE = `<button class="theme-toggle" id="themeToggle" type="button
 
 /* ---------- browser mockup ---------- */
 const shot = (img, label, alt, eager) =>
-  `<div class="browser"><div class="browser-bar"><span></span><span></span><span></span><i>${label}</i></div><img src="/assets/img/${img}" alt="${alt}"${eager?' loading="eager"':' loading="lazy"'} width="1400" height="720" draggable="false"></div>`;
+  `<div class="browser"><div class="browser-bar"><span></span><span></span><span></span><i>${label}</i></div><img src="/assets/img/${img}" alt="${alt || label || "Evolvora software screenshot"}"${eager?' loading="eager"':' loading="lazy"'} width="1400" height="720" draggable="false"></div>`;
 
 const WHY_PILLARS = [
   {
@@ -64,7 +64,8 @@ const WHY_PILLARS = [
     image: "product.jpg",
     label: "Product discovery",
     title: "Product mindset",
-    desc: "We think about your users and outcomes, not just tickets — because we run our own products too.",
+    alt: "Product discovery workshop: defining user goals and product outcomes",
+    desc: "We think about your users and outcomes, not just tickets, because we run our own products too.",
     points: ["User-first discovery and clear scope", "Outcomes and metrics, not ticket counts", "We ship and operate our own software"]
   },
   {
@@ -72,7 +73,8 @@ const WHY_PILLARS = [
     image: "code.jpg",
     label: "Engineering craft",
     title: "Senior craftsmanship",
-    desc: "Clean, maintainable code and thoughtful design — software built to last, not just to demo.",
+    alt: "Software engineer reviewing clean, maintainable code on a laptop",
+    desc: "Clean, maintainable code and thoughtful design: software built to last, not just to demo.",
     points: ["Clean architecture and readable code", "Design systems that scale with you", "Built to maintain, not just to launch"]
   },
   {
@@ -80,27 +82,29 @@ const WHY_PILLARS = [
     image: "demos.jpg",
     label: "Project visibility",
     title: "Transparent & reliable",
+    alt: "Team presenting a weekly product demo with clear project progress",
     desc: "Clear scope, regular demos and honest timelines. You always know where things stand.",
-    points: ["Weekly demos and honest progress updates", "Clear scope, milestones and timelines", "No surprises — you always know what's next"]
+    points: ["Weekly demos and honest progress updates", "Clear scope, milestones and timelines", "No surprises: you always know what's next"]
   },
   {
     phase: "04",
     image: "partner.jpg",
     label: "Long-term support",
     title: "Long-term partner",
-    desc: "We stay after launch — maintaining, improving and scaling your software as you grow.",
+    alt: "Long-term partnership: collaborating on software support and growth after launch",
+    desc: "We stay after launch, maintaining, improving and scaling your software as you grow.",
     points: ["Post-launch maintenance and support", "Iterative improvements as you grow", "A team that stays with you long after go-live"]
   }
 ];
 
 function whyVisualPhoto(pillar) {
-  return `<figure class="why-visual-float-item"><img src="/assets/img/${pillar.image}" alt="${pillar.title}" loading="lazy" width="1200" height="1500" draggable="false"></figure>`;
+  return `<figure class="why-visual-float-item"><img src="/assets/img/${pillar.image}" alt="${pillar.alt || pillar.title}" loading="lazy" width="1200" height="1500" draggable="false"></figure>`;
 }
 
 function whyStoryVisualStack() {
   const slides = WHY_PILLARS.map((p) => `
     <figure class="why-visual-photo-slide">
-      <img src="/assets/img/${p.image}" alt="${p.title}" loading="lazy" width="1200" height="1500" draggable="false">
+      <img src="/assets/img/${p.image}" alt="${p.alt || p.title}" loading="lazy" width="1200" height="1500" draggable="false">
     </figure>`).join("");
 
   return `<div class="why-visual-float">
@@ -137,55 +141,19 @@ function whyStorySection() {
 }
 
 const STACK_SKILLS = [
-  {
-    name: "Angular",
-    brand: "#dd0031",
-    icon: '<path fill="currentColor" d="M11.4 2.2 2.8 19.4h4l1.6-3.8h9.2l1.6 3.8h4L12.6 2.2h-1.2Zm-.9 11.5 3-7.2 3 7.2h-6Z"/>'
-  },
-  {
-    name: ".NET",
-    brand: "#512bd4",
-    icon: '<path fill="currentColor" d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 2.2a7.8 7.8 0 1 1 0 15.6 7.8 7.8 0 0 1 0-15.6Zm-1.1 3.4v8.8h2.2v-3.4l2.8 3.4h2.7l-3.3-3.9 3.1-3.5h-2.6l-2.7 3.1V7.6h-2.2Z"/>'
-  },
-  {
-    name: "Node.js",
-    brand: "#339933",
-    icon: '<path fill="currentColor" d="M12 2.2 4.2 6.4c-.7.4-.7 1.4 0 1.8L12 12.4c.7.4 1.6.4 2.3 0l7.5-4.2c.7-.4.7-1.4 0-1.8L14.3 2.2c-.7-.4-1.6-.4-2.3 0ZM11 14.6l-2.8-1.5v3c0 .8.4 1.5 1.2 1.9l6.8 3.9c.8.5 1.7.5 2.5 0l6.8-3.9c.8-.4 1.2-1.1 1.2-1.9v-6l-2.8 1.5v4.2l-5.2 3-5.2-3v-4.2Z"/>'
-  },
-  {
-    name: "TypeScript",
-    brand: "#3178c6",
-    icon: '<rect x="3" y="3" width="18" height="18" rx="2" fill="currentColor" opacity=".18"/><path fill="currentColor" d="M8 10h8v1.8h-3v6.2H11V11.8H8V10Zm7.8 4.8c0-1.4-.9-2.1-2.6-2.1-1 0-1.8.3-2.4.7l-.8-1.5c.8-.5 1.9-.8 3.3-.8 2.4 0 3.9 1.2 3.9 3.2 0 1.2-.6 2.1-2.1 2.8l-1.2.5c-.7.3-1 .6-1 1.1 0 .6.5 1 1.3 1 .8 0 1.6-.3 2.2-.8l.8 1.5c-.9.6-2 1-3.2 1-2.2 0-3.6-1.1-3.6-2.9Z"/>'
-  },
-  {
-    name: "PostgreSQL",
-    brand: "#336791",
-    icon: '<path fill="currentColor" d="M18.2 8.3c-.4-2.4-2.4-4.1-5-4.1-3 0-5.3 2.2-5.3 5.1 0 2.1 1.1 3.5 3 4.2l-.9 5.2h3.1l.7-4.2c.3 0 .6.1 1 .1 2.9 0 5-1.9 5-4.6 0-.6-.1-1.1-.3-1.5-.1-.8-.6-1.4-1.3-1.2Z"/><circle cx="14.8" cy="8.8" r=".9" fill="var(--stack-card-bg,var(--surface))"/>'
-  },
-  {
-    name: "Supabase",
-    brand: "#3ecf8e",
-    icon: '<path fill="currentColor" d="M11.5 3.2 4.8 20c-.4 1 .4 2.1 1.5 2.1h3.6L11.5 3.2Zm1.8 0 1.7 14.2h3.6c1.1 0 1.9-1.1 1.5-2.1L13.3 3.2Z"/>'
-  },
-  {
-    name: "Docker",
-    brand: "#2496ed",
-    icon: '<path fill="currentColor" d="M4 11h2v2H4v-2Zm3 0h2v2H7v-2Zm3 0h2v2h-2v-2Zm3 0h2v2h-2v-2Zm-9 3h2v2H4v-2Zm3 0h2v2H7v-2Zm6-6h2v2h-2V8Zm3 0h2v2h-2V8Zm3 0h2v2h-2V8Zm-12 3h2v2H4v-2Zm12 0h2v2h-2v-2Zm3 0h2v2h-2v-2Zm-18 3h2v2H4v-2Zm3 0h2v2H7v-2Zm9-8c2.8.4 5 2.4 5.8 5h-3.5c-.6-1.6-2-2.8-3.7-3.2l1.4-1.8Z"/>'
-  },
-  {
-    name: "Cloudflare",
-    brand: "#f38020",
-    icon: '<path fill="currentColor" d="M19.2 13.4c-.3-2.2-2.1-3.8-4.4-3.8-2.6 0-4.7 2.1-4.7 4.7h-.2c-.5-2.5-2.7-4.3-5.4-4.3-3 0-5.4 2.4-5.4 5.4 0 .3 0 .6.1.9-.8.3-1.3 1-1.3 1.8 0 1.1.9 2 2 2h12.8c2.5 0 4.5-2 4.5-4.5 0-1.3-.5-2.4-1.4-3.2Z"/>'
-  },
-  {
-    name: "Figma",
-    brand: "#a259ff",
-    icon: '<path fill="currentColor" d="M8 3a4 4 0 0 0 0 8 4 4 0 0 0 0-8Zm0 10a4 4 0 0 0 0 8 4 4 0 0 0 0-8Zm-4 4a4 4 0 0 1 4-4h0a4 4 0 1 1-4 4Zm8-14a4 4 0 1 1 0 8 4 4 0 0 1 0-8Zm0 10a4 4 0 0 0 0 8h4a4 4 0 0 0 0-8h-4Z"/>'
-  }
+  { name: "Angular", brand: "#DD0031", logo: "angular.svg" },
+  { name: ".NET", brand: "#512BD4", logo: "dotnet.svg" },
+  { name: "Node.js", brand: "#5FA04E", logo: "nodedotjs.svg" },
+  { name: "TypeScript", brand: "#3178C6", logo: "typescript.svg" },
+  { name: "PostgreSQL", brand: "#4169E1", logo: "postgresql.svg" },
+  { name: "Supabase", brand: "#3FCF8E", logo: "supabase.svg" },
+  { name: "Docker", brand: "#2496ED", logo: "docker.svg" },
+  { name: "Cloudflare", brand: "#F38020", logo: "cloudflare.svg" },
+  { name: "Figma", brand: "#F24E1E", logo: "figma.svg" },
 ];
 
 const stackCard = (s) =>
-  `<article class="stack-card-item" style="--brand:${s.brand}"><svg class="stack-card-icon" viewBox="0 0 24 24" aria-hidden="true">${s.icon}</svg><span class="stack-card-name">${s.name}</span></article>`;
+  `<article class="stack-card-item" style="--brand:${s.brand}"><img class="stack-card-icon" src="/assets/img/stack/${s.logo}" alt="${s.name} logo" width="48" height="48" loading="lazy" decoding="async"><span class="stack-card-name">${s.name}</span></article>`;
 
 const stackGrid = () =>
   `<div class="stack-grid reveal" aria-label="Technologies we use">${STACK_SKILLS.map(stackCard).join("")}</div>`;
@@ -219,7 +187,7 @@ function head({ title, desc, url, jsonld }) {
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="/assets/js/theme-init.js"></script>
 ${NAV_MOBILE_CRITICAL}
-<link rel="stylesheet" href="/assets/css/styles.css?v=8">
+<link rel="stylesheet" href="/assets/css/styles.css?v=27">
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
@@ -261,7 +229,7 @@ function footer() {
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/" class="brand">${MARK}<span class="wm">EVOL<b>VORA</b></span></a>
-      <p>Evolvora Technologies builds modern software for schools and campuses. Our flagship, Evolvora Campus, brings admissions, attendance, fees, payroll and parent communication into one place.</p>
+      <p>Evolvora Technologies, the team behind Evolvora, builds modern software for schools and campuses. Our flagship, Evolvora Campus, brings admissions, attendance, fees, payroll and parent communication into one place.</p>
       <span class="footer-tagline">Innovation never stops</span>
     </div>
     <div><h5>Company</h5><ul>
@@ -320,10 +288,10 @@ function ctaBlock(h, p) {
   </div></div></div></section>`;
 }
 const PILLARS = `<div class="benefit-grid">
-  <article class="benefit reveal"><span class="benefit-ic ic-green">${svg("fee")}</span><h3>Fee collection made easy</h3><p>See who has paid, who is pending and what's outstanding across the whole school — and send fee reminders in a tap instead of chasing parents.</p></article>
+  <article class="benefit reveal"><span class="benefit-ic ic-green">${svg("fee")}</span><h3>Fee collection made easy</h3><p>See who has paid, who is pending and what's outstanding across the whole school, and send fee reminders in a tap instead of chasing parents.</p></article>
   <article class="benefit reveal"><span class="benefit-ic ic-amber">${svg("salary")}</span><h3>Salaries calculate themselves</h3><p>Basic pay, allowances and tax status are stored per teacher, so monthly salary is worked out automatically. No spreadsheets, no manual maths.</p></article>
   <article class="benefit reveal"><span class="benefit-ic ic-blue">${svg("clock")}</span><h3>Teachers reach class on time</h3><p>Attendance is marked from the classroom in seconds with a clear daily view, so teachers always know where they're needed.</p></article>
-  <article class="benefit reveal"><span class="benefit-ic ic-cyan">${svg("bell")}</span><h3>Parents notified instantly</h3><p>Marks, attendance, fee reminders and daily diary reach parents the moment they happen — on the app and their phone.</p></article>
+  <article class="benefit reveal"><span class="benefit-ic ic-cyan">${svg("bell")}</span><h3>Parents notified instantly</h3><p>Marks, attendance, fee reminders and daily diary reach parents the moment they happen, on the app and their phone.</p></article>
 </div>`;
 
 function solutionsGrid() {
@@ -361,12 +329,15 @@ const pages = [];
 /* ---- HOME (software house) ---- */
 pages.push({
   file:"index.html", active:"home", url:"/",
-  title:"Evolvora — Software House | We Design & Build Web, Mobile & Cloud Software",
-  desc:"Evolvora is a software house that designs and builds custom web, mobile and cloud software — from idea to launch. Explore our services and products, including Evolvora Campus.",
+  title:"Evolvora Technologies | Software Development Company",
+  desc:"Evolvora is a software development company that designs and builds custom web, mobile and cloud software. Explore Evolvora services, products and Evolvora Campus.",
   jsonld:[orgLD,{ "@context":"https://schema.org","@type":"WebSite","name":"Evolvora Technologies","url":SITE }],
   body:`
 <section class="hero hero--visual">
   <div class="hero-bg" aria-hidden="true">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="/assets/video/video-poster.jpg">
+      <source src="/assets/video/video-mobile.mp4" type="video/mp4">
+    </video>
     <div class="hero-gradient"></div>
     <div class="hero-orb hero-orb--1"></div>
     <div class="hero-orb hero-orb--2"></div>
@@ -375,8 +346,11 @@ pages.push({
   <div class="container hero-inner">
     <div class="hero-copy reveal">
       <span class="eyebrow"><span class="dot"></span> Software house · Innovation never stops</span>
-      <h1>We build software that<br><span class="grad-text">moves your business forward.</span></h1>
-      <p class="lead">Evolvora is a software house. We design, build and ship reliable <strong>web, mobile and cloud</strong> software — turning your ideas into products people love to use. And we build products of our own, like <strong>Evolvora Campus</strong>.</p>
+      <h1 class="hero-title">
+        <span class="hero-title-brand">Evolvora Technologies</span>
+        <span class="hero-title-tagline">Software Development Company</span>
+      </h1>
+      <p class="lead">Evolvora is a software house. We design, build and ship reliable <strong>web, mobile and cloud</strong> software, turning your ideas into products people love to use. And we build products of our own, like <strong>Evolvora Campus</strong>.</p>
       <div class="hero-cta">
         <a href="/contact/" class="btn btn-primary btn-lg">Start a project</a>
         <a href="/products/" class="btn btn-ghost btn-lg">See our work</a>
@@ -387,13 +361,10 @@ pages.push({
         <div><strong>Our own products</strong><span>not just client work</span></div>
       </div>
     </div>
-    <div class="hero-art reveal">
-      <img src="/assets/img/hero-illustration.svg" alt="" width="520" height="420" class="hero-illustration">
-    </div>
   </div>
 </section>
 
-<section class="strip"><div class="container"><p>From idea to launch — trusted to <strong>design, build and ship software that works</strong>, and to keep it running after go-live.</p></div></section>
+<section class="strip"><div class="container"><p>From idea to launch: trusted to <strong>design, build and ship software that works</strong>, and to keep it running after go-live.</p></div></section>
 
 <section class="section services-scroll" id="services">
   <div class="services-scroll-pin">
@@ -403,7 +374,7 @@ pages.push({
         <div class="cards-scroll-viewport">
           <div class="cards-scroll-track">
             <div class="cards-scroll-panel">
-              <div class="card"><span class="card-ic">${svg("code")}</span><h3>Custom Software Development</h3><p>Bespoke systems built around your workflow — from internal tools to customer-facing platforms.</p></div>
+              <div class="card"><span class="card-ic">${svg("code")}</span><h3>Custom Software Development</h3><p>Bespoke systems built around your workflow, from internal tools to customer-facing platforms.</p></div>
               <div class="card"><span class="card-ic">${svg("monitor")}</span><h3>Web Application Development</h3><p>Responsive, high-performance web apps with clean architecture and modern frameworks.</p></div>
             </div>
             <div class="cards-scroll-panel">
@@ -411,7 +382,7 @@ pages.push({
               <div class="card"><span class="card-ic">${svg("layers")}</span><h3>SaaS Product Engineering</h3><p>Multi-tenant, subscription-ready products designed to scale from day one.</p></div>
             </div>
             <div class="cards-scroll-panel">
-              <div class="card"><span class="card-ic">${svg("pen")}</span><h3>UI/UX Design</h3><p>Interfaces that are beautiful and intuitive — research, wireframes, prototypes and polish.</p></div>
+              <div class="card"><span class="card-ic">${svg("pen")}</span><h3>UI/UX Design</h3><p>Interfaces that are beautiful and intuitive: research, wireframes, prototypes and polish.</p></div>
               <div class="card"><span class="card-ic">${svg("cloud")}</span><h3>Cloud &amp; DevOps</h3><p>Deployment, CI/CD, monitoring and infrastructure that keeps your software fast and online.</p></div>
             </div>
           </div>
@@ -424,12 +395,12 @@ pages.push({
 </section>
 
 <section class="section section-alt"><div class="container">
-  <div class="section-head reveal"><span class="kicker">Our products</span><h2>We don't just build for others</h2><p>We build and run our own software — starting with Evolvora Campus, our flagship product.</p></div>
+  <div class="section-head reveal"><span class="kicker">Our products</span><h2>We don't just build for others</h2><p>We build and run our own software, starting with Evolvora Campus, our flagship product.</p></div>
   <div class="feature-row reveal">
-    <div class="feature-media tilt-3d" data-tilt-3d tabindex="0" role="img" aria-label="Evolvora Campus dashboard preview — press or drag for 3D view">${shot("dashboard.png","Evolvora Campus","Evolvora Campus dashboard — a product by Evolvora")}</div>
+    <div class="feature-media tilt-3d" data-tilt-3d tabindex="0" role="img" aria-label="Evolvora Campus dashboard preview: press or drag for 3D view">${shot("dashboard.png","Evolvora Campus","Evolvora Campus dashboard, a product by Evolvora")}</div>
     <div class="feature-text"><span class="tag tag-blue">Flagship product · Live</span>
       <h3>Evolvora Campus</h3>
-      <p style="color:var(--muted);font-size:16px;margin-bottom:18px">An all-in-one school management system for attendance, marks, fee collection, teacher payroll and parent communication — used to run real schools.</p>
+      <p style="color:var(--muted);font-size:16px;margin-bottom:18px">An all-in-one school management system for attendance, marks, fee collection, teacher payroll and parent communication, used to run real schools.</p>
       <ul class="ticks">
         <li>A tailored view for <strong>admins, teachers and parents</strong></li>
         <li>Fees, attendance, payroll &amp; messaging in one platform</li>
@@ -441,7 +412,7 @@ pages.push({
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="section-head reveal"><span class="kicker">How we work</span><h2>A clear path from idea to launch</h2><p>A simple, transparent process — you always know what's happening and what's next.</p></div>
+  <div class="section-head reveal"><span class="kicker">How we work</span><h2>A clear path from idea to launch</h2><p>A simple, transparent process: you always know what's happening and what's next.</p></div>
   <div class="steps">
     <div class="step reveal"><span class="step-num">1</span><h3>Discover</h3><p>We learn your goals, users and constraints, then scope the right solution.</p></div>
     <div class="step-arrow">→</div>
@@ -454,13 +425,13 @@ pages.push({
 </div></section>
 
 <section class="section section-alt"><div class="container">
-  <div class="section-head reveal"><span class="kicker">Our toolkit</span><h2>Built with a modern, proven stack</h2><p>We choose reliable, well-supported technologies — so your software stays fast, secure and maintainable.</p></div>
+  <div class="section-head reveal"><span class="kicker">Our toolkit</span><h2>Built with a modern, proven stack</h2><p>We choose reliable, well-supported technologies so your software stays fast, secure and maintainable.</p></div>
 ${stackGrid()}
 </div></section>
 
 ${whyStorySection()}
 
-${ctaBlock("Have a project in mind?","Tell us what you want to build. We'll help you scope it, design it and ship it — and support it long after launch.")}`
+${ctaBlock("Have a project in mind?","Tell us what you want to build. We'll help you scope it, design it and ship it, and support it long after launch.")}`
 });
 
 /* ---- PRODUCTS INDEX ---- */
@@ -468,22 +439,22 @@ ${ctaBlock("Have a project in mind?","Tell us what you want to build. We'll help
   const cb = crumb([["Home","/"],["Products","/products/"]]);
   pages.push({
     file:"products/index.html", active:"products", url:"/products/",
-    title:"Products — Evolvora | Software We've Built",
-    desc:"Products built by Evolvora, the software house. Explore Evolvora Campus — our all-in-one school management system — plus new products on the way.",
+    title:"Products | Evolvora | Software We've Built",
+    desc:"Products built by Evolvora, the software house. Explore Evolvora Campus (our all-in-one school management system), plus new products on the way.",
     jsonld:[cb.jsonld],
     body:`
 <section class="section" style="padding-top:52px"><div class="container">
   ${cb.html}
-  <div class="section-head reveal" style="margin-bottom:44px"><span class="kicker">Our products</span><h2>Software we've built &amp; run ourselves</h2><p>Evolvora isn't only a services company — we design and operate our own products. Here's what we've shipped, and what's coming next.</p></div>
+  <div class="section-head reveal" style="margin-bottom:44px"><span class="kicker">Our products</span><h2>Software we've built &amp; run ourselves</h2><p>Evolvora isn't only a services company; we design and operate our own products. Here's what we've shipped, and what's coming next.</p></div>
 </div>
 <div class="coverflow" data-coverflow data-set-count="3" aria-label="Our products">
   <div class="coverflow-track">
-    <article class="coverflow-card card flagship"><span class="badge-live">Live</span><span class="card-ic">${svg("cap")}</span><h3>Evolvora Campus</h3><p>The complete school management system: admissions, attendance, marks, fee collection, teacher payroll and instant parent communication — in one place.</p><a href="/products/evolvora-campus/" class="card-link">Explore Evolvora Campus ${svg("arrow")}</a></article>
-    <article class="coverflow-card card soon"><span class="badge-soon">Coming soon</span><span class="card-ic">${svg("book")}</span><h3>Evolvora Learn</h3><p>Assignments, learning resources and online classes — a learning platform that plugs straight into Evolvora Campus.</p></article>
+    <article class="coverflow-card card flagship"><span class="badge-live">Live</span><span class="card-ic">${svg("cap")}</span><h3>Evolvora Campus</h3><p>The complete school management system: admissions, attendance, marks, fee collection, teacher payroll and instant parent communication, in one place.</p><a href="/products/evolvora-campus/" class="card-link">Explore Evolvora Campus ${svg("arrow")}</a></article>
+    <article class="coverflow-card card soon"><span class="badge-soon">Coming soon</span><span class="card-ic">${svg("book")}</span><h3>Evolvora Learn</h3><p>Assignments, learning resources and online classes: a learning platform that plugs straight into Evolvora Campus.</p></article>
     <article class="coverflow-card card soon"><span class="badge-soon">Coming soon</span><span class="card-ic">${svg("chart")}</span><h3>Evolvora Insights</h3><p>School analytics and reporting that turn attendance, results and fee data into decisions you can act on.</p></article>
   </div>
 </div></section>
-${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll show you what's live today — and what's coming next.")}`
+${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll show you what's live today, and what's coming next.")}`
   });
 }
 
@@ -494,8 +465,8 @@ ${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll
   const feat = (media,tag,tagc,h,items) => `<div class="feature-row${media.rev?' reverse':''} reveal"><div class="feature-media">${shot(media.img,media.label,media.alt)}</div><div class="feature-text"><span class="tag ${tagc}">${tag}</span><h3>${h}</h3><ul class="ticks">${items.map(i=>`<li>${i}</li>`).join("")}</ul></div></div>`;
   pages.push({
     file:"products/evolvora-campus/index.html", active:"products", url:"/products/evolvora-campus/", skipWrite:true, // standalone clone of the original SchoolSync landing (rebranded); do not regenerate
-    title:"Evolvora Campus — All-in-One School Management System",
-    desc:"Evolvora Campus is an all-in-one school management system: take attendance, enter marks, collect fees, calculate teacher salaries and notify parents — from one simple platform.",
+    title:"Evolvora Campus: All-in-One School Management System",
+    desc:"Evolvora Campus is an all-in-one school management system: take attendance, enter marks, collect fees, calculate teacher salaries and notify parents, from one simple platform.",
     jsonld:[appLD, cb.jsonld],
     body:`
 <section class="hero" style="padding-top:46px"><div class="hero-glow"></div><div class="container">
@@ -504,7 +475,7 @@ ${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll
   <div class="hero-copy reveal">
     <span class="eyebrow"><span class="dot"></span> Evolvora Campus</span>
     <h1>The all-in-one<br><span class="grad-text">school management system.</span></h1>
-    <p class="lead">Run your entire school from one simple screen. Evolvora Campus connects your office, teachers and parents — so fees get collected on time, salaries calculate themselves, teachers reach class on schedule, and parents always stay in the loop.</p>
+    <p class="lead">Run your entire school from one simple screen. Evolvora Campus connects your office, teachers and parents so fees get collected on time, salaries calculate themselves, teachers reach class on schedule, and parents always stay in the loop.</p>
     <div class="hero-cta"><a href="/contact/" class="btn btn-primary btn-lg">Book a free demo</a><a href="#features" class="btn btn-ghost btn-lg">See features</a></div>
   </div>
   <div class="hero-shot reveal">${shot("dashboard.png","app.evolvoratech.com","Evolvora Campus admin dashboard",true)}</div>
@@ -512,22 +483,22 @@ ${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll
 </div></section>
 
 <section class="section"><div class="container">
-  <div class="section-head reveal"><span class="kicker">Why schools switch</span><h2>Less paperwork. More teaching.</h2><p>The four things that eat up your week — made effortless.</p></div>
+  <div class="section-head reveal"><span class="kicker">Why schools switch</span><h2>Less paperwork. More teaching.</h2><p>The four things that eat up your week, made effortless.</p></div>
   ${PILLARS}
 </div></section>
 
 <section class="section section-alt" id="features"><div class="container">
-  <div class="section-head reveal"><span class="kicker">A closer look</span><h2>Built for the way schools actually work</h2><p>Real screens from Evolvora Campus — simple enough for anyone in the office to use on day one.</p></div>
+  <div class="section-head reveal"><span class="kicker">A closer look</span><h2>Built for the way schools actually work</h2><p>Real screens from Evolvora Campus, simple enough for anyone in the office to use on day one.</p></div>
   ${feat({img:"dashboard.png",label:"Dashboard · Fees",alt:"Fee submission status on the Evolvora Campus dashboard"},"Fees","tag-green","Know your fee position at a glance",["Live totals for <strong>paid, pending and under-review</strong> fees","Outstanding amount for the whole school on the home screen","One-tap fee reminders sent straight to parents"])}
   ${feat({img:"staff.png",label:"Staff · Payroll",alt:"Staff directory with salaries in Evolvora Campus",rev:true},"Staff &amp; Payroll","tag-amber","Every teacher, subject and salary in one place",["Store <strong>basic pay, allowances and tax status</strong> per teacher","Monthly salary is <strong>calculated automatically</strong>","See experience, assigned classes and status together"])}
-  ${feat({img:"attendance.png",label:"Teacher · Attendance",alt:"Taking class attendance in Evolvora Campus"},"Attendance","tag-blue","A whole class marked in seconds",["Tap <strong>Present, Late or Absent</strong> — clearly colour-coded","\"Swipe present\", then flag only the exceptions","Live totals and a 14-day trend keep classes on schedule"])}
+  ${feat({img:"attendance.png",label:"Teacher · Attendance",alt:"Taking class attendance in Evolvora Campus"},"Attendance","tag-blue","A whole class marked in seconds",["Tap <strong>Present, Late or Absent</strong>, clearly colour-coded","\"Swipe present\", then flag only the exceptions","Live totals and a 14-day trend keep classes on schedule"])}
   ${feat({img:"parent-notifications.png",label:"Parent · Updates",alt:"Parent notifications in Evolvora Campus",rev:true},"Communication","tag-cyan","Reach the right parents, instantly",["Send to a <strong>class, section, group or the whole school</strong>","Sorted for parents: Daily Diary, Fees, Marks, Attendance","<strong>Read receipts</strong> show exactly who has seen it"])}
-  ${feat({img:"parent-child.png",label:"Parent · My Child",alt:"Parent portal in Evolvora Campus"},"Parent portal","tag-cyan","Parents follow every child's progress",["Attendance, marks, fees and teachers — one tidy profile","Families with siblings see all their children in one login","Everything up to date, anytime, from any phone"])}
-  ${feat({img:"bulk-import.png",label:"Admin · Bulk import",alt:"Bulk import students from Excel in Evolvora Campus",rev:true},"Onboarding","tag-purple","Add a whole class in minutes",["Import students straight from a simple <strong>Excel file</strong>","<strong>Parent logins created automatically</strong> — siblings linked","Download a ready-made template so the format is always right"])}
+  ${feat({img:"parent-child.png",label:"Parent · My Child",alt:"Parent portal in Evolvora Campus"},"Parent portal","tag-cyan","Parents follow every child's progress",["Attendance, marks, fees and teachers: one tidy profile","Families with siblings see all their children in one login","Everything up to date, anytime, from any phone"])}
+  ${feat({img:"bulk-import.png",label:"Admin · Bulk import",alt:"Bulk import students from Excel in Evolvora Campus",rev:true},"Onboarding","tag-purple","Add a whole class in minutes",["Import students straight from a simple <strong>Excel file</strong>","<strong>Parent logins created automatically</strong>, with siblings linked","Download a ready-made template so the format is always right"])}
 </div></section>
 
 <section class="section" id="roles"><div class="container">
-  <div class="section-head reveal"><span class="kicker">One platform, three views</span><h2>Everyone gets exactly what they need</h2><p>The same up-to-date information, tailored to each person — no training required.</p></div>
+  <div class="section-head reveal"><span class="kicker">One platform, three views</span><h2>Everyone gets exactly what they need</h2><p>The same up-to-date information, tailored to each person, with no training required.</p></div>
   <div class="role-grid">
     <article class="role-card reveal" style="--rc:#8b5cf6"><span class="role-ic">${svg("gear")}</span><h3>Admin</h3><p class="role-sub">The school office</p><ul class="ticks sm"><li>Set up classes, sections &amp; staff</li><li>Add students one-by-one or in bulk</li><li>Track fees &amp; teacher salaries</li><li>Message anyone in the school</li></ul></article>
     <article class="role-card reveal" style="--rc:#3b82f6"><span class="role-ic">${svg("teacher")}</span><h3>Teacher</h3><p class="role-sub">In the classroom</p><ul class="ticks sm"><li>Take attendance in seconds</li><li>Enter marks with auto percentages</li><li>See students &amp; class performance</li><li>Send notes to parents</li></ul></article>
@@ -536,7 +507,7 @@ ${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll
 </div></section>
 
 <section class="section section-alt"><div class="container">
-  <div class="section-head reveal"><span class="kicker">How it works</span><h2>Set up once — everything flows from there</h2><p>Enter information a single time and it reaches everyone who needs it, automatically.</p></div>
+  <div class="section-head reveal"><span class="kicker">How it works</span><h2>Set up once, and everything flows from there</h2><p>Enter information a single time and it reaches everyone who needs it, automatically.</p></div>
   <div class="steps">
     <div class="step reveal"><span class="step-num">1</span><h3>Admin sets up the school</h3><p>Add classes, sections, staff and students once. Parent accounts are created for you.</p></div>
     <div class="step-arrow">→</div>
@@ -546,7 +517,7 @@ ${ctaBlock("Want to be first to know?","Tell us what your school needs and we'll
   </div>
 </div></section>
 
-${ctaBlock("Ready to make your school run itself?","Let us show you Evolvora Campus with your own classes and fee structure — a quick, no-pressure walkthrough.")}`
+${ctaBlock("Ready to make your school run itself?","Let us show you Evolvora Campus with your own classes and fee structure: a quick, no-pressure walkthrough.")}`
   });
 }
 
@@ -554,20 +525,20 @@ ${ctaBlock("Ready to make your school run itself?","Let us show you Evolvora Cam
 {
   const cb = crumb([["Home","/"],["Pricing","/pricing/"]]);
   const faq = faqBlock([
-    {q:"How is Evolvora Campus priced?",a:"Pricing is based on your number of active students and the plan you choose. Book a quick demo and we'll prepare a tailored quote for your school — there are no setup fees to get started."},
+    {q:"How is Evolvora Campus priced?",a:"Pricing is based on your number of active students and the plan you choose. Book a quick demo and we'll prepare a tailored quote for your school. There are no setup fees to get started."},
     {q:"Is there a long-term contract?",a:"No. Evolvora Campus is billed on a simple subscription you can adjust as your school grows. You're never locked into a multi-year contract."},
-    {q:"Do you help us move our existing data?",a:"Yes. Our team helps you import students, classes and staff — including bulk import from an Excel file — so you're up and running quickly."},
-    {q:"Can parents and teachers use it for free?",a:"Yes. Teacher and parent access is included in every plan at no extra per-user cost — you're billed at the school level, not per parent."},
+    {q:"Do you help us move our existing data?",a:"Yes. Our team helps you import students, classes and staff, including bulk import from an Excel file, so you're up and running quickly."},
+    {q:"Can parents and teachers use it for free?",a:"Yes. Teacher and parent access is included in every plan at no extra per-user cost. You're billed at the school level, not per parent."},
   ]);
   pages.push({
     file:"pricing/index.html", active:"pricing", url:"/pricing/",
-    title:"Pricing — Evolvora Campus School Management System",
+    title:"Pricing | Evolvora Campus School Management System",
     desc:"Simple, school-friendly pricing for Evolvora Campus. Plans scale with your student numbers, with teacher and parent access included. Book a demo for a tailored quote.",
     jsonld:[cb.jsonld, faq.jsonld],
     body:`
 <section class="section" style="padding-top:52px"><div class="container">
   ${cb.html}
-  <div class="section-head reveal"><span class="kicker">Pricing</span><h2>Simple pricing that grows with your school</h2><p>Every plan includes unlimited teacher and parent access — you're billed at the school level, never per parent. Figures below are indicative; book a demo for a tailored quote.</p></div>
+  <div class="section-head reveal"><span class="kicker">Pricing</span><h2>Simple pricing that grows with your school</h2><p>Every plan includes unlimited teacher and parent access. You're billed at the school level, never per parent. Figures below are indicative; book a demo for a tailored quote.</p></div>
   <div class="price-grid">
     <div class="price reveal"><h3>Starter</h3><p class="p-sub">For small schools getting organised.</p><div class="p-amt">$0.6<small>/student / mo</small></div><p class="p-note">Billed monthly · up to 300 students</p><ul class="ticks sm"><li>Students, classes &amp; sections</li><li>Attendance &amp; marks</li><li>Fee tracking &amp; reminders</li><li>Parent app &amp; notifications</li></ul><a href="/contact/" class="btn btn-ghost">Get started</a></div>
     <div class="price pop reveal"><span class="pop-tag">Most popular</span><h3>Growth</h3><p class="p-sub">For growing schools that want it all.</p><div class="p-amt">$1.0<small>/student / mo</small></div><p class="p-note">Billed monthly · up to 1,500 students</p><ul class="ticks sm"><li>Everything in Starter</li><li>Teacher payroll &amp; salary calculation</li><li>Bulk import &amp; auto parent accounts</li><li>Groups, read receipts &amp; web push</li><li>Priority support</li></ul><a href="/contact/" class="btn btn-primary">Book a demo</a></div>
@@ -585,7 +556,7 @@ ${ctaBlock("Not sure which plan fits?","Tell us about your school and we'll reco
   const ld = { "@context":"https://schema.org","@type":"ContactPage","name":"Contact Evolvora Technologies","url":SITE+"/contact/" };
   pages.push({
     file:"contact/index.html", active:"contact", url:"/contact/",
-    title:"Contact Evolvora Technologies — Book a Demo",
+    title:"Contact Evolvora Technologies: Book a Demo",
     desc:"Get in touch with Evolvora Technologies to book a free demo of Evolvora Campus, ask about pricing, or discuss moving your school onto one connected platform.",
     jsonld:[cb.jsonld, ld],
     body:`
@@ -633,13 +604,13 @@ ${ctaBlock("Not sure which plan fits?","Tell us about your school and we'll reco
   </div>`;
   pages.push({
     file:"services/index.html", active:"services", url:"/services/",
-    title:"Software Development Services — Evolvora Software House",
-    desc:"Evolvora's software services: custom software, web & mobile app development, SaaS product engineering, UI/UX design and cloud & DevOps — from idea to launch and beyond.",
+    title:"Software Development Services | Evolvora Software House",
+    desc:"Evolvora's software services: custom software, web & mobile app development, SaaS product engineering, UI/UX design and cloud & DevOps, from idea to launch and beyond.",
     jsonld:[cb.jsonld, { "@context":"https://schema.org","@type":"Service","serviceType":"Software development","provider":{"@type":"Organization","name":"Evolvora Technologies"},"areaServed":"Worldwide","description":"Custom software, web and mobile app development, SaaS product engineering, UI/UX design and cloud & DevOps." }],
     body:`
 <section class="section" style="padding-top:52px;padding-bottom:20px"><div class="container">
   ${cb.html}
-  <div class="section-head reveal"><span class="kicker">Services</span><h2>Everything you need to build great software</h2><p>Whether you're starting from a blank page or scaling an existing product, we cover the whole journey — strategy, design, engineering and operations.</p></div>
+  <div class="section-head reveal"><span class="kicker">Services</span><h2>Everything you need to build great software</h2><p>Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations.</p></div>
 </div></section>
 
 <section class="section services-coverflow-section" style="padding-top:20px;padding-bottom:56px">
@@ -647,7 +618,7 @@ ${ctaBlock("Not sure which plan fits?","Tell us about your school and we'll reco
 </section>
 
 <section class="section section-alt"><div class="container">
-  <div class="section-head reveal"><span class="kicker">How we work</span><h2>A clear path from idea to launch</h2><p>Transparent, iterative and collaborative — you're involved at every step.</p></div>
+  <div class="section-head reveal"><span class="kicker">How we work</span><h2>A clear path from idea to launch</h2><p>Transparent, iterative and collaborative. You're involved at every step.</p></div>
   <div class="steps">
     <div class="step reveal"><span class="step-num">1</span><h3>Discover</h3><p>We learn your goals, users and constraints, then scope the right solution.</p></div>
     <div class="step-arrow">→</div>
@@ -674,21 +645,21 @@ ${ctaBlock("Let's build something great","Tell us about your project and we'll g
   const stat = (n,l) => `<div class="card reveal center"><div style="font-family:'Space Grotesk';font-weight:700;font-size:34px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent">${n}</div><p style="margin-top:6px;flex:none">${l}</p></div>`;
   pages.push({
     file:"about/index.html", active:"about", url:"/about/", mainClass:"about-page",
-    title:"About Evolvora — A Software House Built on Craft",
+    title:"About Evolvora: A Software House Built on Craft",
     desc:"Evolvora is a software house that designs, builds and runs modern web, mobile and cloud software. Learn about our mission, values and products like Evolvora Campus.",
     jsonld:[cb.jsonld, { "@context":"https://schema.org","@type":"AboutPage","name":"About Evolvora Technologies","url":SITE+"/about/" }],
     body:`
 <section class="about-hero">
-  <div class="about-hero-bg" aria-hidden="true">
-    <div class="about-hero-image"></div>
-    <div class="about-hero-overlay"></div>
+  <div class="about-hero-bg">
+    <img class="about-hero-image" src="/assets/img/partner.jpg" alt="Evolvora team collaborating as a long-term software partner" width="1920" height="1080" loading="eager" decoding="async">
+    <div class="about-hero-overlay" aria-hidden="true"></div>
   </div>
   <div class="container">
     ${cb.html}
     <div class="about-hero-panel reveal">
       <span class="kicker">About us</span>
       <h1>We're Evolvora - a software house on a mission</h1>
-      <p>Evolvora Technologies is a software house. We design, build and ship <strong>web, mobile and cloud software</strong> for businesses that want a partner who genuinely cares about the outcome - not just the deliverable.</p>
+      <p>Evolvora Technologies is the company behind Evolvora. We design, build and ship <strong>web, mobile and cloud software</strong> for businesses that want a partner who genuinely cares about the outcome - not just the deliverable.</p>
       <div class="about-hero-actions">
         <a href="/contact/" class="btn btn-primary btn-lg">Get in touch</a>
       </div>
@@ -700,7 +671,7 @@ ${ctaBlock("Let's build something great","Tell us about your project and we'll g
   <div class="about-prose-float reveal">
     <span class="about-prose-border-light" aria-hidden="true"><span class="about-prose-light-dot"></span></span>
     <div class="prose">
-      <p>What sets us apart is that we build and run our own products too. Our flagship, <strong>Evolvora Campus</strong>, is a full school management system used to run real schools — so we know first-hand what it takes to design, launch and support software that people depend on every single day.</p>
+      <p>What sets us apart is that we build and run our own products too. Our flagship, <strong>Evolvora Campus</strong>, is a full school management system used to run real schools, so we know first-hand what it takes to design, launch and support software that people depend on every single day.</p>
       <p>That product mindset shapes everything we do for clients: clean architecture, thoughtful design, honest timelines, and a commitment to stick around long after launch.</p>
     </div>
   </div>
@@ -711,7 +682,7 @@ ${ctaBlock("Let's build something great","Tell us about your project and we'll g
   <div class="cards about-stagger">
     <div class="card reveal"><span class="card-ic">${svg("spark")}</span><h3>Craft over shortcuts</h3><p>We write clean, maintainable code and design with care. Quality that lasts beyond the demo.</p></div>
     <div class="card reveal"><span class="card-ic">${svg("eye")}</span><h3>Transparency</h3><p>Clear scope, regular demos and honest communication. No surprises, no jargon.</p></div>
-    <div class="card reveal"><span class="card-ic">${svg("handshake")}</span><h3>Partnership</h3><p>We're in it for the long run — supporting and growing your software as your needs evolve.</p></div>
+    <div class="card reveal"><span class="card-ic">${svg("handshake")}</span><h3>Partnership</h3><p>We're in it for the long run, supporting and growing your software as your needs evolve.</p></div>
   </div>
 </div></section>
 
@@ -772,34 +743,34 @@ function solutionPage({file,url,kw,title,desc,h1,intro,whatH,whatP,media,benefit
 
 <section class="section"><div class="container"><div class="section-head reveal"><span class="kicker">Related</span><h2>Explore related solutions</h2></div><div class="cards">${relCards}</div></div></section>
 
-${ctaBlock(`See Evolvora Campus — your ${kw.toLowerCase()}`,"Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.")}`
+${ctaBlock(`See Evolvora Campus, your ${kw.toLowerCase()}`,"Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.")}`
   };
 }
 
 pages.push(solutionPage({
   file:"school-management-system/index.html", url:"/school-management-system/", kw:"School Management System",
   title:"School Management System | Evolvora Campus",
-  desc:"Evolvora Campus is a complete school management system for attendance, marks, fee collection, teacher payroll and parent communication — all in one easy platform.",
+  desc:"Evolvora Campus is a complete school management system for attendance, marks, fee collection, teacher payroll and parent communication, all in one easy platform.",
   h1:"A school management system that <span class=\"grad-text\">does it all</span>",
-  intro:"Evolvora Campus is a modern <strong>school management system</strong> that brings admissions, attendance, marks, fee collection, teacher payroll and parent communication into one simple platform — so your whole school runs from a single screen.",
+  intro:"Evolvora Campus is a modern <strong>school management system</strong> that brings admissions, attendance, marks, fee collection, teacher payroll and parent communication into one simple platform so your whole school runs from a single screen.",
   whatH:"What is a school management system?",
   whatP:["A <strong>school management system</strong> is software that replaces the scattered registers, spreadsheets and message groups a school uses day to day. Instead of tracking attendance in one place, fees in another and results somewhere else, everything lives in one connected system that admins, teachers and parents can all access.",
-    "Evolvora Campus was built for real schools. Set it up once — your classes, sections, staff and students — and information flows automatically. Teachers record attendance and marks from the classroom, the office tracks fees and salaries, and parents are notified instantly on their phones."],
+    "Evolvora Campus was built for real schools. Set it up once (your classes, sections, staff and students) and information flows automatically. Teachers record attendance and marks from the classroom, the office tracks fees and salaries, and parents are notified instantly on their phones."],
   media:{img:"dashboard.png",label:"Evolvora Campus",alt:"School management system dashboard in Evolvora Campus"},
   benefits:[
-    {c:"ic-blue",ic:"cap",h:"Student &amp; class records",p:"Every student, class and section in one searchable place — add them individually or import a whole class from Excel."},
+    {c:"ic-blue",ic:"cap",h:"Student &amp; class records",p:"Every student, class and section in one searchable place. Add them individually or import a whole class from Excel."},
     {c:"ic-cyan",ic:"clock",h:"Attendance tracking",p:"Mark a full class present, late or absent in seconds, with live totals and trends."},
     {c:"ic-green",ic:"fee",h:"Fee management",p:"See paid, pending and outstanding fees at a glance and send reminders in a tap."},
-    {c:"ic-amber",ic:"salary",h:"Staff &amp; payroll",p:"Store pay, allowances and tax status per teacher — salaries calculate automatically."},
+    {c:"ic-amber",ic:"salary",h:"Staff &amp; payroll",p:"Store pay, allowances and tax status per teacher, and salaries calculate automatically."},
   ],
-  why:["<strong>All-in-one:</strong> attendance, marks, fees, payroll and messaging in a single system — no more disconnected tools.",
+  why:["<strong>All-in-one:</strong> attendance, marks, fees, payroll and messaging in a single system, with no more disconnected tools.",
     "<strong>Made for everyone:</strong> tailored views for admins, teachers and parents, with no training required.",
     "<strong>Mobile-ready:</strong> parents get instant updates on their phones; teachers work from the classroom.",
     "<strong>Fast to launch:</strong> bulk-import students and auto-create parent logins in minutes."],
   faqItems:[
-    {q:"What does a school management system do?",a:"It centralises the daily running of a school — student records, attendance, marks, fee collection, staff and payroll, and parent communication — into one platform so information is entered once and shared automatically with everyone who needs it."},
+    {q:"What does a school management system do?",a:"It centralises the daily running of a school (student records, attendance, marks, fee collection, staff and payroll, and parent communication) into one platform so information is entered once and shared automatically with everyone who needs it."},
     {q:"Is Evolvora Campus suitable for small schools?",a:"Yes. Evolvora Campus scales from small schools to large multi-section campuses. You only pay for the active students you have, and teacher and parent access is always included."},
-    {q:"Can parents access the school management system?",a:"Yes. Parents get their own app view showing their child's attendance, marks, fees and teachers, plus instant notifications — all created automatically when you add students."},
+    {q:"Can parents access the school management system?",a:"Yes. Parents get their own app view showing their child's attendance, marks, fees and teachers, plus instant notifications, all created automatically when you add students."},
     {q:"How long does it take to set up?",a:"Most schools are up and running quickly. You can bulk-import students and staff from an Excel file, and parent accounts are generated for you."},
   ],
   related:[["student-attendance-software","Student Attendance Software","clock"],["school-fee-management-software","Fee Management Software","fee"],["school-erp","School ERP","shield"]]
@@ -810,23 +781,23 @@ pages.push(solutionPage({
   title:"Campus Management System | Evolvora Campus",
   desc:"Evolvora Campus is a campus management system that unifies students, staff, attendance, fees and communication for schools and multi-section campuses on one platform.",
   h1:"A campus management system<br><span class=\"grad-text\">that keeps everyone in sync</span>",
-  intro:"Evolvora Campus is a complete <strong>campus management system</strong> that connects every part of your campus — students, teachers, sections, fees and parent communication — in one place, so nothing slips through the cracks.",
+  intro:"Evolvora Campus is a complete <strong>campus management system</strong> that connects every part of your campus (students, teachers, sections, fees and parent communication) in one place, so nothing slips through the cracks.",
   whatH:"What is a campus management system?",
   whatP:["A <strong>campus management system</strong> is a single platform for running the academic and administrative life of a campus: enrolment, classes and sections, daily attendance, assessments, fee collection, staff and payroll, and communication with parents.",
-    "Evolvora Campus gives admins, teachers and parents their own tailored view of the same live information. Set up your campus structure once and everything — from a teacher marking attendance to a parent checking fees — stays perfectly in sync."],
+    "Evolvora Campus gives admins, teachers and parents their own tailored view of the same live information. Set up your campus structure once and everything, from a teacher marking attendance to a parent checking fees, stays perfectly in sync."],
   media:{img:"teacher-dashboard.png",label:"Evolvora Campus",alt:"Campus management system dashboard in Evolvora Campus"},
   benefits:[
-    {c:"ic-purple",ic:"layers",h:"Classes &amp; sections",p:"Define your whole campus structure — from Early Years to Secondary — and everything else follows."},
+    {c:"ic-purple",ic:"layers",h:"Classes &amp; sections",p:"Define your whole campus structure, from Early Years to Secondary, and everything else follows."},
     {c:"ic-blue",ic:"users",h:"Staff directory",p:"Every teacher, their subjects, assigned classes and salary in one organised directory."},
     {c:"ic-cyan",ic:"bell",h:"Campus-wide messaging",p:"Reach a class, a section, a saved group or the entire campus in one message, with read receipts."},
-    {c:"ic-green",ic:"chart",h:"One live picture",p:"Attendance trends, fee status and performance — all visible from a single dashboard."},
+    {c:"ic-green",ic:"chart",h:"One live picture",p:"Attendance trends, fee status and performance, all visible from a single dashboard."},
   ],
   why:["<strong>Built for scale:</strong> handles multiple sections and large student numbers with ease.",
     "<strong>Everyone connected:</strong> admins, teachers and parents share one live source of truth.",
     "<strong>Instant communication:</strong> announcements and alerts reach the right people immediately.",
     "<strong>Simple to run:</strong> clean, modern interface that staff pick up on day one."],
   faqItems:[
-    {q:"What's the difference between a campus and school management system?",a:"They solve the same problem — running an institution from one platform. \"Campus\" often implies larger or multi-section institutions. Evolvora Campus works for both, scaling from a single school to a multi-section campus."},
+    {q:"What's the difference between a campus and school management system?",a:"They solve the same problem: running an institution from one platform. \"Campus\" often implies larger or multi-section institutions. Evolvora Campus works for both, scaling from a single school to a multi-section campus."},
     {q:"Can it handle multiple sections and large student numbers?",a:"Yes. Evolvora Campus is designed around classes and sections and scales comfortably to large campuses, with an Enterprise plan for multi-campus institutions."},
     {q:"Does it include parent communication?",a:"Yes. Built-in notifications deliver marks, attendance, fee reminders and announcements to parents instantly, with read tracking so you know who has seen each message."},
     {q:"Is training required for staff?",a:"No. The interface is intentionally simple, and we help with onboarding and data import so your team is productive right away."},
@@ -837,28 +808,28 @@ pages.push(solutionPage({
 pages.push(solutionPage({
   file:"school-erp/index.html", url:"/school-erp/", kw:"School ERP",
   title:"School ERP Software | Evolvora Campus",
-  desc:"Evolvora Campus is school ERP software that unifies students, staff, attendance, fees, teacher payroll and communication — one connected system for your whole institution.",
+  desc:"Evolvora Campus is school ERP software that unifies students, staff, attendance, fees, teacher payroll and communication: one connected system for your whole institution.",
   h1:"School ERP software<br><span class=\"grad-text\">without the complexity</span>",
-  intro:"Evolvora Campus is modern <strong>school ERP software</strong> that unifies academics, administration and finance — students, staff, attendance, fees and payroll — in one connected system that's actually easy to use.",
+  intro:"Evolvora Campus is modern <strong>school ERP software</strong> that unifies academics, administration and finance (students, staff, attendance, fees and payroll) in one connected system that's actually easy to use.",
   whatH:"What is school ERP software?",
   whatP:["<strong>School ERP</strong> (Enterprise Resource Planning) software connects every operational part of a school into one system: student information, staff and HR, attendance, examinations, fee collection and finance, and communication. Instead of separate tools that don't talk to each other, an ERP keeps one accurate record shared across the institution.",
-    "Traditional school ERPs are powerful but painful to use. Evolvora Campus delivers the same connected control — including automatic teacher salary calculation and a full fee ledger — in a clean, modern interface your staff will actually enjoy using."],
+    "Traditional school ERPs are powerful but painful to use. Evolvora Campus delivers the same connected control (including automatic teacher salary calculation and a full fee ledger) in a clean, modern interface your staff will actually enjoy using."],
   media:{img:"staff.png",label:"Evolvora Campus",alt:"School ERP staff and payroll module in Evolvora Campus"},
   benefits:[
     {c:"ic-blue",ic:"cap",h:"Student information",p:"A complete, searchable record for every student, class and section."},
-    {c:"ic-amber",ic:"salary",h:"HR &amp; payroll",p:"Staff records with basic pay, allowances and tax status — salaries calculated automatically."},
+    {c:"ic-amber",ic:"salary",h:"HR &amp; payroll",p:"Staff records with basic pay, allowances and tax status, and salaries are calculated automatically."},
     {c:"ic-green",ic:"fee",h:"Finance &amp; fees",p:"Track dues, collect fees and see your whole-school fee position in real time."},
-    {c:"ic-purple",ic:"shield",h:"One secure system",p:"Role-based access for admins, teachers and parents — everyone sees exactly what they should."},
+    {c:"ic-purple",ic:"shield",h:"One secure system",p:"Role-based access for admins, teachers and parents. Everyone sees exactly what they should."},
   ],
   why:["<strong>Truly integrated:</strong> academics, HR, finance and communication share one database.",
     "<strong>Modern &amp; usable:</strong> none of the clutter of legacy ERP software.",
     "<strong>Automated payroll:</strong> teacher salaries computed from stored pay and tax settings.",
     "<strong>Grows with you:</strong> from a single school to multiple campuses."],
   faqItems:[
-    {q:"What is a school ERP?",a:"A school ERP is software that integrates the core functions of running a school — student records, staff and payroll, attendance, fees and finance, and communication — into one connected system, replacing disconnected spreadsheets and tools."},
-    {q:"Does Evolvora Campus handle teacher payroll?",a:"Yes. You store each teacher's basic pay, allowances and tax status, and monthly salary is calculated automatically — no separate payroll spreadsheet needed."},
+    {q:"What is a school ERP?",a:"A school ERP is software that integrates the core functions of running a school (student records, staff and payroll, attendance, fees and finance, and communication) into one connected system, replacing disconnected spreadsheets and tools."},
+    {q:"Does Evolvora Campus handle teacher payroll?",a:"Yes. You store each teacher's basic pay, allowances and tax status, and monthly salary is calculated automatically, with no separate payroll spreadsheet needed."},
     {q:"Is it easier to use than traditional ERP software?",a:"Yes. Evolvora Campus is designed around a clean, modern interface so staff can use it without lengthy training, while still giving you the connected control of an ERP."},
-    {q:"Can it manage school finances and fees?",a:"Yes. Evolvora Campus tracks fee dues and collections and shows your whole-school fee position — paid, pending and under review — in real time."},
+    {q:"Can it manage school finances and fees?",a:"Yes. Evolvora Campus tracks fee dues and collections and shows your whole-school fee position (paid, pending and under review) in real time."},
   ],
   related:[["school-management-system","School Management System","layers"],["school-fee-management-software","Fee Management Software","fee"],["campus-management-system","Campus Management System","globe"]]
 }));
@@ -866,12 +837,12 @@ pages.push(solutionPage({
 pages.push(solutionPage({
   file:"student-attendance-software/index.html", url:"/student-attendance-software/", kw:"Student Attendance Software",
   title:"Student Attendance Software | Evolvora Campus",
-  desc:"Evolvora Campus is student attendance software that lets teachers mark a full class present, late or absent in seconds — with live totals, trends and instant parent alerts.",
+  desc:"Evolvora Campus is student attendance software that lets teachers mark a full class present, late or absent in seconds, with live totals, trends and instant parent alerts.",
   h1:"Student attendance software<br><span class=\"grad-text\">that takes seconds a day</span>",
   intro:"Evolvora Campus includes fast, reliable <strong>student attendance software</strong> that lets teachers mark a whole class in seconds, keeps accurate daily records, and notifies parents automatically when it matters.",
   whatH:"What is student attendance software?",
   whatP:["<strong>Student attendance software</strong> replaces paper registers with a digital system for recording who is present, late or absent each day. Good attendance software is quick for teachers, accurate for the office, and transparent for parents.",
-    "In Evolvora Campus, a teacher opens their class, taps <strong>Present, Late or Absent</strong> for each student — or marks everyone present and flags the exceptions — and totals update live. Attendance feeds straight into dashboards and the parent app, so families and administrators always have the real picture."],
+    "In Evolvora Campus, a teacher opens their class, taps <strong>Present, Late or Absent</strong> for each student (or marks everyone present and flags the exceptions), and totals update live. Attendance feeds straight into dashboards and the parent app, so families and administrators always have the real picture."],
   media:{img:"attendance.png",label:"Evolvora Campus",alt:"Student attendance software in Evolvora Campus"},
   benefits:[
     {c:"ic-cyan",ic:"clock",h:"Mark in seconds",p:"Tap through a class fast, or \"swipe present\" and flag only the exceptions."},
@@ -887,7 +858,7 @@ pages.push(solutionPage({
     {q:"How do teachers take attendance in Evolvora Campus?",a:"Teachers open their class and tap Present, Late or Absent for each student. They can also mark everyone present at once and only change the exceptions. Totals update live as they go."},
     {q:"Can parents see their child's attendance?",a:"Yes. Each child's attendance record is visible in the parent app, and parents can be notified automatically about attendance updates."},
     {q:"Does it show attendance trends?",a:"Yes. Evolvora Campus shows daily present/late/absent totals and a 14-day trend, so schools can spot patterns early."},
-    {q:"Is the attendance software part of a bigger system?",a:"Yes. Attendance is one module of Evolvora Campus, which also covers marks, fees, payroll and parent communication — all connected."},
+    {q:"Is the attendance software part of a bigger system?",a:"Yes. Attendance is one module of Evolvora Campus, which also covers marks, fees, payroll and parent communication, all connected."},
   ],
   related:[["school-management-system","School Management System","layers"],["campus-management-system","Campus Management System","globe"],["school-fee-management-software","Fee Management Software","fee"]]
 }));
@@ -897,10 +868,10 @@ pages.push(solutionPage({
   title:"School Fee Management Software | Evolvora Campus",
   desc:"Evolvora Campus is school fee management software to track dues, see paid, pending and outstanding fees at a glance, and send fee reminders to parents in a tap.",
   h1:"School fee management software<br><span class=\"grad-text\">that ends the chasing</span>",
-  intro:"Evolvora Campus is powerful <strong>school fee management software</strong> that shows exactly who has paid, who is pending and what's outstanding — and lets you send fee reminders to parents in a single tap.",
+  intro:"Evolvora Campus is powerful <strong>school fee management software</strong> that shows exactly who has paid, who is pending and what's outstanding, and lets you send fee reminders to parents in a single tap.",
   whatH:"What is school fee management software?",
-  whatP:["<strong>School fee management software</strong> handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents — without stacks of spreadsheets or manual follow-up calls.",
-    "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap — so collection is faster and far less stressful."],
+  whatP:["<strong>School fee management software</strong> handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents, without stacks of spreadsheets or manual follow-up calls.",
+    "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful."],
   media:{img:"dashboard.png",label:"Evolvora Campus",alt:"School fee management software dashboard in Evolvora Campus"},
   benefits:[
     {c:"ic-green",ic:"fee",h:"See every fee at a glance",p:"Paid, pending and under-review totals plus outstanding amount on the home dashboard."},
@@ -913,7 +884,7 @@ pages.push(solutionPage({
     "<strong>Transparent for parents:</strong> families see exactly what's due and paid.",
     "<strong>Connected:</strong> fees live alongside attendance, marks and payroll."],
   faqItems:[
-    {q:"How does fee management work in Evolvora Campus?",a:"The office sees a live view of fees across the school — paid, pending and under review — plus the total outstanding amount. Parents see their child's fee status in their app, and reminders can be sent in a tap."},
+    {q:"How does fee management work in Evolvora Campus?",a:"The office sees a live view of fees across the school (paid, pending and under review), plus the total outstanding amount. Parents see their child's fee status in their app, and reminders can be sent in a tap."},
     {q:"Can we send fee reminders to parents?",a:"Yes. Fee reminders are delivered through the built-in notification system, reaching parents on the app and their phones instantly."},
     {q:"Do parents see their own fee status?",a:"Yes. Each parent sees their child's fee records in the parent portal, so it's always clear what has been paid and what's due."},
     {q:"Is fee management separate or part of the platform?",a:"It's built into Evolvora Campus alongside attendance, marks, payroll and communication, so your fee data connects to the rest of the school."},
@@ -924,7 +895,7 @@ pages.push(solutionPage({
 /* ================= WRITE FILES ================= */
 let count = 0;
 for (const p of pages) {
-  if (p.skipWrite) continue; // standalone/cloned page — kept in list for sitemap only
+  if (p.skipWrite) continue; // standalone/cloned page, kept in list for sitemap only
   const out = path.join(ROOT, p.file);
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, doc(p), "utf8");
@@ -933,7 +904,7 @@ for (const p of pages) {
 
 /* 404 */
 const notFound = doc({
-  active:"", url:"/404", title:"Page not found — Evolvora Technologies",
+  active:"", url:"/404", title:"Page not found | Evolvora Technologies",
   desc:"The page you were looking for could not be found.",
   body:`<section class="section" style="text-align:center;padding:120px 0"><div class="container">
     <div class="reveal"><span class="kicker">404</span><h1 style="font-size:44px;margin:16px 0">This page took a day off.</h1>
@@ -955,7 +926,7 @@ fs.writeFileSync(path.join(ROOT,"sitemap.xml"), sitemap, "utf8");
 fs.writeFileSync(path.join(ROOT,"robots.txt"), `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`, "utf8");
 
 /* netlify.toml */
-fs.writeFileSync(path.join(ROOT,"netlify.toml"), `# Evolvora Technologies — static site
+fs.writeFileSync(path.join(ROOT,"netlify.toml"), `# Evolvora Technologies static site
 [build]
   publish = "."
 
