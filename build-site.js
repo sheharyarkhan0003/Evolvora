@@ -187,7 +187,7 @@ function head({ title, desc, url, jsonld }) {
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="/assets/js/theme-init.js"></script>
 ${NAV_MOBILE_CRITICAL}
-<link rel="stylesheet" href="/assets/css/styles.css?v=32">
+<link rel="stylesheet" href="/assets/css/styles.css?v=36">
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
@@ -253,6 +253,9 @@ function footer() {
       <li><a href="/school-fee-management-software/">Fee Management Software</a></li>
     </ul></div>
   </div>
+  <div class="footer-tagline-bar">
+    <p>What makes us different: <strong>assign us the work, take that long vacation, and we handle it all.</strong></p>
+  </div>
   <div class="footer-base">
     <span>© <span id="year">2026</span> Evolvora Technologies. All rights reserved.</span>
     <span><a href="mailto:${EMAIL}">${EMAIL}</a></span>
@@ -273,7 +276,7 @@ ${header(page.active)}
 ${page.body}
 </main>
 ${footer()}
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js?v=4"></script>
 </body>
 </html>`;
 }
@@ -364,7 +367,7 @@ pages.push({
   </div>
 </section>
 
-<section class="strip"><div class="container"><p>From idea to launch: trusted to <strong>design, build and ship software that works</strong>, and to keep it running after go-live.</p></div></section>
+<section class="strip"><div class="container"><p>What makes us different: <strong>assign us the work, take that long vacation, and we handle it all.</strong></p></div></section>
 
 <section class="section services-scroll" id="services">
   <div class="services-scroll-pin">
@@ -397,7 +400,7 @@ pages.push({
 <section class="section section-alt"><div class="container">
   <div class="section-head reveal"><span class="kicker">Our products</span><h2>We don't just build for others</h2><p>We build and run our own software, starting with Evolvora Campus, our flagship product.</p></div>
   <div class="feature-row reveal">
-    <div class="feature-media tilt-3d" data-tilt-3d tabindex="0" role="img" aria-label="Evolvora Campus dashboard preview: press or drag for 3D view">${shot("dashboard.png","Evolvora Campus","Evolvora Campus dashboard, a product by Evolvora")}</div>
+    <div class="feature-media tilt-3d" data-tilt-3d tabindex="0" role="img" aria-label="Evolvora Campus dashboard preview: press or drag for 3D view">${shot("stack/new.jpeg","Evolvora Campus","Evolvora Campus preview, a product by Evolvora")}</div>
     <div class="feature-text"><span class="tag tag-blue">Flagship product · Live</span>
       <h3>Evolvora Campus</h3>
       <p style="color:var(--muted);font-size:16px;margin-bottom:18px">An all-in-one school management system for attendance, marks, fee collection, teacher payroll and parent communication, used to run real schools.</p>

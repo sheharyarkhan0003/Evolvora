@@ -86,11 +86,30 @@ if (toggle && links) {
   });
 }
 
-// Dropdown (click support for mobile / touch)
+// Dropdown: hover on desktop, click/tap on mobile
 document.querySelectorAll('.has-dropdown .drop-btn').forEach(btn => {
+  const wrap = btn.closest('.has-dropdown');
+  const desktopMq = window.matchMedia('(min-width: 1001px)');
+
   btn.addEventListener('click', (e) => {
     e.preventDefault();
-    btn.closest('.has-dropdown').classList.toggle('open');
+    if (desktopMq.matches) return; // desktop uses pure hover
+    const willOpen = !wrap.classList.contains('open');
+    document.querySelectorAll('.has-dropdown.open').forEach((el) => {
+      if (el !== wrap) el.classList.remove('open');
+    });
+    wrap.classList.toggle('open', willOpen);
+    btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+  });
+
+  wrap.addEventListener('mouseenter', () => {
+    if (!desktopMq.matches) return;
+    btn.setAttribute('aria-expanded', 'true');
+  });
+  wrap.addEventListener('mouseleave', () => {
+    if (!desktopMq.matches) return;
+    btn.setAttribute('aria-expanded', 'false');
+    wrap.classList.remove('open');
   });
 });
 
@@ -112,17 +131,59 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
+// Shared slider arrow controls
+function injectSliderNav(container, onPrev, onNext) {
+  if (!container || container.querySelector('.slider-nav-btn')) return;
+  const prev = document.createElement('button');
+  prev.type = 'button';
+  prev.className = 'slider-nav-btn slider-nav-btn--prev';
+  prev.setAttribute('aria-label', 'Previous slide');
+  prev.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>';
+  const next = document.createElement('button');
+  next.type = 'button';
+  next.className = 'slider-nav-btn slider-nav-btn--next';
+  next.setAttribute('aria-label', 'Next slide');
+  next.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+  prev.addEventListener('click', onPrev);
+  next.addEventListener('click', onNext);
+  container.classList.add('slider-has-nav');
+  container.append(prev, next);
+}
+
 // Services section: sticky scroll, 2 cards at a time
 (function initServicesScroll() {
   const section = document.querySelector('.services-scroll');
   if (!section) return;
 
+  const scrollRoot = section.querySelector('.cards-scroll');
   const track = section.querySelector('.cards-scroll-track');
   const viewport = section.querySelector('.cards-scroll-viewport');
   const dots = section.querySelectorAll('.cards-scroll-dots span');
   const panels = section.querySelectorAll('.cards-scroll-panel');
   const mq = window.matchMedia('(max-width: 1000px)');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let panelIndex = 0;
+
+  function getStep() {
+    if (!viewport) return 0;
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    return viewport.offsetWidth + gap;
+  }
+
+  function goToPanel(index, fromScroll = false) {
+    if (mq.matches || reduceMotion.matches || !viewport) return;
+    panelIndex = Math.max(0, Math.min(panels.length - 1, index));
+    const step = getStep();
+    track.style.transform = `translate3d(-${panelIndex * step}px, 0, 0)`;
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === panelIndex));
+    if (!fromScroll) {
+      const start = section.offsetTop;
+      const scrollRange = section.offsetHeight - window.innerHeight;
+      const progress = panels.length <= 1 ? 0 : panelIndex / (panels.length - 1);
+      window.scrollTo({ top: start + progress * scrollRange, behavior: 'smooth' });
+    }
+  }
 
   function update() {
     if (mq.matches || reduceMotion.matches || !viewport) return;
@@ -130,15 +191,13 @@ document.querySelectorAll('.faq-q').forEach(q => {
     const start = section.offsetTop;
     const scrollRange = section.offsetHeight - window.innerHeight;
     const progress = scrollRange <= 0 ? 0 : Math.min(1, Math.max(0, (window.scrollY - start) / scrollRange));
-    const styles = getComputedStyle(track);
-    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
-    const step = viewport.offsetWidth + gap;
+    const step = getStep();
     const offset = progress * (panels.length - 1) * step;
 
     track.style.transform = `translate3d(-${offset}px, 0, 0)`;
 
-    const active = Math.min(panels.length - 1, Math.round(progress * (panels.length - 1)));
-    dots.forEach((dot, i) => dot.classList.toggle('active', i === active));
+    panelIndex = Math.min(panels.length - 1, Math.round(progress * (panels.length - 1)));
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === panelIndex));
   }
 
   function setup() {
@@ -150,6 +209,8 @@ document.querySelectorAll('.faq-q').forEach(q => {
     section.style.height = `${panels.length * 100}vh`;
     update();
   }
+
+  injectSliderNav(scrollRoot, () => goToPanel(panelIndex - 1), () => goToPanel(panelIndex + 1));
 
   setup();
   window.addEventListener('scroll', update, { passive: true });
@@ -231,10 +292,10 @@ document.querySelectorAll('.faq-q').forEach(q => {
   function getBase() {
     const mobile = mobileMq.matches;
     return {
-      x: 9,
-      y: mobile ? 10 : 16,
-      tx: mobile ? -8 : -36,
-      scale: mobile ? 1.02 : 1.04
+      x: 5,
+      y: mobile ? 6 : 8,
+      tx: mobile ? -6 : -20,
+      scale: mobile ? 1.01 : 1.02
     };
   }
 
@@ -328,12 +389,14 @@ document.querySelectorAll('.faq-q').forEach(q => {
     const setCount = Number(root.dataset.setCount) || track.querySelectorAll(cardSelector).length;
     const STEP_MS = 2500;
     const SLIDE_MS = 500;
+    const PAUSE_MS = 8000;
 
     let offset = 0;
     let setWidth = 0;
     let stepWidth = 0;
     let stepTimer = null;
     let animTimer = null;
+    let resumeTimer = null;
 
     function resetTrack() {
       if (!track.dataset.cloned) return;
@@ -342,7 +405,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
     }
 
     function cloneForLoop() {
-      if (track.dataset.cloned || mq.matches) return;
+      if (track.dataset.cloned || reduceMotion.matches) return;
       const original = track.innerHTML;
       track.innerHTML = original + original + original;
       track.dataset.cloned = '1';
@@ -390,6 +453,10 @@ document.querySelectorAll('.faq-q').forEach(q => {
         clearInterval(animTimer);
         animTimer = null;
       }
+      if (resumeTimer) {
+        clearTimeout(resumeTimer);
+        resumeTimer = null;
+      }
     }
 
     function animateDuringSlide() {
@@ -404,7 +471,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
       }, 16);
     }
 
-    function wrapOffset() {
+    function wrapOffsetForward() {
       if (offset <= -setWidth) {
         track.style.transition = 'none';
         offset += setWidth;
@@ -413,26 +480,66 @@ document.querySelectorAll('.faq-q').forEach(q => {
       }
     }
 
-    function advance() {
-      if (mq.matches || reduceMotion.matches) return;
+    function wrapOffsetBackward() {
+      if (offset >= 0) {
+        track.style.transition = 'none';
+        offset -= setWidth;
+        track.style.transform = `translate3d(${offset}px, 0, 0)`;
+        void track.offsetHeight;
+      }
+    }
+
+    function slideBy(direction) {
+      if (reduceMotion.matches) return;
       if (!measure()) return;
 
-      offset -= stepWidth;
+      offset -= direction * stepWidth;
 
       track.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(.4,0,.2,1)`;
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
       animateDuringSlide();
 
       window.setTimeout(() => {
-        wrapOffset();
+        if (direction > 0) wrapOffsetForward();
+        else wrapOffsetBackward();
         updateCards();
       }, SLIDE_MS + 24);
     }
 
+    function advance() {
+      slideBy(1);
+    }
+
+    function retreat() {
+      slideBy(-1);
+    }
+
+    function pauseAuto() {
+      stop();
+      resumeTimer = window.setTimeout(startAuto, PAUSE_MS);
+    }
+
+    function onManualNav(direction) {
+      if (direction > 0) advance();
+      else retreat();
+      pauseAuto();
+    }
+
+    function startAuto() {
+      if (resumeTimer) {
+        clearTimeout(resumeTimer);
+        resumeTimer = null;
+      }
+      if (stepTimer) clearInterval(stepTimer);
+      stepTimer = setInterval(advance, STEP_MS);
+    }
+
     function start() {
       stop();
-      if (mq.matches || reduceMotion.matches) {
+      if (reduceMotion.matches) {
         resetTrack();
+        track.style.transition = '';
+        track.style.transform = '';
         track.querySelectorAll(cardSelector).forEach((card) => {
           card.style.transform = '';
           card.style.opacity = '';
@@ -449,20 +556,23 @@ document.querySelectorAll('.faq-q').forEach(q => {
           if (tries < 30) requestAnimationFrame(() => boot(tries + 1));
           return;
         }
-        offset = 0;
+        offset = -setWidth;
         track.style.transition = '';
-        track.style.transform = 'translate3d(0, 0, 0)';
+        track.style.transform = `translate3d(${offset}px, 0, 0)`;
         updateCards();
-        stepTimer = setInterval(advance, STEP_MS);
+        startAuto();
       };
 
       boot(0);
     }
 
+    injectSliderNav(root, () => onManualNav(-1), () => onManualNav(1));
+
     start();
     window.addEventListener('resize', () => {
       measure();
-      wrapOffset();
+      wrapOffsetForward();
+      wrapOffsetBackward();
       updateCards();
     });
     mq.addEventListener('change', start);
