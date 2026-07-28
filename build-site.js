@@ -187,7 +187,7 @@ function head({ title, desc, url, jsonld }) {
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="/assets/js/theme-init.js"></script>
 ${NAV_MOBILE_CRITICAL}
-<link rel="stylesheet" href="/assets/css/styles.css?v=27">
+<link rel="stylesheet" href="/assets/css/styles.css?v=32">
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
@@ -406,7 +406,7 @@ pages.push({
         <li>Fees, attendance, payroll &amp; messaging in one platform</li>
         <li>Web app today, with a mobile app on the roadmap</li>
       </ul>
-      <p style="margin-top:22px"><a href="/products/evolvora-campus/" class="btn btn-primary">Explore Evolvora Campus ${svg("arrow")}</a> &nbsp; <a href="/products/" class="btn btn-ghost">All products</a></p>
+      <div class="feature-actions"><a href="/products/evolvora-campus/" class="btn btn-primary">Explore Evolvora Campus ${svg("arrow")}</a><a href="/products/" class="btn btn-ghost">All products</a></div>
     </div>
   </div>
 </div></section>
