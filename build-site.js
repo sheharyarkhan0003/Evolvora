@@ -759,7 +759,7 @@ pages.push(solutionPage({
   whatH:"What is a school management system?",
   whatP:["A <strong>school management system</strong> is software that replaces the scattered registers, spreadsheets and message groups a school uses day to day. Instead of tracking attendance in one place, fees in another and results somewhere else, everything lives in one connected system that admins, teachers and parents can all access.",
     "Evolvora Campus was built for real schools. Set it up once (your classes, sections, staff and students) and information flows automatically. Teachers record attendance and marks from the classroom, the office tracks fees and salaries, and parents are notified instantly on their phones."],
-  media:{img:"dashboard.png",label:"Evolvora Campus",alt:"School management system dashboard in Evolvora Campus"},
+  media:{img:"homepage_evolvoracampus.png",label:"Evolvora Campus",alt:"School management system dashboard in Evolvora Campus"},
   benefits:[
     {c:"ic-blue",ic:"cap",h:"Student &amp; class records",p:"Every student, class and section in one searchable place. Add them individually or import a whole class from Excel."},
     {c:"ic-cyan",ic:"clock",h:"Attendance tracking",p:"Mark a full class present, late or absent in seconds, with live totals and trends."},
@@ -817,7 +817,7 @@ pages.push(solutionPage({
   whatH:"What is school ERP software?",
   whatP:["<strong>School ERP</strong> (Enterprise Resource Planning) software connects every operational part of a school into one system: student information, staff and HR, attendance, examinations, fee collection and finance, and communication. Instead of separate tools that don't talk to each other, an ERP keeps one accurate record shared across the institution.",
     "Traditional school ERPs are powerful but painful to use. Evolvora Campus delivers the same connected control (including automatic teacher salary calculation and a full fee ledger) in a clean, modern interface your staff will actually enjoy using."],
-  media:{img:"staff.png",label:"Evolvora Campus",alt:"School ERP staff and payroll module in Evolvora Campus"},
+  media:{img:"staff_directory_img.png",label:"Evolvora Campus",alt:"School ERP staff and payroll module in Evolvora Campus"},
   benefits:[
     {c:"ic-blue",ic:"cap",h:"Student information",p:"A complete, searchable record for every student, class and section."},
     {c:"ic-amber",ic:"salary",h:"HR &amp; payroll",p:"Staff records with basic pay, allowances and tax status, and salaries are calculated automatically."},
@@ -846,7 +846,7 @@ pages.push(solutionPage({
   whatH:"What is student attendance software?",
   whatP:["<strong>Student attendance software</strong> replaces paper registers with a digital system for recording who is present, late or absent each day. Good attendance software is quick for teachers, accurate for the office, and transparent for parents.",
     "In Evolvora Campus, a teacher opens their class, taps <strong>Present, Late or Absent</strong> for each student (or marks everyone present and flags the exceptions), and totals update live. Attendance feeds straight into dashboards and the parent app, so families and administrators always have the real picture."],
-  media:{img:"attendance.png",label:"Evolvora Campus",alt:"Student attendance software in Evolvora Campus"},
+  media:{img:"staff_payroll_feature.png",label:"Evolvora Campus",alt:"Student attendance software in Evolvora Campus"},
   benefits:[
     {c:"ic-cyan",ic:"clock",h:"Mark in seconds",p:"Tap through a class fast, or \"swipe present\" and flag only the exceptions."},
     {c:"ic-blue",ic:"chart",h:"Trends &amp; reports",p:"Daily totals and a 14-day trend show attendance patterns at a glance."},
@@ -875,7 +875,7 @@ pages.push(solutionPage({
   whatH:"What is school fee management software?",
   whatP:["<strong>School fee management software</strong> handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents, without stacks of spreadsheets or manual follow-up calls.",
     "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful."],
-  media:{img:"dashboard.png",label:"Evolvora Campus",alt:"School fee management software dashboard in Evolvora Campus"},
+  media:{img:"homepage_evolvoracampus.png",label:"Evolvora Campus",alt:"School fee management software dashboard in Evolvora Campus"},
   benefits:[
     {c:"ic-green",ic:"fee",h:"See every fee at a glance",p:"Paid, pending and under-review totals plus outstanding amount on the home dashboard."},
     {c:"ic-cyan",ic:"bell",h:"One-tap reminders",p:"Send fee reminders straight to parents instead of chasing them by phone."},
