@@ -119,9 +119,9 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
       const mobile = window.matchMedia('(max-width: 960px)').matches;
       if (isHero) {
         return {
-          x: mobile ? 6 : 8,
-          y: mobile ? -8 : -14,
-          scale: mobile ? 1.02 : 1.03,
+          x: mobile ? 3 : 4,
+          y: mobile ? -4 : -7,
+          scale: mobile ? 1.01 : 1.01,
         };
       }
       return {
@@ -133,9 +133,9 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
     function setVars(x, y, active) {
       const base = getBase();
-      const tilt = isHero ? (active ? 28 : 18) : active ? 14 : 7;
-      const move = isHero ? (active ? 14 : 8) : active ? 8 : 5;
-      const depth = isHero ? (active ? -16 : -6) : active ? -12 : -5;
+      const tilt = isHero ? (active ? 16 : 10) : active ? 14 : 7;
+      const move = isHero ? (active ? 8 : 4) : active ? 8 : 5;
+      const depth = isHero ? (active ? -10 : -3) : active ? -12 : -5;
       const scale = active ? base.scale * 0.985 : base.scale;
 
       target.style.setProperty('--tilt-x', String(base.x - y * tilt));

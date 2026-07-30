@@ -187,7 +187,7 @@ function head({ title, desc, url, jsonld }) {
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="/assets/js/theme-init.js"></script>
 ${NAV_MOBILE_CRITICAL}
-<link rel="stylesheet" href="/assets/css/styles.css?v=36">
+<link rel="stylesheet" href="/assets/css/styles.css?v=37">
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
@@ -276,7 +276,7 @@ ${header(page.active)}
 ${page.body}
 </main>
 ${footer()}
-<script src="/assets/js/main.js?v=4"></script>
+<script src="/assets/js/main.js?v=5"></script>
 </body>
 </html>`;
 }

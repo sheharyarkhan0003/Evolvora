@@ -273,12 +273,12 @@ body::before{
 .tilt-3d:focus-visible .browser{box-shadow:var(--shadow-glow),0 0 0 2px rgba(124,58,237,.5)}
 .tilt-3d.is-pressing{cursor:grabbing}
 .tilt-3d .browser{
-  --tilt-x:8;
-  --tilt-y:-14;
+  --tilt-x:4;
+  --tilt-y:-7;
   --tilt-tx:0;
   --tilt-ty:0;
   --tilt-z:0;
-  --tilt-scale:1.03;
+  --tilt-scale:1.01;
   transform:perspective(1200px)
     rotateX(calc(var(--tilt-x) * 1deg))
     rotateY(calc(var(--tilt-y) * 1deg))
@@ -632,10 +632,10 @@ body::before{
 @media (max-width:960px){
   .hero-inner{grid-template-columns:1fr;gap:44px}
   .tilt-3d .browser{
-    --tilt-x:6;
-    --tilt-y:-8;
+    --tilt-x:3;
+    --tilt-y:-4;
     --tilt-tx:0;
-    --tilt-scale:1.02;
+    --tilt-scale:1.01;
   }
   .feature-media.tilt-3d .browser{--tilt-y:6;--tilt-scale:1;max-width:100%}
   .feature-media.tilt-3d[data-tilt-reverse] .browser{--tilt-y:-6}

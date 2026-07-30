@@ -377,7 +377,7 @@ function injectSliderNav(container, onPrev, onNext) {
   });
 })();
 
-// Coverflow carousels: infinite loop, center card scales up & bold
+// Coverflow carousels: desktop transform loop, mobile scroll-snap + arrows
 (function initCoverflowCarousels() {
   document.querySelectorAll('[data-coverflow]').forEach((root) => {
     const track = root.querySelector('.coverflow-track, .services-coverflow-track');
@@ -387,9 +387,17 @@ function injectSliderNav(container, onPrev, onNext) {
     const mq = window.matchMedia('(max-width: 1000px)');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const setCount = Number(root.dataset.setCount) || track.querySelectorAll(cardSelector).length;
-    const STEP_MS = 2500;
+    const STEP_MS = 2800;
     const SLIDE_MS = 500;
     const PAUSE_MS = 8000;
+
+    let viewport = root.querySelector('.slider-viewport');
+    if (!viewport) {
+      viewport = document.createElement('div');
+      viewport.className = 'slider-viewport';
+      track.parentNode.insertBefore(viewport, track);
+      viewport.appendChild(track);
+    }
 
     let offset = 0;
     let setWidth = 0;
@@ -397,10 +405,16 @@ function injectSliderNav(container, onPrev, onNext) {
     let stepTimer = null;
     let animTimer = null;
     let resumeTimer = null;
+    let mobileIndex = 0;
+    let mode = 'desktop';
+
+    function cards() {
+      return [...track.querySelectorAll(cardSelector)];
+    }
 
     function resetTrack() {
       if (!track.dataset.cloned) return;
-      [...track.querySelectorAll(cardSelector)].slice(setCount).forEach((card) => card.remove());
+      cards().slice(setCount).forEach((card) => card.remove());
       delete track.dataset.cloned;
     }
 
@@ -412,31 +426,42 @@ function injectSliderNav(container, onPrev, onNext) {
     }
 
     function measure() {
-      const cards = track.querySelectorAll(cardSelector);
-      if (!cards.length) return false;
-      const gap = parseFloat(getComputedStyle(track).gap) || 56;
-      const cardW = cards[0].getBoundingClientRect().width;
+      const list = cards();
+      if (!list.length) return false;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const cardW = list[0].getBoundingClientRect().width;
       if (!cardW) return false;
       stepWidth = cardW + gap;
-      setWidth = 0;
-      for (let i = 0; i < setCount && i < cards.length; i++) {
-        setWidth += cards[i].getBoundingClientRect().width + (i < setCount - 1 ? gap : 0);
-      }
+      setWidth = setCount * stepWidth;
       return stepWidth > 0 && setWidth > 0;
     }
 
     function updateCards() {
-      const rootRect = root.getBoundingClientRect();
+      if (mode === 'mobile') {
+        const centerX = viewport.getBoundingClientRect().left + viewport.clientWidth / 2;
+        cards().forEach((card, i) => {
+          const rect = card.getBoundingClientRect();
+          const dist = Math.abs(rect.left + rect.width / 2 - centerX);
+          const active = dist < rect.width * 0.35;
+          card.classList.toggle('is-center', active);
+          card.style.transform = '';
+          card.style.opacity = '';
+          card.style.zIndex = active ? '2' : '1';
+          if (active) mobileIndex = i;
+        });
+        return;
+      }
+
+      const rootRect = viewport.getBoundingClientRect();
       const centerX = rootRect.left + rootRect.width / 2;
       const radius = Math.max(rootRect.width * 0.32, stepWidth * 1.4);
 
-      track.querySelectorAll(cardSelector).forEach((card) => {
+      cards().forEach((card) => {
         const rect = card.getBoundingClientRect();
         const dist = Math.abs(rect.left + rect.width / 2 - centerX);
         const t = Math.min(1, dist / radius);
         const scale = 1.18 - t * 0.36;
         const opacity = 1 - t * 0.32;
-
         card.style.transform = `scale(${scale})`;
         card.style.opacity = String(opacity);
         card.style.zIndex = String(Math.round((1 - t) * 100));
@@ -471,47 +496,62 @@ function injectSliderNav(container, onPrev, onNext) {
       }, 16);
     }
 
-    function wrapOffsetForward() {
-      if (offset <= -setWidth) {
-        track.style.transition = 'none';
+    function wrapOffset() {
+      if (!setWidth) return;
+      let changed = false;
+      while (offset <= -2 * setWidth) {
         offset += setWidth;
-        track.style.transform = `translate3d(${offset}px, 0, 0)`;
-        void track.offsetHeight;
+        changed = true;
       }
-    }
-
-    function wrapOffsetBackward() {
-      if (offset >= 0) {
-        track.style.transition = 'none';
+      while (offset > -0.5) {
         offset -= setWidth;
+        changed = true;
+      }
+      if (changed) {
+        track.style.transition = 'none';
         track.style.transform = `translate3d(${offset}px, 0, 0)`;
         void track.offsetHeight;
       }
     }
 
-    function slideBy(direction) {
-      if (reduceMotion.matches) return;
+    function slideDesktop(direction) {
       if (!measure()) return;
-
       offset -= direction * stepWidth;
-
       track.style.transition = `transform ${SLIDE_MS}ms cubic-bezier(.4,0,.2,1)`;
       track.style.transform = `translate3d(${offset}px, 0, 0)`;
       animateDuringSlide();
-
       window.setTimeout(() => {
-        if (direction > 0) wrapOffsetForward();
-        else wrapOffsetBackward();
+        wrapOffset();
         updateCards();
       }, SLIDE_MS + 24);
     }
 
+    function scrollMobileTo(index, smooth = true) {
+      const list = cards();
+      if (!list.length) return;
+      mobileIndex = ((index % list.length) + list.length) % list.length;
+      const card = list[mobileIndex];
+      const left = card.offsetLeft - (viewport.clientWidth - card.offsetWidth) / 2;
+      viewport.scrollTo({ left: Math.max(0, left), behavior: smooth ? 'smooth' : 'auto' });
+      window.setTimeout(updateCards, smooth ? 320 : 0);
+    }
+
+    function slideMobile(direction) {
+      const list = cards();
+      if (!list.length) return;
+      scrollMobileTo(mobileIndex + direction, true);
+    }
+
     function advance() {
-      slideBy(1);
+      if (reduceMotion.matches) return;
+      if (mode === 'mobile') slideMobile(1);
+      else slideDesktop(1);
     }
 
     function retreat() {
-      slideBy(-1);
+      if (reduceMotion.matches) return;
+      if (mode === 'mobile') slideMobile(-1);
+      else slideDesktop(-1);
     }
 
     function pauseAuto() {
@@ -531,26 +571,22 @@ function injectSliderNav(container, onPrev, onNext) {
         resumeTimer = null;
       }
       if (stepTimer) clearInterval(stepTimer);
-      stepTimer = setInterval(advance, STEP_MS);
+      if (!reduceMotion.matches) stepTimer = setInterval(advance, STEP_MS);
     }
 
-    function start() {
-      stop();
-      if (reduceMotion.matches) {
-        resetTrack();
-        track.style.transition = '';
-        track.style.transform = '';
-        track.querySelectorAll(cardSelector).forEach((card) => {
-          card.style.transform = '';
-          card.style.opacity = '';
-          card.style.zIndex = '';
-          card.classList.remove('is-center');
-        });
-        return;
-      }
+    function clearCardStyles() {
+      cards().forEach((card) => {
+        card.style.transform = '';
+        card.style.opacity = '';
+        card.style.zIndex = '';
+        card.classList.remove('is-center');
+      });
+    }
 
+    function startDesktop() {
+      mode = 'desktop';
       cloneForLoop();
-
+      track.style.transform = '';
       const boot = (tries) => {
         if (!measure()) {
           if (tries < 30) requestAnimationFrame(() => boot(tries + 1));
@@ -562,18 +598,55 @@ function injectSliderNav(container, onPrev, onNext) {
         updateCards();
         startAuto();
       };
-
       boot(0);
+    }
+
+    function startMobile() {
+      mode = 'mobile';
+      resetTrack();
+      clearCardStyles();
+      track.style.transition = '';
+      track.style.transform = '';
+      mobileIndex = 0;
+      requestAnimationFrame(() => {
+        scrollMobileTo(0, false);
+        updateCards();
+        startAuto();
+      });
+    }
+
+    function start() {
+      stop();
+      if (reduceMotion.matches) {
+        resetTrack();
+        clearCardStyles();
+        track.style.transition = '';
+        track.style.transform = '';
+        return;
+      }
+      if (mq.matches) startMobile();
+      else startDesktop();
     }
 
     injectSliderNav(root, () => onManualNav(-1), () => onManualNav(1));
 
+    let scrollEndTimer = null;
+    viewport.addEventListener('scroll', () => {
+      if (mode !== 'mobile') return;
+      updateCards();
+      clearTimeout(scrollEndTimer);
+      scrollEndTimer = setTimeout(updateCards, 120);
+    }, { passive: true });
+
     start();
     window.addEventListener('resize', () => {
-      measure();
-      wrapOffsetForward();
-      wrapOffsetBackward();
-      updateCards();
+      if (mode === 'desktop') {
+        measure();
+        wrapOffset();
+        updateCards();
+      } else {
+        scrollMobileTo(mobileIndex, false);
+      }
     });
     mq.addEventListener('change', start);
     reduceMotion.addEventListener('change', start);
