@@ -2,10 +2,27 @@
 [build]
   publish = "."
 
+# Hands off to the Evolvora Campus app. 302 (not 301) because the app's host is
+# an implementation detail we may move; a permanent redirect would let it get
+# cached as the canonical home of /login.
 [[redirects]]
   from = "/login"
   to = "https://schoolsync.pages.dev/login"
   status = 302
+  force = true
+
+# Pricing moved under the product it prices. Permanent so the old URL's
+# search equity follows it.
+[[redirects]]
+  from = "/pricing"
+  to = "/products/evolvora-campus/pricing/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pricing/*"
+  to = "/products/evolvora-campus/pricing/"
+  status = 301
   force = true
 
 [[headers]]

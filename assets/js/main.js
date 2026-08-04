@@ -659,21 +659,20 @@ function injectSliderNav(container, onPrev, onNext) {
   if (!page) return;
 
   const hero = page.querySelector('.about-hero');
-  const heroImage = page.querySelector('.about-hero-image');
   const heroPanel = page.querySelector('.about-hero-panel');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const mobileMq = window.matchMedia('(max-width: 1000px)');
 
-  if (hero && heroImage && heroPanel && !reduceMotion.matches && !mobileMq.matches) {
+  // The background mesh keeps its own CSS drift animation, so only the panel
+  // is nudged here — an inline transform would override that animation.
+  if (hero && heroPanel && !reduceMotion.matches && !mobileMq.matches) {
     hero.addEventListener('mousemove', (e) => {
       const rect = hero.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-      heroImage.style.transform = `scale(1.08) translate3d(${x * -12}px, ${y * -12}px, 0)`;
       heroPanel.style.transform = `translate3d(${x * 10}px, ${y * 8}px, 0)`;
     });
     hero.addEventListener('mouseleave', () => {
-      heroImage.style.transform = '';
       heroPanel.style.transform = '';
     });
   }

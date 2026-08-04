@@ -79,7 +79,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--nav-h) + 20px)}
 body{
   font-family:'Inter','Segoe UI',system-ui,sans-serif;
   background:var(--bg);
@@ -92,7 +92,7 @@ body{
 body.nav-open{overflow:hidden}
 h1,h2,h3,.brand-name{font-family:'Plus Jakarta Sans','Segoe UI',sans-serif;font-weight:800;line-height:1.1;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block;font-size:13px;color:var(--muted);font-family:inherit}
+img{max-width:100%;height:auto;display:block;font-size:13px;color:var(--muted);font-family:inherit}
 img.img-error{
   object-fit:none;object-position:center;
   background:var(--surface-2, rgba(255,255,255,.04));
@@ -597,6 +597,18 @@ body::before{
   color:var(--muted);
 }
 .footer-differentiator strong{color:var(--text);font-weight:600}
+/* social row: brand marks are solid shapes, so filled not stroked */
+.footer-social{list-style:none;display:flex;gap:10px;margin-top:18px;padding:0}
+.footer-social a{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--border);border-radius:10px;color:var(--muted);transition:color .2s,border-color .2s,background .2s}
+.footer-social a:hover{color:var(--text);border-color:var(--brand,#6d28d9);background:rgba(109,40,217,.10)}
+.footer-social svg{width:17px;height:17px;fill:currentColor;stroke:none}
+/* Use-case links. This page previously linked to only three internal URLs, so
+   it received link equity from every other page and passed none onward. */
+.footer-solutions{padding:28px 0 4px;border-top:1px solid var(--border)}
+.footer-solutions h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:600;margin:0 0 14px}
+.footer-solutions nav{display:flex;gap:12px 26px;flex-wrap:wrap;margin-bottom:12px}
+.footer-solutions a{color:var(--muted);font-size:14.5px;transition:color .2s}
+.footer-solutions a:hover{color:var(--text)}
 .footer-links{display:flex;gap:26px;flex-wrap:wrap;align-items:center}
 .footer-links a{color:var(--muted);font-size:15px;transition:color .2s}
 .footer-links a:hover{color:var(--text)}
