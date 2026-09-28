@@ -31,6 +31,12 @@
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    # Everything the site loads is served from this domain (fonts included), so
+    # the policy can be strict. 'unsafe-inline' is for styles only: the pages
+    # use inline style attributes and small inline <style> blocks. JSON-LD
+    # blocks are data, not scripts, so script-src 'self' does not affect them.
+    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
 
 [[headers]]
   for = "/assets/*"

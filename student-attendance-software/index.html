@@ -25,12 +25,12 @@
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/space-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>@font-face{font-family:'Inter';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/inter-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500 700;font-display:swap;src:url(/assets/fonts/space-grotesk-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}@font-face{font-family:'Chakra Petch';font-style:normal;font-weight:700;font-display:swap;src:url(/assets/fonts/chakra-petch-700-logo.woff2) format('woff2')}@font-face{font-family:'Inter Fallback';src:local('Arial');size-adjust:106.67%;ascent-override:90.82%;descent-override:22.61%;line-gap-override:0%}@font-face{font-family:'Space Grotesk Fallback';src:local('Arial');size-adjust:108.45%;ascent-override:90.73%;descent-override:26.92%;line-gap-override:0%}</style>
 <script src="/assets/js/theme-init.js"></script>
 <style>@media(max-width:1000px){.nav-links:not(.open){display:none!important}.nav-links.open{display:flex!important;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:99;flex-direction:column;background:var(--nav-mobile-bg);overflow-y:auto}.nav-toggle{display:grid!important}.nav-toggle .icon-menu{display:block!important}.nav-toggle:not(.open) .icon-close{display:none!important}.nav-toggle.open .icon-menu{display:none!important}.nav-toggle.open .icon-close{display:block!important}}</style>
-<link rel="stylesheet" href="/assets/css/styles.css?v=40">
+<link rel="stylesheet" href="/assets/css/styles.css?v=42">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -77,7 +77,7 @@
     "width": 1200,
     "height": 630
   },
-  "dateModified": "2026-08-04",
+  "dateModified": "2026-09-28",
   "breadcrumb": {
     "@id": "https://evolvoratech.com/student-attendance-software/#breadcrumb"
   },
@@ -188,7 +188,7 @@
   ],
   "url": "https://evolvoratech.com",
   "inLanguage": "en",
-  "description": "Evolvora Technologies is a software house building custom web, mobile and cloud software, and the maker of Evolvora Campus.",
+  "description": "Evolvora Technologies is a software house building custom web, mobile and cloud software, and the maker of Evolvora Campus and SilaaiMarkaz.",
   "publisher": {
     "@id": "https://evolvoratech.com/#organization"
   },
@@ -215,7 +215,8 @@
   ],
   "legalName": "Evolvora Technologies",
   "url": "https://evolvoratech.com",
-  "description": "Evolvora Technologies is a software house that designs, builds and runs custom web, mobile and cloud software. Its flagship product is Evolvora Campus, an all-in-one school management system.",
+  "description": "Evolvora Technologies is a software house that designs, builds and runs custom web, mobile and cloud software. Its own products are Evolvora Campus, an all-in-one school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.",
+  "disambiguatingDescription": "Evolvora Technologies is a software company in Lahore, Pakistan, and the maker of Evolvora Campus. It is not related to evolCampus or Evolmind.",
   "slogan": "Building a smarter tomorrow",
   "logo": {
     "@type": "ImageObject",
@@ -353,19 +354,35 @@
       "name": "Enterprise resource planning",
       "sameAs": "https://en.wikipedia.org/wiki/Enterprise_resource_planning"
     },
+    {
+      "@type": "Thing",
+      "@id": "https://evolvoratech.com/#topic-marketplace",
+      "name": "Online marketplace",
+      "sameAs": "https://en.wikipedia.org/wiki/Online_marketplace"
+    },
     "School management systems",
     "School fee management",
     "Teacher payroll",
     "Software architecture"
   ],
-  "keywords": "software house, custom software development, web application development, mobile app development, SaaS product engineering, UI/UX design, cloud and DevOps, school management system, school ERP, Evolvora Campus, software company Lahore, software company Pakistan",
-  "brand": {
-    "@type": "Brand",
-    "@id": "https://evolvoratech.com/products/evolvora-campus/#brand",
-    "name": "Evolvora Campus",
-    "url": "https://evolvoratech.com/products/evolvora-campus/",
-    "logo": "https://evolvoratech.com/assets/img/evolvora-logo.png"
-  },
+  "keywords": "software house, custom software development, web application development, mobile app development, SaaS product engineering, UI/UX design, cloud and DevOps, school management system, school ERP, Evolvora Campus, SilaaiMarkaz, tailoring marketplace, software company Lahore, software company Pakistan",
+  "brand": [
+    {
+      "@type": "Brand",
+      "@id": "https://evolvoratech.com/products/evolvora-campus/#brand",
+      "name": "Evolvora Campus",
+      "url": "https://evolvoratech.com/products/evolvora-campus/",
+      "logo": "https://evolvoratech.com/assets/img/evolvora-logo.png"
+    },
+    {
+      "@type": "Brand",
+      "@id": "https://evolvoratech.com/products/silaaimarkaz/#brand",
+      "name": "SilaaiMarkaz",
+      "alternateName": "Silaai Markaz",
+      "url": "https://silaaimarkaz.com/",
+      "logo": "https://evolvoratech.com/assets/img/silaaimarkaz/silaaimarkaz-logo.png"
+    }
+  ],
   "owns": [
     {
       "@type": "SoftwareApplication",
@@ -373,6 +390,13 @@
       "name": "Evolvora Campus",
       "url": "https://evolvoratech.com/products/evolvora-campus/",
       "applicationCategory": "BusinessApplication"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://evolvoratech.com/products/silaaimarkaz/#software",
+      "name": "SilaaiMarkaz",
+      "url": "https://silaaimarkaz.com/",
+      "applicationCategory": "ShoppingApplication"
     }
   ],
   "hasOfferCatalog": {
@@ -481,6 +505,12 @@
         "itemOffered": {
           "@id": "https://evolvoratech.com/products/evolvora-campus/#software"
         }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@id": "https://evolvoratech.com/products/silaaimarkaz/#software"
+        }
       }
     ]
   },
@@ -536,6 +566,7 @@
       <div class="dropdown">
         <div><p class="dd-h">Our products</p>
           <a href="/products/evolvora-campus/"><span class="di"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><span><strong>Evolvora Campus</strong><span>All-in-one school management system</span></span></a>
+          <a href="/products/silaaimarkaz/"><span class="di"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9"/><path d="M14.5 14.5 20 20"/><path d="M8.1 8.1 12 12"/></svg></span><span><strong>SilaaiMarkaz</strong><span>Tailoring marketplace in Lahore</span></span></a>
           <a href="/products/"><span class="di"><svg viewBox="0 0 24 24"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.8-.8.8-2.1 0-2.9-.8-.8-2.1-.8-3-.1Z"/><path d="M9 12c6-6 9-6 11-6 0 2 0 5-6 11l-3 .9L8.1 15Z"/><circle cx="15" cy="9" r="1.4"/></svg></span><span><strong>All products</strong><span>See what's live &amp; coming next</span></span></a>
         </div>
         <div><p class="dd-h">Campus solutions</p>
@@ -548,7 +579,7 @@
     </div>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
-    <a href="/contact/" class="btn btn-primary btn-sm">Start a project</a>
+    <a href="/contact/" class="btn btn-primary btn-sm">Book a demo</a>
   </nav>
 <main>
 
@@ -572,18 +603,20 @@
 
 <section class="section section-alt"><div class="container">
   <div class="section-head reveal"><span class="kicker">Capabilities</span><h2>What marking attendance looks like day to day</h2></div>
-  <div class="benefit-grid"><article class="benefit reveal"><span class="benefit-ic ic-cyan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><h3>Mark in seconds</h3><p>Tap through a class fast, or "swipe present" and flag only the exceptions.</p></article><article class="benefit reveal"><span class="benefit-ic ic-blue"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 5-7"/></svg></span><h3>Trends &amp; reports</h3><p>Daily totals and a 14-day trend show attendance patterns at a glance.</p></article><article class="benefit reveal"><span class="benefit-ic ic-green"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><h3>Instant parent alerts</h3><p>Parents can be notified about their child's attendance automatically.</p></article><article class="benefit reveal"><span class="benefit-ic ic-purple"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><h3>Per-student history</h3><p>Every child has a clear attendance record parents can view anytime.</p></article></div>
+  <div class="benefit-grid"><article class="benefit reveal"><span class="benefit-ic ic-cyan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></span><h3>Mark in seconds</h3><p>Tap through a class fast, or "swipe present" and flag only the exceptions.</p></article><article class="benefit reveal"><span class="benefit-ic ic-blue"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 5-7"/></svg></span><h3>Trends &amp; reports</h3><p>Daily totals and a 14-day trend show attendance patterns at a glance.</p></article><article class="benefit reveal"><span class="benefit-ic ic-green"><svg viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 8 3 8H3s3-1 3-8Z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg></span><h3>Instant parent alerts</h3><p>Parents can be told about their child's attendance automatically, in the app and on WhatsApp and SMS.</p></article><article class="benefit reveal"><span class="benefit-ic ic-purple"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5"/></svg></span><h3>Per-student history</h3><p>Every child has a clear attendance record parents can view anytime.</p></article></div>
 </div></section>
 
 <section class="section"><div class="container"><div class="prose reveal">
   <h2>Why teachers keep using it after the first week</h2>
   <ul><li><strong>Genuinely fast:</strong> a full class marked in under a minute.</li><li><strong>Accurate records:</strong> no lost registers, no double entry.</li><li><strong>Parents in the loop:</strong> attendance shows up in the parent app instantly.</li><li><strong>Part of the whole:</strong> attendance connects to dashboards, marks and reports.</li></ul>
-  <p style="margin-top:24px"><a href="/contact/" class="btn btn-primary">Book a demo <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a></p>
+  <h2 style="margin-top:40px">Built for schools in Pakistan</h2>
+  <ul><li><strong>Absence alerts on WhatsApp and SMS:</strong> when a child is marked absent or late, parents can hear about it on the phone they already carry.</li><li><strong>WhatsApp and SMS alerts:</strong> fee reminders, attendance and announcements reach parents on the apps they already use.</li><li><strong>JazzCash and EasyPaisa:</strong> parents can pay school fees online from their phones.</li><li><strong>Priced in rupees:</strong> Rs 50 per active student per month, with a free first month. <a href="/products/evolvora-campus/pricing/">See pricing</a>.</li><li><strong>Support from Lahore:</strong> call <a href="tel:+923140163628">+92 314 0163628</a> or email <a href="mailto:contact@evolvoratech.com">contact@evolvoratech.com</a>, in English or Urdu.</li></ul>
+  <p style="margin-top:24px"><a href="/contact/" class="btn btn-primary">Book a demo <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a> <a href="/products/evolvora-campus/pricing/" class="btn btn-ghost">See pricing</a></p>
 </div></div></section>
 
 <section class="section section-alt"><div class="container"><div class="section-head reveal"><span class="kicker">FAQ</span><h2>Student Attendance Software: common questions</h2></div><div class="faq"><div class="faq-item"><button class="faq-q" aria-expanded="false">How do teachers take attendance in Evolvora Campus?<span class="fi">+</span></button><div class="faq-a"><p>Teachers open their class and tap Present, Late or Absent for each student. They can also mark everyone present at once and only change the exceptions. Totals update live as they go.</p></div></div><div class="faq-item"><button class="faq-q" aria-expanded="false">Can parents see their child's attendance?<span class="fi">+</span></button><div class="faq-a"><p>Yes. Each child's attendance record is visible in the parent app, and parents can be notified automatically about attendance updates.</p></div></div><div class="faq-item"><button class="faq-q" aria-expanded="false">Does it show attendance trends?<span class="fi">+</span></button><div class="faq-a"><p>Yes. Evolvora Campus shows daily present/late/absent totals and a 14-day trend, so schools can spot patterns early.</p></div></div><div class="faq-item"><button class="faq-q" aria-expanded="false">Is the attendance software part of a bigger system?<span class="fi">+</span></button><div class="faq-a"><p>Yes. Attendance is one module of Evolvora Campus, which also covers marks, fees, payroll and parent communication, all connected.</p></div></div></div></div></section>
 
-<section class="section"><div class="container"><div class="section-head reveal"><span class="kicker">Related</span><h2>Explore related solutions</h2></div><div class="cards"><a class="card reveal" href="/school-management-system/"><span class="card-ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5Z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></span><h3>School Management System</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a><a class="card reveal" href="/campus-management-system/"><span class="card-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg></span><h3>Campus Management System</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a><a class="card reveal" href="/school-fee-management-software/"><span class="card-ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 10h18"/><circle cx="8" cy="14.5" r="1.4"/></svg></span><h3>Fee Management Software</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a></div></div></section>
+<section class="section"><div class="container"><div class="section-head reveal"><span class="kicker">Related</span><h2>Explore related solutions</h2></div><div class="cards"><a class="card reveal" href="/school-management-system/"><span class="card-ic"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5Z"/><path d="M2 12l10 5 10-5"/><path d="M2 17l10 5 10-5"/></svg></span><h3>School Management System</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a><a class="card reveal" href="/campus-management-system/"><span class="card-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg></span><h3>Multi-Campus School Management</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a><a class="card reveal" href="/school-fee-management-software/"><span class="card-ic"><svg viewBox="0 0 24 24"><path d="M3 7h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><path d="M3 10h18"/><circle cx="8" cy="14.5" r="1.4"/></svg></span><h3>Fee Management Software</h3><span class="card-link">Learn more <svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span></a></div></div></section>
 
 <section class="cta"><div class="cta-glow"></div><div class="container"><div class="cta-inner reveal">
   <h2>See Evolvora Campus, your student attendance software</h2><p>Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.</p>
@@ -596,26 +629,28 @@
   <div class="footer-top">
     <div class="footer-brand">
       <a href="/" class="brand"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="eg" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#7dd3fc"/><stop offset="0.45" stop-color="#3b82f6"/><stop offset="1" stop-color="#2f4fd8"/></linearGradient></defs><g fill="url(#eg)"><path d="M48 10 L16 60 L48 110 L70 110 L44 63 L44 57 L70 10 Z"/><path d="M50 10 H112 L92 42 H30 Z"/><path d="M54 46 H104 L84 78 H34 Z"/><path d="M50 78 H112 L92 110 H30 Z"/></g></svg><span class="wm">EVOL<b>VORA</b></span></a>
-      <p>Evolvora Technologies, the team behind Evolvora, builds modern software for schools and campuses. Our flagship, Evolvora Campus, brings admissions, attendance, fees, payroll and parent communication into one place.</p>
+      <p>Evolvora Technologies is a Lahore software company. It makes Evolvora Campus, a school management system for Pakistani schools, runs SilaaiMarkaz, a tailoring marketplace in Lahore, and builds custom software for clients. Evolvora Campus is not related to evolCampus.</p>
+      <p class="footer-contact">599-Q, Johar Town, Lahore 54000, Pakistan<br><a href="tel:+923140163628">+92 314 0163628</a> · <a href="mailto:contact@evolvoratech.com">contact@evolvoratech.com</a></p>
       <span class="footer-tagline">Building a smarter tomorrow</span>
       <ul class="footer-social"><li><a href="https://www.linkedin.com/company/evolvora-technologies/" aria-label="Evolvora Technologies on LinkedIn" title="LinkedIn" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a></li><li><a href="https://www.youtube.com/@evolvoratechnologies" aria-label="Evolvora Technologies on YouTube" title="YouTube" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a></li><li><a href="https://www.instagram.com/evolvora.tech/" aria-label="Evolvora Technologies on Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38C1.34 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13C21.32 1.34 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg></a></li><li><a href="https://github.com/Evolvora-Technologies" aria-label="Evolvora Technologies on GitHub" title="GitHub" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.4-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg></a></li></ul>
     </div>
-    <div><h2 class="footer-h">Company</h2><ul>
+    <div><p class="footer-h">Company</p><ul>
       <li><a href="/">Home</a></li>
       <li><a href="/services/">Services</a></li>
       <li><a href="/products/">Products</a></li>
       <li><a href="/about/">About</a></li>
       <li><a href="/contact/">Contact</a></li>
     </ul></div>
-    <div><h2 class="footer-h">Product</h2><ul>
+    <div><p class="footer-h">Products</p><ul>
       <li><a href="/products/evolvora-campus/">Evolvora Campus</a></li>
-      <li><a href="/products/evolvora-campus/#features">Features</a></li>
-      <li><a href="/products/evolvora-campus/pricing/">Plans &amp; pricing</a></li>
-      <li><a href="/contact/">Start a project</a></li>
+      <li><a href="/products/evolvora-campus/#features">Campus features</a></li>
+      <li><a href="/products/evolvora-campus/pricing/">Campus pricing</a></li>
+      <li><a href="/products/silaaimarkaz/">SilaaiMarkaz</a></li>
+      <li><a href="/products/">All products</a></li>
     </ul></div>
-    <div><h2 class="footer-h">Solutions</h2><ul>
+    <div><p class="footer-h">Solutions</p><ul>
       <li><a href="/school-management-system/">School Management System</a></li>
-      <li><a href="/campus-management-system/">Campus Management System</a></li>
+      <li><a href="/campus-management-system/">Multi-Campus School Management</a></li>
       <li><a href="/school-erp/">School ERP</a></li>
       <li><a href="/student-attendance-software/">Student Attendance Software</a></li>
       <li><a href="/school-fee-management-software/">Fee Management Software</a></li>
@@ -629,6 +664,6 @@
     <span><a href="mailto:contact@evolvoratech.com">contact@evolvoratech.com</a></span>
   </div>
 </div></footer>
-<script src="/assets/js/main.js?v=6"></script>
+<script src="/assets/js/main.js?v=7"></script>
 </body>
 </html>

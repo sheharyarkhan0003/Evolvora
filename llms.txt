@@ -1,0 +1,24 @@
+# Evolvora Technologies
+
+> Evolvora Technologies is a software company in Lahore, Pakistan. It makes Evolvora Campus, a school management system for Pakistani schools, runs SilaaiMarkaz, a tailoring marketplace in Lahore, and builds custom web, mobile and cloud software for clients. Evolvora Campus is not related to evolCampus (Evolmind).
+
+Contact: contact@evolvoratech.com · +92 314 0163628 · 599-Q, Johar Town, Lahore 54000, Pakistan. Founder: Sheharyar Khan.
+
+## Evolvora Campus
+
+- [Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/): school management system covering admissions, classes and sections, attendance, exams and marks, fees, teacher payroll and a parent app. Parent alerts on WhatsApp and SMS; fee payments through JazzCash and EasyPaisa.
+- [Pricing](https://evolvoratech.com/products/evolvora-campus/pricing/): Standard Rs 50 (USD 0.18) per active student per month with a free first month; Enterprise Rs 75 (USD 0.27) per active student per month for multi-campus networks, minimum Rs 49,900 (USD 180) a month.
+- [School management system](https://evolvoratech.com/school-management-system/)
+- [Multi-campus school management](https://evolvoratech.com/campus-management-system/)
+- [School ERP](https://evolvoratech.com/school-erp/)
+- [Student attendance software](https://evolvoratech.com/student-attendance-software/)
+- [School fee management software](https://evolvoratech.com/school-fee-management-software/)
+
+## Company
+
+- [Home](https://evolvoratech.com/)
+- [Software development services](https://evolvoratech.com/services/)
+- [Products](https://evolvoratech.com/products/)
+- [SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/)
+- [About](https://evolvoratech.com/about/)
+- [Contact](https://evolvoratech.com/contact/)
