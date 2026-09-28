@@ -687,3 +687,18 @@ document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 // Footer year
 const yr = document.getElementById('year');
 if (yr) yr.textContent = new Date().getFullYear();
+
+// Pricing currency switch: rupees by default, remembers a switch to dollars.
+const currencyBtns = document.querySelectorAll('[data-currency]');
+if (currencyBtns.length) {
+  const KEY = 'evolvora-currency';
+  const setCurrency = (cur) => {
+    document.querySelectorAll('.money').forEach(el => { el.textContent = el.dataset[cur]; });
+    currencyBtns.forEach(b => b.setAttribute('aria-pressed', String(b.dataset.currency === cur)));
+    try { localStorage.setItem(KEY, cur); } catch (e) {}
+  };
+  currencyBtns.forEach(b => b.addEventListener('click', () => setCurrency(b.dataset.currency)));
+  let saved = null;
+  try { saved = localStorage.getItem(KEY); } catch (e) {}
+  if (saved === 'usd') setCurrency('usd');
+}

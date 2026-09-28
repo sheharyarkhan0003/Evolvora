@@ -81,7 +81,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--nav-h) + 20px)}
 body{
-  font-family:'Inter','Segoe UI',system-ui,sans-serif;
+  font-family:'Inter','Inter Fallback','Segoe UI',system-ui,sans-serif;
   background:var(--bg);
   color:var(--text);
   line-height:1.6;
@@ -90,7 +90,7 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 body.nav-open{overflow:hidden}
-h1,h2,h3,.brand-name{font-family:'Plus Jakarta Sans','Segoe UI',sans-serif;font-weight:800;line-height:1.1;letter-spacing:-.02em}
+h1,h2,h3,.brand-name{font-family:'Space Grotesk','Space Grotesk Fallback','Segoe UI',sans-serif;font-weight:700;line-height:1.1;letter-spacing:-.02em}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;height:auto;display:block;font-size:13px;color:var(--muted);font-family:inherit}
 img.img-error{
@@ -119,7 +119,7 @@ body::before{
 /* ============ BUTTONS ============ */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  font-weight:600;font-family:'Plus Jakarta Sans',sans-serif;
+  font-weight:600;font-family:'Space Grotesk','Space Grotesk Fallback',sans-serif;
   border-radius:999px;padding:12px 22px;cursor:pointer;border:1px solid transparent;
   transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s,border-color .25s;
   white-space:nowrap;
@@ -249,7 +249,7 @@ body::before{
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
 .hero-trust{display:flex;gap:34px;flex-wrap:wrap}
 .hero-trust div{display:flex;flex-direction:column}
-.hero-trust strong{font-family:'Plus Jakarta Sans';font-size:22px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-trust strong{font-family:'Space Grotesk','Space Grotesk Fallback';font-size:22px;background:var(--grad-text);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero-trust span{font-size:13px;color:var(--faint)}
 
 /* browser mockup */
@@ -571,7 +571,7 @@ body::before{
 /* ============ STEPS ============ */
 .steps{display:flex;align-items:stretch;justify-content:center;gap:18px;flex-wrap:wrap}
 .step{flex:1;min-width:240px;max-width:340px;background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--border);border-radius:var(--radius);padding:34px 28px;text-align:center;position:relative}
-.step-num{width:52px;height:52px;border-radius:50%;background:var(--grad);color:#fff;font-family:'Plus Jakarta Sans';font-weight:800;font-size:22px;display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 10px 24px -8px rgba(124,58,237,.7)}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--grad);color:#fff;font-family:'Space Grotesk','Space Grotesk Fallback';font-weight:800;font-size:22px;display:grid;place-items:center;margin:0 auto 18px;box-shadow:0 10px 24px -8px rgba(124,58,237,.7)}
 .step h3{font-size:19px;margin-bottom:10px}
 .step p{color:var(--muted);font-size:15px}
 .step-arrow{display:flex;align-items:center;font-size:30px;color:var(--purple);opacity:.7}
@@ -731,7 +731,12 @@ body::before{
 @media (max-width:640px){
   .section{padding:70px 0}
   .container{padding:0 18px}
-  .hero{padding:56px 0 64px}
+  /* Tighter hero so both demo buttons land on a phone's first screen. */
+  .hero{padding:24px 0 56px}
+  .hero .eyebrow{margin-bottom:14px;font-size:12.5px}
+  .hero h1{font-size:32px;margin-bottom:14px}
+  .hero .lead{font-size:15.5px;margin-bottom:20px}
+  .hero-cta{margin-bottom:28px}
   .benefit-grid{grid-template-columns:1fr}
   .benefit{min-height:0}
   .hero-trust{gap:18px;flex-direction:column;align-items:center}
@@ -742,3 +747,8 @@ body::before{
   .section-head{margin-bottom:40px}
   .btn-lg{padding:14px 22px;font-size:15px}
 }
+
+/* ============ USE CASES ============ */
+.usecase-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.usecase-links .btn{white-space:normal;text-align:center}
+.footer-base a{color:inherit}
