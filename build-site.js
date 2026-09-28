@@ -37,7 +37,8 @@ const FONT_HEAD = `<link rel="preload" href="/assets/fonts/inter-latin.woff2" as
    never disagree. Caveat: it advances on every build, so only deploy when page
    content actually changed - a dateModified that moves without real edits is a
    freshness signal search engines learn to distrust. */
-const BUILD_DATE = new Date().toISOString().slice(0, 10);
+// Local date (YYYY-MM-DD), matching the git commit dates used by pageDate().
+const BUILD_DATE = new Date().toLocaleDateString("en-CA");
 
 /* Per-page "last changed" date, so a header or footer tweak no longer marks
    every page as freshly updated. Only the <main> content counts:
@@ -50,10 +51,16 @@ const mainOf = (html) => { const m = /<main[^>]*>([\s\S]*?)<\/main>/.exec(html |
 const git = (args) => { try { return execFileSync("git", args, { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }); } catch { return null; } };
 function pageDate(file, main) {
   const rel = file.split(path.sep).join("/");
-  if (mainOf(git(["show", "HEAD:" + rel])) === main) {
-    const d = (git(["log", "-1", "--format=%cs", "--", rel]) || "").trim();
-    if (d) return d;
+  /* Walk back through the commits that touched this file and take the oldest
+     one in the unbroken run whose <main> matches today's. A commit that only
+     changed the header or footer therefore does not count as a content change. */
+  let found = null;
+  for (const line of (git(["log", "--format=%H %cs", "--", rel]) || "").trim().split("\n").filter(Boolean)) {
+    const [hash, date] = line.split(" ");
+    if (mainOf(git(["show", hash + ":" + rel])) !== main) break;
+    found = date;
   }
+  if (found) return found;
   const p = path.join(ROOT, file);
   if (fs.existsSync(p)) {
     const html = fs.readFileSync(p, "utf8");
@@ -770,6 +777,9 @@ const SILAAI_URL = SITE + SILAAI_PATH;
 const SILAAI_SW_ID = SILAAI_URL + "#software";
 const SILAAI_BRAND_ID = SILAAI_URL + "#brand";
 const SILAAI_HOME = "https://silaaimarkaz.com/";
+/* Other spellings of the name. "Silai" is the more common way to write the
+   word for stitching, so many people search "Silai Markaz". */
+const SILAAI_NAMES = ["Silaai Markaz","Silai Markaz","SilaiMarkaz","Sillai Markaz"];
 const SILAAI_APK = "https://silaaimarkaz.com/downloads/silaaimarkaz.apk";
 const SILAAI_DARZI = "https://app.silaaimarkaz.com/auth/darzi/signup";   // Darzi shop sign-up
 const SILAAI_LOGIN = "https://app.silaaimarkaz.com/auth/login";          // customer entry: "Find a Darzi"
@@ -865,7 +875,7 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
       "name":"Evolvora Campus","url":CAMPUS_URL,
       "logo":SITE+"/assets/img/evolvora-logo.png" },
     { "@type":"Brand","@id":SILAAI_BRAND_ID,
-      "name":"SilaaiMarkaz","alternateName":"Silaai Markaz","url":SILAAI_HOME,
+      "name":"SilaaiMarkaz","alternateName":SILAAI_NAMES,"url":SILAAI_HOME,
       "logo":SILAAI_LOGO },
   ],
   /* Minimal but self-describing: each shares its @id with the full
@@ -1124,7 +1134,7 @@ const silaaiLD = {
   "@type":["MobileApplication","WebApplication"],
   "@id":SILAAI_SW_ID,
   "name":"SilaaiMarkaz",
-  "alternateName":["Silaai Markaz","SilaaiMarkaz tailoring marketplace"],
+  "alternateName":[...SILAAI_NAMES,"SilaaiMarkaz tailoring marketplace"],
   "url":SILAAI_HOME,
   "sameAs":[SILAAI_HOME],
   "mainEntityOfPage":{ "@id":SILAAI_URL+"#webpage" },
@@ -1330,8 +1340,8 @@ pages.push({ url:"/products/evolvora-campus/", skipWrite:true });
 {
   const cb = crumb([["Home","/"],["Products","/products/"],["SilaaiMarkaz",SILAAI_PATH]]);
   const faq = faqBlock([
-    {q:"What is SilaaiMarkaz?",a:"SilaaiMarkaz (Silaai Markaz) is a tailoring marketplace built by Evolvora Technologies. You compare Darzis in Lahore, save your measurements, share your design and agree the price in the app, then visit the shop when the work is ready."},
-    {q:"Which cities does SilaaiMarkaz cover?",a:"SilaaiMarkaz is opening with Darzis in Lahore. Shops appear in the app as they are listed."},
+    {q:"What is SilaaiMarkaz?",a:"SilaaiMarkaz (also written Silaai Markaz or Silai Markaz) is a tailoring marketplace built by Evolvora Technologies. You compare tailors (Darzis) in Lahore, save your measurements, share your design and agree the price in the app, then visit the shop when the work is ready."},
+    {q:"Which cities does SilaaiMarkaz cover?",a:"SilaaiMarkaz is opening with tailors (Darzis) in Lahore. Shops appear in the app as they are listed."},
     {q:"Does SilaaiMarkaz deliver my clothes?",a:"No. You visit the Darzi's shop yourself for fabric drop-off, fittings and collection. SilaaiMarkaz handles finding the right Darzi, the measurements, the design details and the agreed price."},
     {q:"How is the price decided?",a:"Each Darzi sets their own rates. The price is agreed in the app before work starts, so there is no surprise number at the shop, and you can choose to pay at the shop."},
     {q:"Is there a SilaaiMarkaz app?",a:"Yes. There is an Android app you can download from silaaimarkaz.com, and you can also find a Darzi on the website and continue on your phone. The app is available in English and Urdu."},
@@ -1359,7 +1369,7 @@ pages.push({ url:"/products/evolvora-campus/", skipWrite:true });
     <div class="hero-copy reveal">
       <span class="eyebrow"><span class="dot"></span> Our product · Live in Lahore</span>
       <h1>SilaaiMarkaz<br><span class="grad-text">Lahore's tailoring marketplace</span></h1>
-      <p class="lead"><strong>SilaaiMarkaz</strong> helps you find the right Darzi in Lahore. Compare shops, save your measurements, share the design and agree the price, then visit the shop when the work is ready.</p>
+      <p class="lead"><strong>SilaaiMarkaz</strong> helps you find the right tailor in Lahore. Compare shops, save your measurements, share the design and agree the price, then visit the shop when the work is ready.</p>
       <div class="hero-cta"><a href="${SILAAI_LOGIN}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Find a Darzi</a><a href="${SILAAI_APK}" class="btn btn-ghost btn-lg" rel="noopener">Download for Android</a></div>
     </div>
     <div class="hero-shot reveal">${shot("silaaimarkaz/tailoring-with-trust.jpg","silaaimarkaz.com","How SilaaiMarkaz works: price agreed before work starts, measurements stay with you, you visit the shop, Darzis are rated and accountable",true)}</div>
@@ -1368,7 +1378,7 @@ pages.push({ url:"/products/evolvora-campus/", skipWrite:true });
 
 <section class="section" style="padding-top:20px"><div class="container"><div class="prose reveal">
   <h2>What is SilaaiMarkaz?</h2>
-  <p><strong>SilaaiMarkaz</strong> (Silaai Markaz) is a tailoring marketplace: a place where people who want clothes stitched meet the Darzis who stitch them. It fixes the parts of getting clothes made that usually go wrong, like the price changing at the shop, measurements taken again every time, and designs lost in a chat thread.</p>
+  <p><strong>SilaaiMarkaz</strong> (also written Silaai Markaz or Silai Markaz) is a tailoring marketplace: a place where people who want clothes stitched meet the tailors, or Darzis, who stitch them. If you are looking for a tailor in Lahore, for ladies suits, bridal wear, men's shalwar kameez or simple alterations, it lets you compare shops before you visit one. It fixes the parts of getting clothes made that usually go wrong, like the price changing at the shop, measurements taken again every time, and designs lost in a chat thread.</p>
   <p>SilaaiMarkaz is built and run by <a href="/about/">Evolvora Technologies</a>, the Lahore software house behind <a href="/products/evolvora-campus/">Evolvora Campus</a>. It works on Android and on the web at <a href="${SILAAI_HOME}" target="_blank" rel="noopener">silaaimarkaz.com</a>, in English and Urdu.</p>
 </div></div></section>
 
