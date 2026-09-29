@@ -134,7 +134,25 @@ const SOCIAL = [
 const socialRow = () => `<ul class="footer-social">${SOCIAL.map(([name,ic,url]) =>
   `<li><a href="${url}" aria-label="Evolvora Technologies on ${name}" title="${name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">${BRAND_I[ic]}</svg></a></li>`).join("")}</ul>`;
 
-const NAV_MOBILE_CRITICAL = `<style>@media(max-width:1000px){.nav-links:not(.open){display:none!important}.nav-links.open{display:flex!important;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:99;flex-direction:column;background:var(--nav-mobile-bg);overflow-y:auto}.nav-toggle{display:grid!important}.nav-toggle .icon-menu{display:block!important}.nav-toggle:not(.open) .icon-close{display:none!important}.nav-toggle.open .icon-menu{display:none!important}.nav-toggle.open .icon-close{display:block!important}}</style>`;
+/* Render-blocking assets are inlined so first paint waits on no extra request.
+   - theme-init.js must run before paint (else the wrong theme flashes), so it
+     cannot be deferred. It is inlined, and its hash is added to script-src in
+     the CSP below; editing the file changes the hash, so rebuild after.
+   - styles.css (~15 KB gzipped) is inlined whole. Critical-CSS extraction needs
+     a headless browser, and loading the rest async needs an inline onload
+     handler the CSP blocks. The trade-off: it is not cached across pages. */
+/* One line, so a CRLF checkout cannot change the bytes and break the hash
+   (every statement in the file ends in ';', so joining lines is safe). */
+const THEME_INIT_JS = norm(fs.readFileSync(path.join(ROOT, "assets/js/theme-init.js"), "utf8")).replace(/\s*\n\s*/g, " ");
+const THEME_INIT = `<script>${THEME_INIT_JS}</script>`;
+const THEME_INIT_HASH = "'sha256-" + require("crypto").createHash("sha256").update(THEME_INIT_JS, "utf8").digest("base64") + "'";
+const SITE_CSS = fs.readFileSync(path.join(ROOT, "assets/css/styles.css"), "utf8")
+  .replace(/\/\*[\s\S]*?\*\//g, "")   // comments (the file has none inside strings)
+  .replace(/\s+/g, " ")
+  .replace(/\s*([{};])\s*/g, "$1")   // not ':' or ',' - a space there can be a descendant combinator
+  .trim();
+
+const NAV_MOBILE_CRITICAL =`<style>@media(max-width:1000px){.nav-links:not(.open){display:none!important}.nav-links.open{display:flex!important;position:fixed;top:var(--nav-h);left:0;right:0;bottom:0;z-index:99;flex-direction:column;background:var(--nav-mobile-bg);overflow-y:auto}.nav-toggle{display:grid!important}.nav-toggle .icon-menu{display:block!important}.nav-toggle:not(.open) .icon-close{display:none!important}.nav-toggle.open .icon-menu{display:none!important}.nav-toggle.open .icon-close{display:block!important}}</style>`;
 
 const NAV_TOGGLE = `<button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false"><svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg><svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>`;
 
@@ -169,23 +187,38 @@ function imgSize(file) {
 
 const imgExists = (f) => fs.existsSync(path.join(ROOT, "assets/img", f));
 
-function picture(img, { alt = "", eager = false, cls = "", draggable = false } = {}) {
+/* AVIF first, then WebP, each with narrower copies so phones and half-width
+   columns do not download the full-size file. The copies are made by
+   optimize-images.js; RESP_WIDTHS must match its WIDTHS. `sizes` is how wide
+   the image is drawn: the default fits the half-column screenshots. */
+const RESP_WIDTHS = [360, 640, 960, 1280];
+/* Phone screenshots in .phone-pair: 44% of the column on small screens, 240px max. */
+const PHONE_SIZES = "(max-width: 1000px) 44vw, 240px";
+const SHOT_SIZES = "(max-width: 1000px) calc(100vw - 48px), 560px";
+function srcsetFor(stem, ext, fullW) {
+  const list = RESP_WIDTHS.filter(w => w < fullW && imgExists(`${stem}-${w}.${ext}`))
+    .map(w => `/assets/img/${stem}-${w}.${ext} ${w}w`);
+  if (!imgExists(`${stem}.${ext}`)) return null;
+  return [...list, `/assets/img/${stem}.${ext} ${fullW}w`].join(", ");
+}
+function picture(img, { alt = "", eager = false, cls = "", draggable = false, sizes = SHOT_SIZES } = {}) {
   const stem = img.replace(/\.[a-z0-9]+$/i, "");
-  const webp = stem + ".webp";
   // Prefer a small JPEG fallback; images with real transparency keep the PNG.
   const fallback = imgExists(stem + ".jpg") ? stem + ".jpg" : img;
   const d = imgSize(fallback) || imgSize(img);
   const dim = d ? ` width="${d.w}" height="${d.h}"` : "";
   const load = eager ? ' loading="eager" fetchpriority="high"' : ' loading="lazy"';
   const tag = `<img${cls ? ` class="${cls}"` : ""} src="/assets/img/${fallback}" alt="${alt}"${load} decoding="async"${dim}${draggable ? "" : ' draggable="false"'}>`;
-  return imgExists(webp)
-    ? `<picture><source type="image/webp" srcset="/assets/img/${webp}">${tag}</picture>`
-    : tag;
+  const sources = d ? ["avif", "webp"].map(ext => {
+    const set = srcsetFor(stem, ext, d.w);
+    return set ? `<source type="image/${ext}" srcset="${set}" sizes="${sizes}">` : "";
+  }).join("") : "";
+  return sources ? `<picture>${sources}${tag}</picture>` : tag;
 }
 
 /* ---------- browser mockup ---------- */
-const shot = (img, label, alt, eager) =>
-  `<div class="browser"><div class="browser-bar"><span></span><span></span><span></span><i>${label}</i></div>${picture(img, { alt: alt || label || "Evolvora software screenshot", eager })}</div>`;
+const shot = (img, label, alt, eager, sizes) =>
+  `<div class="browser"><div class="browser-bar"><span></span><span></span><span></span><i>${label}</i></div>${picture(img, { alt: alt || label || "Evolvora software screenshot", eager, ...(sizes ? { sizes } : {}) })}</div>`;
 
 const WHY_PILLARS = [
   {
@@ -454,6 +487,7 @@ function head({ title, desc, url, jsonld, og }) {
 <title>${title}</title>
 <meta name="description" content="${desc}">
 <link rel="canonical" href="${canonical}">
+${url.endsWith("/") ? `<link rel="alternate" type="text/markdown" href="${url}index.md">` : ""}
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#070b16">
 <meta property="og:type" content="website">
@@ -474,9 +508,10 @@ function head({ title, desc, url, jsonld, og }) {
 <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png">
 ${FONT_HEAD}
-<script src="/assets/js/theme-init.js"></script>
+${THEME_INIT}
 ${NAV_MOBILE_CRITICAL}
-<link rel="stylesheet" href="/assets/css/styles.css?v=42">
+<style>${SITE_CSS}</style>
+<script src="/assets/js/main.js?v=7" defer></script>
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
@@ -572,7 +607,6 @@ ${header(page.active)}
 ${page.body}
 </main>
 ${footer()}
-<script src="/assets/js/main.js?v=7"></script>
 </body>
 </html>`;
 }
@@ -821,7 +855,7 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
   "legalName":"Evolvora Technologies",
   "url":SITE,
   "description":"Evolvora Technologies is a software house that designs, builds and runs custom web, mobile and cloud software. Its own products are Evolvora Campus, an all-in-one school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.",
-  "disambiguatingDescription":"Evolvora Technologies is a software company in Lahore, Pakistan, and the maker of Evolvora Campus. It is not related to evolCampus or Evolmind.",
+  "disambiguatingDescription":"Evolvora Technologies is a software company in Lahore, Pakistan. It makes Evolvora Campus, a school management system for Pakistani schools, and SilaaiMarkaz, a tailoring marketplace.",
   "slogan":"Building a smarter tomorrow",
   /* Google requires the logo to be at least 112x112; this one is 512x512.
      contentUrl + dimensions let Google validate it without fetching. */
@@ -844,7 +878,8 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
   "address":ADDRESS,
   "founder":{ "@type":"Person","@id":FOUNDER_ID,
     "name":"Sheharyar Khan","jobTitle":"Founder",
-    "worksFor":{ "@id":ORG_ID } },
+    "worksFor":{ "@id":ORG_ID },
+    "sameAs":["https://www.linkedin.com/in/sheharyar-khaan/"] },
   "foundingLocation":{ "@type":"Place","name":"Lahore, Pakistan",
     "address":{ "@type":"PostalAddress","addressLocality":"Lahore","addressRegion":"Punjab","addressCountry":"PK" } },
   ...(FOUNDED ? { "foundingDate":FOUNDED } : {}),
@@ -852,7 +887,7 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
      so carrying both would state the same fact twice. */
   "areaServed":[
     { "@type":"Country","name":"Pakistan" },
-    { "@type":"Place","name":"Worldwide" },
+    "Worldwide",
   ],
   /* Disambiguated expertise. Each Thing carries sameAs to Wikipedia, so the
      company is tied to both software development AND education software as known
@@ -878,16 +913,6 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
       "name":"SilaaiMarkaz","alternateName":SILAAI_NAMES,"url":SILAAI_HOME,
       "logo":SILAAI_LOGO },
   ],
-  /* Minimal but self-describing: each shares its @id with the full
-     SoftwareApplication node on its product page, so the two merge. */
-  "owns":[
-    { "@type":"SoftwareApplication","@id":CAMPUS_SW_ID,
-      "name":"Evolvora Campus","url":CAMPUS_URL,
-      "applicationCategory":"BusinessApplication" },
-    { "@type":"SoftwareApplication","@id":SILAAI_SW_ID,
-      "name":"SilaaiMarkaz","url":SILAAI_HOME,
-      "applicationCategory":"ShoppingApplication" },
-  ],
   "hasOfferCatalog":{ "@type":"OfferCatalog","@id":CATALOG_ID,
     "name":"Evolvora Technologies services and products",
     "itemListElement":[
@@ -895,7 +920,7 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
         "itemOffered":{ "@type":"Service",
           "name":name,"description":description,"serviceType":name,
           "provider":{ "@id":ORG_ID },
-          "areaServed":{ "@type":"Place","name":"Worldwide" } } })),
+          "areaServed":"Worldwide" } })),
       /* Prices live on the SoftwareApplication offers, not here, so the
          catalogue cannot contradict the published pricing. */
       { "@type":"Offer","itemOffered":{ "@id":CAMPUS_SW_ID } },
@@ -967,9 +992,9 @@ const PRICING_URL = SITE + PRICING_PATH;
    page and synced into the hand-maintained product page (see CAMPUS_SCHEMA
    sync at the end of this file), so the two can never diverge again.
 
-   Co-typed SoftwareApplication + WebApplication: SoftwareApplication is the
-   type Google documents, and WebApplication is both accurate for a browser
-   based SaaS and the type that legitimately carries browserRequirements.
+   Typed WebApplication alone: it is a subtype of SoftwareApplication (which
+   Google's Software App rich result accepts), accurate for a browser-based
+   SaaS, and the type that legitimately carries browserRequirements.
 
    Deliberately absent, and why:
      aggregateRating / review  no genuine public ratings exist. Inventing them
@@ -988,7 +1013,7 @@ const PRICING_URL = SITE + PRICING_PATH;
                                per schema.org. The same facts are carried
                                validly by publisher/creator/provider, by
                                inLanguage, and by the Organization's own
-                               brand + owns properties. */
+                               brand property. */
 /* Named swShot to avoid clashing with shot(), the responsive-image helper. */
 const swShot = (file, caption, w, h) => ({
   "@type":"ImageObject",
@@ -999,7 +1024,7 @@ const swShot = (file, caption, w, h) => ({
 
 const campusLD = {
   "@context":"https://schema.org",
-  "@type":["SoftwareApplication","WebApplication"],
+  "@type":"WebApplication",
   "@id":CAMPUS_SW_ID,
   "name":"Evolvora Campus",
   "alternateName":["Evolvora Campus School Management System","Evolvora School ERP"],
@@ -1008,7 +1033,7 @@ const campusLD = {
      software and its canonical page are the same two linked nodes everywhere. */
   "mainEntityOfPage":{ "@id":CAMPUS_URL+"#webpage" },
   "description":"Evolvora Campus is a cloud-based school management system for schools in Pakistan, covering admissions, class and section management, attendance, exams and marks, fee collection with JazzCash and EasyPaisa, teacher payroll and parent communication on WhatsApp and SMS in one platform.",
-  "disambiguatingDescription":"Evolvora Campus is a school management system made by Evolvora Technologies in Lahore, Pakistan. It is not related to evolCampus, the e-learning platform by Evolmind.",
+  "disambiguatingDescription":"Evolvora Campus is a school management system for Pakistani schools, made by Evolvora Technologies, a software company in Lahore, Pakistan.",
   "applicationCategory":"BusinessApplication",
   "applicationSubCategory":"School Management System",
   /* Web only. The site states a mobile app is on the roadmap, so Android and
@@ -1051,9 +1076,13 @@ const campusLD = {
   "screenshot":[
     swShot("homepage_evolvoracampus.png","Evolvora Campus admin dashboard showing student and staff totals, attendance trend and fee submissions",1672,941),
     swShot("teacher_attendence_feature.jpg","Marking class attendance in Evolvora Campus",1918,865),
-    swShot("staff_payroll_feature.jpg","Teacher payroll and salary calculation in Evolvora Campus",1542,834),
-    swShot("parent_portal.jpg","Evolvora Campus parent portal",1902,870),
+    swShot("staff_payroll_feature.jpg","Student list in Evolvora Campus with each student's class and fee status",1542,834),
+    swShot("fee_records_admin.jpg","Fee Records in Evolvora Campus: each student's fee amount and Paid, Pending or Waived status",1896,1022),
+    swShot("parent_switch_child.jpg","Evolvora Campus parent dashboard: switching between children and a pending fee with voucher upload",1903,1008),
     swShot("teacher-dashboard.jpg","Evolvora Campus teacher dashboard",1894,865),
+    swShot("school-expense-tracker.jpg","Evolvora Campus school expense tracker with monthly totals, trend chart and expenses by category",1584,1010),
+    swShot("automatic-fee-reminder-settings.jpg","Automatic fee reminder settings in Evolvora Campus",990,755),
+    swShot("attendance_phone_overview.jpg","Taking class attendance in the Evolvora Campus phone app",720,1477),
   ],
   "image":{ "@type":"ImageObject","@id":OG_IMG_ID,"url":OG,"contentUrl":OG,"width":1200,"height":630 },
   "offers":[
@@ -1087,8 +1116,8 @@ const campusPageLD = {
   "@context":"https://schema.org","@type":"WebPage",
   "@id":CAMPUS_URL+"#webpage",
   "url":CAMPUS_URL,
-  "name":"Evolvora Campus: School Management System for Pakistan",
-  "description":"Evolvora Campus is a school management system for schools in Pakistan: fees, attendance, payroll and parent alerts on WhatsApp and SMS, in one platform.",
+  "name":"Evolvora Campus | School Software Made for Pakistan",
+  "description":"Evolvora Campus runs fees, attendance, payroll and WhatsApp and SMS parent alerts for schools in Pakistan, in one platform. See features, plans and how it works.",
   "inLanguage":"en",
   "isPartOf":{ "@id":SITE_ID },
   "about":[ { "@id":CAMPUS_SW_ID }, topic("sis"), topic("eduSoftware") ],
@@ -1173,8 +1202,11 @@ const pages = [];
 /* ---- HOME (software house) ---- */
 pages.push({
   file:"index.html", active:"home", url:"/", pageMainEntity:ORG_ID,
-  title:"Evolvora Technologies: School Management System & Software",
-  desc:"Evolvora makes Evolvora Campus, a school management system for Pakistani schools, and builds custom web, mobile and cloud software for businesses.",
+  /* Company-led on purpose. "School management system" belongs to
+     /school-management-system/ and "Evolvora Campus" to the product page, so
+     the three pages do not compete for the same search. */
+  title:"Evolvora Technologies | Software Company in Lahore, Pakistan",
+  desc:"Evolvora Technologies is a Lahore software company. We make Evolvora Campus for schools, run SilaaiMarkaz, and build custom web, mobile and cloud software.",
   jsonld:[orgLD,websiteLD],
   body:`
 <section class="hero hero--visual">
@@ -1191,9 +1223,9 @@ pages.push({
       <span class="eyebrow"><span class="dot"></span> Made in Lahore · Building a smarter tomorrow</span>
       <h1 class="hero-title">
         <span class="hero-title-brand">Evolvora Technologies</span>
-        <span class="hero-title-tagline">School Management Software &amp; Custom Development</span>
+        <span class="hero-title-tagline">Software Products &amp; Custom Development in Lahore</span>
       </h1>
-      <p class="lead">We make <strong><a href="${CAMPUS_PATH}">Evolvora Campus</a></strong>, the school management system that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom <strong>web, mobile and cloud</strong> software for businesses.</p>
+      <p class="lead">We make <strong><a href="${CAMPUS_PATH}">Evolvora Campus</a></strong>, the <a href="/school-management-system/">school management system</a> that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom <strong>web, mobile and cloud</strong> software for businesses.</p>
       <div class="hero-cta">
         <a href="/contact/" class="btn btn-primary btn-lg">Book a free demo</a>
         <a href="/services/" class="btn btn-ghost btn-lg">Custom software projects</a>
@@ -1353,7 +1385,7 @@ pages.push({ url:"/products/evolvora-campus/", skipWrite:true });
     ["abaya-hijab","Abaya &amp; hijab"],["alterations-fitting","Alterations &amp; fitting"],["curtains-home-decor","Curtains &amp; home decor"],
     ["ladies-everyday","Ladies everyday"],
   ];
-  const catTile = ([f,name]) => `<figure class="cat-tile reveal">${picture("silaaimarkaz/"+f+".jpg",{ alt:name.replace(/&amp;/g,"&")+" stitched by a Darzi on SilaaiMarkaz" })}<figcaption>${name}</figcaption></figure>`;
+  const catTile = ([f,name]) => `<figure class="cat-tile reveal">${picture("silaaimarkaz/"+f+".jpg",{ sizes:"(max-width: 640px) 50vw, (max-width: 1000px) 33vw, 240px", alt:name.replace(/&amp;/g,"&")+" stitched by a Darzi on SilaaiMarkaz" })}<figcaption>${name}</figcaption></figure>`;
   pages.push({
     file:"products/silaaimarkaz/index.html", active:"products", url:SILAAI_PATH,
     pageAbout:SILAAI_SW_ID,
@@ -1644,7 +1676,7 @@ const PK_POINTS = [
 ];
 /* "School ERP" keeps its acronym when the keyword is used mid-sentence. */
 const kwInline = (kw) => kw.toLowerCase().replace(/\berp\b/, "ERP");
-function solutionPage({file,url,kw,title,desc,h1,intro,whatH,whatP,media,benefits,why,faqItems,related,capsH,whyH,pkLead,ctaH}) {
+function solutionPage({file,url,kw,title,desc,h1,intro,whatH,whatP,media,media2,media2b,benefits,why,faqItems,related,capsH,whyH,pkLead,ctaH}) {
   const cb = crumb([["Home","/"],["Solutions",related.length?"/products/":"/products/"],[kw,url]]);
   const faq = faqBlock(faqItems);
   const relCards = related.map(([s,t,ic])=>`<a class="card reveal" href="/${s}/"><span class="card-ic">${svg(ic)}</span><h3>${t}</h3><span class="card-link">Learn more ${svg("arrow")}</span></a>`).join("");
@@ -1662,13 +1694,16 @@ function solutionPage({file,url,kw,title,desc,h1,intro,whatH,whatP,media,benefit
       <p class="lead">${intro}</p>
       <div class="hero-cta"><a href="/contact/" class="btn btn-primary btn-lg">Book a free demo</a><a href="/products/evolvora-campus/" class="btn btn-ghost btn-lg">Explore the platform</a></div>
     </div>
-    <div class="hero-shot reveal">${shot(media.img,media.label,media.alt,true)}</div>
+    <div class="hero-shot reveal">${media.phones
+      ? `<div class="phone-pair">${media.phones.map(p => `<div class="phone">${picture(p.img, { alt: p.alt, eager: true, sizes: PHONE_SIZES })}</div>`).join("")}</div>`
+      : shot(media.img,media.label,media.alt,true)}</div>
   </div>
 </div></section>
 
 <section class="section" style="padding-top:20px"><div class="container"><div class="prose reveal">
   <h2>${whatH}</h2>
   ${whatP.map(p=>`<p>${p}</p>`).join("")}
+  ${[].concat(media2 || [], media2b || []).map(m => `<figure style="margin:32px 0 0">${shot(m.img,m.label,m.alt,false,"(max-width: 1000px) calc(100vw - 48px), 820px")}<figcaption style="margin-top:12px;color:var(--faint);font-size:14px;text-align:center">${m.caption}</figcaption></figure>`).join("")}
 </div></div></section>
 
 <section class="section section-alt"><div class="container">
@@ -1694,8 +1729,8 @@ ${ctaBlock(ctaH || `See Evolvora Campus, your ${kwInline(kw)}`,"Book a free walk
 
 pages.push(solutionPage({
   file:"school-management-system/index.html", url:"/school-management-system/", kw:"School Management System",
-  title:"School Management System | Evolvora Campus",
-  desc:"Evolvora Campus is a complete school management system for attendance, marks, fee collection, teacher payroll and parent communication, in one platform.",
+  title:"School Management System in Pakistan | Evolvora Campus",
+  desc:"A complete school management system for Pakistani schools: attendance, marks, fee collection, teacher payroll and parent alerts on WhatsApp and SMS, in one platform.",
   h1:"A school management system that <span class=\"grad-text\">does it all</span>",
   intro:"Evolvora Campus is a modern <strong>school management system</strong> that brings admissions, attendance, marks, fee collection, teacher payroll and parent communication into one simple platform so your whole school runs from a single screen.",
   whatH:"What is a school management system?",
@@ -1726,7 +1761,7 @@ pages.push(solutionPage({
 pages.push(solutionPage({
   file:"campus-management-system/index.html", url:"/campus-management-system/", kw:"Multi-Campus School Management",
   title:"Multi-Campus School Management Software | Evolvora Campus",
-  desc:"Multi-campus school management software for school networks in Pakistan. Each branch runs its own classes, staff and fees; head office sees every campus.",
+  desc:"Run every branch of your school from one account. Each campus keeps its own classes, staff and fees, and head office sees all of them in one place.",
   h1:"Multi-campus school management<br><span class=\"grad-text\">for schools with more than one branch</span>",
   intro:"Evolvora Campus is <strong>multi-campus school management software</strong> for school networks with several campuses or branches. Every campus keeps its own classes, staff and fee records, while head office sees the whole network in one live picture.",
   whatH:"What is multi-campus school management software?",
@@ -1770,6 +1805,8 @@ pages.push(solutionPage({
   whatP:["<strong>School ERP</strong> (Enterprise Resource Planning) software is the administrative and financial backbone of a school: staff and HR records, payroll, fee collection and the finance ledger, all reading from the same student information. The distinction from day-to-day academic tools is where the weight sits. An ERP is judged on whether the money and the staff records are right.",
     "Traditional school ERPs are powerful but painful to use. Evolvora Campus delivers the same connected control (including automatic teacher salary calculation and a full fee ledger) in a clean, modern interface your staff will actually enjoy using."],
   media:{img:"staff_directory_img.png",label:"Evolvora Campus",alt:"School ERP staff and payroll module in Evolvora Campus"},
+  media2:{img:"school-expense-tracker.jpg",label:"Evolvora Campus · Expenses",alt:"School expense tracker in Evolvora Campus showing this month's total of Rs. 984,000, an expense trend chart and expenses by category, with salaries the largest at 81%",
+    caption:"The daily expense tracker: every school expense by category (salaries, bills, repairs, furniture, stationery), with monthly totals, a trend chart and recurring expenses."},
   benefits:[
     {c:"ic-blue",ic:"cap",h:"Student information",p:"A complete, searchable record for every student, class and section."},
     {c:"ic-amber",ic:"salary",h:"HR &amp; payroll",p:"Staff records with basic pay, allowances and tax status, and salaries are calculated automatically."},
@@ -1779,6 +1816,7 @@ pages.push(solutionPage({
   why:["<strong>Truly integrated:</strong> academics, HR, finance and communication share one database.",
     "<strong>Modern &amp; usable:</strong> none of the clutter of legacy ERP software.",
     "<strong>Automated payroll:</strong> teacher salaries computed from stored pay and tax settings.",
+    "<strong>Expense tracking:</strong> record daily school expenses by category and payment method, and see monthly totals and trends at a glance.",
     "<strong>Grows with you:</strong> from a single school to multiple campuses."],
   faqItems:[
     {q:"What is a school ERP?",a:"A school ERP is software that integrates the core functions of running a school (student records, staff and payroll, attendance, fees and finance, and communication) into one connected system, replacing disconnected spreadsheets and tools."},
@@ -1800,7 +1838,9 @@ pages.push(solutionPage({
   whyH:"Why teachers keep using it after the first week",
   whatP:["<strong>Student attendance software</strong> replaces paper registers with a digital system for recording who is present, late or absent each day. Good attendance software is quick for teachers, accurate for the office, and transparent for parents.",
     "In Evolvora Campus, a teacher opens their class, taps <strong>Present, Late or Absent</strong> for each student (or marks everyone present and flags the exceptions), and totals update live. Attendance feeds straight into dashboards and the parent app, so families and administrators always have the real picture."],
-  media:{img:"staff_payroll_feature.png",label:"Evolvora Campus",alt:"Student attendance software in Evolvora Campus"},
+  media:{phones:[
+    {img:"attendance_phone_overview.jpg",alt:"Teacher's view in the Evolvora Campus phone app: 28 present, 0 on leave, 0 absent, and the Take Attendance list for Nursery, Section A"},
+    {img:"attendance_phone_list.jpg",alt:"Marking each student Present, Leave or Absent in the Evolvora Campus phone app, with a Save & Send to Parents button"}]},
   benefits:[
     {c:"ic-cyan",ic:"clock",h:"Mark in seconds",p:"Tap through a class fast, or \"swipe present\" and flag only the exceptions."},
     {c:"ic-blue",ic:"chart",h:"Trends &amp; reports",p:"Daily totals and a 14-day trend show attendance patterns at a glance."},
@@ -1832,7 +1872,11 @@ pages.push(solutionPage({
   whyH:"Why schools stop chasing fee payments by hand",
   whatP:["<strong>School fee management software</strong> handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents, without stacks of spreadsheets or manual follow-up calls.",
     "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful."],
-  media:{img:"homepage_evolvoracampus.png",label:"Evolvora Campus",alt:"School fee management software dashboard in Evolvora Campus"},
+  media:{img:"fee_records_admin.jpg",label:"Evolvora Campus",alt:"Fee Records screen in Evolvora Campus listing each student's class, fee cycle, amount and Paid, Pending or Waived status"},
+  media2:{img:"parent_fee_pending.jpg",label:"Evolvora Campus · Parent",alt:"Parent dashboard in Evolvora Campus showing the September fee as Pending with an Upload voucher button",
+    caption:"What the parent sees: the month's fee, its due date and status, and a button to upload the paid bank voucher."},
+  media2b:{img:"automatic-fee-reminder-settings.jpg",label:"Evolvora Campus · Settings",alt:"Automatic fee reminder settings in Evolvora Campus: delivery by in-app notification or email, daily, weekly or monthly, at a set time in Pakistan time (Asia/Karachi)",
+    caption:"Fee reminders run on their own: choose the channel, how often, and the time (Pakistan time), and parents with pending fees are reminded automatically."},
   benefits:[
     {c:"ic-green",ic:"fee",h:"See every fee at a glance",p:"Paid, pending and under-review totals plus outstanding amount on the home dashboard."},
     {c:"ic-cyan",ic:"bell",h:"One-tap reminders",p:"Send fee reminders straight to parents instead of chasing them by phone."},
@@ -1907,9 +1951,19 @@ const urls = pages.map(p=>p.url).concat(["/"]).filter((v,i,a)=>a.indexOf(v)===i)
 /* lastmod is the same per-page date as that page's WebPage dateModified.
    changefreq and priority are left out: Google ignores both. */
 const dateOf = (u) => (pages.find(p => p.url === u) || {}).date || BUILD_DATE;
+/* Image sitemap: the photos and screenshots on each page (not icons or
+   logos), read from the written HTML, so Google finds every screenshot and
+   knows which page it belongs to. */
+const imagesOf = (u) => {
+  const f = path.join(ROOT, u.slice(1), "index.html");
+  if (!fs.existsSync(f)) return [];
+  const html = fs.readFileSync(f, "utf8");
+  return [...new Set([...html.matchAll(/<img[^>]+src="(\/assets\/img\/[^"?]+\.(?:jpe?g|png))"/g)].map(m => m[1])
+    .filter(src => !/\/stack\/|logo|favicon|evolvora-mark/.test(src)))];
+};
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map(u=>`  <url><loc>${SITE}${u}</loc><lastmod>${dateOf(u)}</lastmod></url>`).join("\n")}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urls.map(u=>`  <url><loc>${SITE}${u}</loc><lastmod>${dateOf(u)}</lastmod>${imagesOf(u).map(src => `<image:image><image:loc>${SITE}${src}</image:loc></image:image>`).join("")}</url>`).join("\n")}
 </urlset>`;
 fs.writeFileSync(path.join(ROOT,"sitemap.xml"), sitemap, "utf8");
 
@@ -1944,23 +1998,49 @@ fs.writeFileSync(path.join(ROOT,"netlify.toml"), `# Evolvora Technologies static
   status = 301
   force = true
 
+# /about/index.html and / serve the same page. The canonical tag already
+# points at the clean URL; the redirect makes it one URL for real.
+${urls.map(u => `[[redirects]]
+  from = "${u}index.html"
+  to = "${u}"
+  status = 301
+  force = true
+`).join("\n")}
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    # Two years, all subdomains, and preload consent - what hstspreload.org
+    # requires. Every subdomain must serve HTTPS before this goes live.
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Referrer-Policy = "strict-origin-when-cross-origin"
     # Everything the site loads is served from this domain (fonts included), so
     # the policy can be strict. 'unsafe-inline' is for styles only: the pages
-    # use inline style attributes and small inline <style> blocks. JSON-LD
-    # blocks are data, not scripts, so script-src 'self' does not affect them.
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    # use inline style attributes and inline <style> blocks. The one inline
+    # script (theme-init.js, inlined so it does not block render) is allowed by
+    # its hash, which build-site.js computes. JSON-LD blocks are data, not
+    # scripts, so script-src does not affect them.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' ${THEME_INIT_HASH}; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
 
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Markdown copies of the pages, for AI tools. noindex so Google keeps
+# ranking the HTML page, not its text copy.
+[[headers]]
+  for = "/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/llms-full.txt"
+  [headers.values]
+    X-Robots-Tag = "noindex"
 `, "utf8");
 
 /* ---- sync the product page's SoftwareApplication ----
@@ -2002,6 +2082,21 @@ fs.writeFileSync(path.join(ROOT,"netlify.toml"), `# Evolvora Technologies static
   }
 }
 
+/* ---- sync the inline theme script into the product page ----
+   The CSP allows exactly one inline script by hash, so the product page must
+   carry byte-for-byte the same one. Replaces the old external tag or a stale
+   inline copy. */
+{
+  const p = path.join(ROOT, "products", "evolvora-campus", "index.html");
+  const html = fs.readFileSync(p, "utf8");
+  const re = /<script src="\/assets\/js\/theme-init\.js"><\/script>|<script>[^<]*evolvora-theme[^<]*<\/script>/;
+  if (!re.test(html)) console.warn("WARNING: theme script not found - product page theme-init NOT synced");
+  else {
+    const next = html.replace(re, () => THEME_INIT);
+    if (next !== html) { fs.writeFileSync(p, next, "utf8"); console.log("Synced product page theme-init"); }
+  }
+}
+
 /* ---- IndexNow ----
    The key file proves to Bing, Yandex and others that we own the domain, so
    they accept "this page changed" pings. Send them after a deploy with
@@ -2036,7 +2131,50 @@ Contact: ${EMAIL} · ${PHONE_DISPLAY} · ${ADDRESS_TEXT}. Founder: ${FOUNDER}.
 - [SilaaiMarkaz](${SILAAI_URL})
 - [About](${SITE}/about/)
 - [Contact](${SITE}/contact/)
+
+## Plain-text versions
+
+- [Full site text](${SITE}/llms-full.txt): every page above in one Markdown file.
+- Any single page as Markdown: add \`index.md\` to its address, for example ${SITE}/about/index.md
 `, "utf8");
+
+/* ---- Markdown copies for AI tools ----
+   Each page's <main> as plain Markdown at <page>/index.md, plus every page in
+   one file at /llms-full.txt. AI assistants read these far more reliably than
+   HTML full of menus and SVG. Made from the *written* HTML, so the hand-kept
+   product page is included. netlify.toml marks .md as noindex so Google does
+   not treat them as duplicate pages. */
+{
+  const TurndownService = require("turndown");
+  const td = new TurndownService({ headingStyle: "atx", bulletListMarker: "-", codeBlockStyle: "fenced" });
+  td.remove(["script", "style", "svg", "button", "noscript", "form", "iframe"]);
+  // Images keep their alt text only; the files add nothing for a text reader.
+  td.addRule("imgAlt", { filter: "img", replacement: (_, n) => n.getAttribute("alt") ? `[Image: ${n.getAttribute("alt")}]` : "" });
+  td.addRule("picture", { filter: "picture", replacement: (c) => c });
+  // Relative links become absolute, so the text still works outside the site.
+  td.addRule("absLinks", { filter: (n) => n.nodeName === "A" && n.getAttribute("href"),
+    replacement: (c, n) => { const h = n.getAttribute("href"); const t = c.trim();
+      if (!t) return ""; if (h.startsWith("#")) return t;
+      return `[${t}](${h.startsWith("/") ? SITE + h : h})`; } });
+
+  const full = [];
+  for (const u of urls) {
+    const file = path.join(ROOT, u.slice(1), "index.html");
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, "utf8");
+    const title = (/<title>([^<]*)<\/title>/.exec(html) || [])[1] || "";
+    const desc = (/<meta name="description" content="([^"]*)"/.exec(html) || [])[1] || "";
+    const main = (/<main[^>]*>([\s\S]*?)<\/main>/.exec(html) || [])[1];
+    if (!main) { console.warn("WARNING: no <main> in " + u + " - Markdown copy skipped"); continue; }
+    const body = td.turndown(main).replace(/\n{3,}/g, "\n\n").trim();
+    const md = `# ${title.replace(/&amp;/g, "&")}\n\n> ${desc.replace(/&amp;/g, "&")}\n\nSource: ${SITE}${u}\n\n${body}\n`;
+    fs.writeFileSync(path.join(path.dirname(file), "index.md"), md, "utf8");
+    full.push(md);
+  }
+  fs.writeFileSync(path.join(ROOT, "llms-full.txt"),
+    `# Evolvora Technologies: full site text\n\nEvery page of ${SITE} as Markdown. The short index is ${SITE}/llms.txt.\n\n---\n\n` + full.join("\n---\n\n"), "utf8");
+  console.log("Wrote " + full.length + " Markdown copies + llms-full.txt");
+}
 
 console.log("Wrote " + count + " pages + 404, sitemap, robots, netlify.toml, llms.txt, IndexNow key");
 

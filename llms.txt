@@ -22,3 +22,8 @@ Contact: contact@evolvoratech.com · +92 314 0163628 · 599-Q, Johar Town, Lahor
 - [SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/)
 - [About](https://evolvoratech.com/about/)
 - [Contact](https://evolvoratech.com/contact/)
+
+## Plain-text versions
+
+- [Full site text](https://evolvoratech.com/llms-full.txt): every page above in one Markdown file.
+- Any single page as Markdown: add `index.md` to its address, for example https://evolvoratech.com/about/index.md

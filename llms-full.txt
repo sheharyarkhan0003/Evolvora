@@ -1,0 +1,1495 @@
+# Evolvora Technologies: full site text
+
+Every page of https://evolvoratech.com as Markdown. The short index is https://evolvoratech.com/llms.txt.
+
+---
+
+# Evolvora Technologies | Software Company in Lahore, Pakistan
+
+> Evolvora Technologies is a Lahore software company. We make Evolvora Campus for schools, run SilaaiMarkaz, and build custom web, mobile and cloud software.
+
+Source: https://evolvoratech.com/
+
+Made in Lahore · Building a smarter tomorrow
+
+# Evolvora Technologies Software Products & Custom Development in Lahore
+
+We make **[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)**, the [school management system](https://evolvoratech.com/school-management-system/) that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom **web, mobile and cloud** software for businesses.
+
+[Book a free demo](https://evolvoratech.com/contact/) [Custom software projects](https://evolvoratech.com/services/)
+
+**[Rs 50](https://evolvoratech.com/products/evolvora-campus/pricing/)**per student / month
+
+**WhatsApp · SMS**alerts to parents
+
+**Custom builds**web · mobile · cloud
+
+What makes us different: **assign us the work, take that long vacation, and we handle it all.**
+
+Our products
+
+## Software we build and run ourselves
+
+Evolvora Campus runs day-to-day school life for Pakistani schools. SilaaiMarkaz connects people in Lahore with local Darzis.
+
+_Evolvora Campus_
+
+[Image: Evolvora Campus school management system dashboard: student and staff totals, attendance trend, fee submission breakdown and new admissions]
+
+Flagship product · Live
+
+### Evolvora Campus
+
+An all-in-one school management system for attendance, marks, fee collection, teacher payroll and parent communication, used to run real schools.
+
+-   A tailored view for **admins, teachers and parents**
+-   Fees, attendance, payroll & messaging in one platform
+-   Web app today, with a mobile app on the roadmap
+
+[Explore Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/) [All products](https://evolvoratech.com/products/)
+
+_silaaimarkaz.com_
+
+[Image: SilaaiMarkaz: price agreed before work starts, saved measurements, visit the Darzi's shop, rated and accountable Darzis]
+
+Live in Lahore
+
+### SilaaiMarkaz
+
+A tailoring marketplace for Lahore. Compare Darzis, save your measurements once, agree the price upfront, then visit the shop when your clothes are ready.
+
+-   Portfolios, prices and **ratings side by side**
+-   Measurements saved once, reused with any Darzi
+-   Android app and web, in English and Urdu
+
+[Explore SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/) [Visit silaaimarkaz.com](https://silaaimarkaz.com/)
+
+Evolvora Campus solutions
+
+## One system for every part of your school
+
+Start with the job that costs your office the most time. It is all one platform at one [price per student](https://evolvoratech.com/products/evolvora-campus/pricing/), built for schools in Pakistan.
+
+[### School Management System
+
+Run admissions, classes, attendance, fees and reports from one dashboard.
+
+Learn more](https://evolvoratech.com/school-management-system/)[### Multi-Campus School Management
+
+Run every branch from one head-office view, while each campus keeps its own classes, staff and fees.
+
+Learn more](https://evolvoratech.com/campus-management-system/)[### School ERP
+
+Students, staff, payroll and finance unified in a single school ERP.
+
+Learn more](https://evolvoratech.com/school-erp/)[### Student Attendance Software
+
+Mark and track daily attendance in seconds, with instant parent alerts.
+
+Learn more](https://evolvoratech.com/student-attendance-software/)[### Fee Management Software
+
+Track dues, send reminders on WhatsApp and SMS, and let parents pay through JazzCash and EasyPaisa.
+
+Learn more](https://evolvoratech.com/school-fee-management-software/)
+
+What we do
+
+## Software services, end to end
+
+One team to take your product from a rough idea all the way to a polished, launched, maintained reality.
+
+### Custom Software Development
+
+Bespoke systems built around your workflow, from internal tools to customer-facing platforms.
+
+### Web Application Development
+
+Responsive, high-performance web apps with clean architecture and modern frameworks.
+
+### Mobile App Development
+
+Cross-platform iOS & Android apps that feel native and ship fast.
+
+### SaaS Product Engineering
+
+Multi-tenant, subscription-ready products designed to scale from day one.
+
+### UI/UX Design
+
+Interfaces that are beautiful and intuitive: research, wireframes, prototypes and polish.
+
+### Cloud & DevOps
+
+Deployment, CI/CD, monitoring and infrastructure that keeps your software fast and online.
+
+[Explore our services](https://evolvoratech.com/services/)
+
+How we work
+
+## A clear path from idea to launch
+
+A simple, transparent process: you always know what's happening and what's next.
+
+1
+
+### Discover
+
+We learn your goals, users and constraints, then scope the right solution.
+
+→
+
+2
+
+### Design
+
+Wireframes and UI design so you see and shape the product before we build.
+
+→
+
+3
+
+### Build
+
+Engineering in short, visible iterations with regular working demos.
+
+→
+
+4
+
+### Launch & support
+
+We deploy, monitor and keep improving after go-live.
+
+Our toolkit
+
+## Built with a modern, proven stack
+
+We choose reliable, well-supported technologies so your software stays fast, secure and maintainable.
+
+[Image: Angular logo]Angular
+
+[Image: .NET logo].NET
+
+[Image: Node.js logo]Node.js
+
+[Image: TypeScript logo]TypeScript
+
+[Image: PostgreSQL logo]PostgreSQL
+
+[Image: Supabase logo]Supabase
+
+[Image: Docker logo]Docker
+
+[Image: Cloudflare logo]Cloudflare
+
+[Image: Figma logo]Figma
+
+Why Evolvora
+
+## A partner, not just a vendor
+
+01
+
+### Product mindset
+
+We think about your users and outcomes, not just tickets, because we run our own products too.
+
+-   User-first discovery and clear scope
+-   Outcomes and metrics, not ticket counts
+-   We ship and operate our own software
+
+02
+
+### Senior craftsmanship
+
+Clean, maintainable code and thoughtful design: software built to last, not just to demo.
+
+-   Clean architecture and readable code
+-   Design systems that scale with you
+-   Built to maintain, not just to launch
+
+03
+
+### Transparent & reliable
+
+Clear scope, regular demos and honest timelines. You always know where things stand.
+
+-   Weekly demos and honest progress updates
+-   Clear scope, milestones and timelines
+-   No surprises: you always know what's next
+
+04
+
+### Long-term partner
+
+We stay after launch, maintaining, improving and scaling your software as you grow.
+
+-   Post-launch maintenance and support
+-   Iterative improvements as you grow
+-   A team that stays with you long after go-live
+
+## See Evolvora Campus with your own school
+
+Book a free walkthrough with your own classes and fee structure. Building something else? Tell us about your project and we'll reply within one business day.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Our Products: Software We Build & Run | Evolvora
+
+> Products built by Evolvora, the software house: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.
+
+Source: https://evolvoratech.com/products/
+
+[Home](https://evolvoratech.com/)/Products
+
+Our products
+
+# Software we've built & run ourselves
+
+Evolvora isn't only a services company; we design and operate our own products. Here's what we've shipped, and what's coming next.
+
+## Products built and run by Evolvora
+
+Live
+
+### Evolvora Campus
+
+The complete school management system: admissions, attendance, marks, fee collection, teacher payroll and instant parent communication, in one place.
+
+[Explore Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)
+
+Live
+
+### SilaaiMarkaz
+
+A tailoring marketplace for Lahore: compare Darzis, save your measurements, agree the price upfront, then visit the shop when the work is ready.
+
+[Explore SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/)
+
+Coming soon
+
+### Evolvora Learn
+
+Assignments, learning resources and online classes: a learning platform that plugs straight into Evolvora Campus.
+
+Coming soon
+
+### Evolvora Insights
+
+School analytics and reporting that turn attendance, results and fee data into decisions you can act on.
+
+## Want to be first to know?
+
+Tell us what your school needs and we'll show you what's live today, and what's coming next.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Evolvora Campus | School Software Made for Pakistan
+
+> Evolvora Campus runs fees, attendance, payroll and WhatsApp and SMS parent alerts for schools in Pakistan, in one platform. See features, plans and how it works.
+
+Source: https://evolvoratech.com/products/evolvora-campus/
+
+Made in Lahore for Pakistani schools
+
+# Evolvora Campus  
+runs your whole school.
+
+It brings your office, teachers and parents together in one place so fees get collected on time, salaries calculate themselves, teachers reach class on schedule, and parents always stay in the loop.
+
+[Book a free demo](https://evolvoratech.com/contact/) See how it works
+
+**3-in-1**Admin · Teacher · Parent
+
+**Minutes**to onboard a whole class
+
+**Instant**updates to parents' phones
+
+_app.evolvoratech.com_
+
+[Image: Evolvora Campus dashboard showing student numbers, school attendance trend, fee submission status and new admissions]
+
+Everything a growing school juggles by hand (**students, staff, fees, attendance, results and messages**) is handled in one connected system. Built for Pakistan: **fee reminders on WhatsApp and SMS**, **fee payments through JazzCash and EasyPaisa**, and [pricing in rupees](https://evolvoratech.com/products/evolvora-campus/pricing/).
+
+Why schools switch
+
+## Less paperwork. Fewer phone calls.  
+More time to teach.
+
+Evolvora Campus takes the four things that eat up your week and makes them effortless.
+
+### Fee collection made easy
+
+See exactly who has paid, who is pending and what's outstanding: the whole school in one view. Send fee reminders in a tap instead of chasing parents.
+
+### Salaries that calculate themselves
+
+Basic pay, allowances and tax status are stored per teacher, so monthly salary is worked out automatically. No spreadsheets, no manual maths, no mistakes.
+
+### Teachers reach class on time
+
+Attendance is marked from the classroom in seconds, with a clear daily schedule. Teachers know exactly where they're needed: punctual classes, every day.
+
+### Parents notified instantly
+
+Marks, attendance, fee reminders and daily diary reach parents the moment they happen, on the app and their phone. Every family stays informed, automatically.
+
+A closer look
+
+## Built for the way schools actually work
+
+Real screens from Evolvora Campus, simple enough for anyone in the office to use on day one.
+
+_Fees · Fee Records_
+
+[Image: Fee Records screen listing each student's fee amount and Paid, Pending or Waived status]
+
+Fees
+
+### Know your fee position at a glance
+
+-   Live totals for **paid, pending and under-review** fees
+-   Outstanding amount for the whole school on the home screen
+-   One-tap fee reminders sent to parents on **WhatsApp and SMS**
+-   Parents pay online through **JazzCash and EasyPaisa**
+
+_Staff · Salary_
+
+[Image: Staff Directory in Evolvora Campus listing each teacher's subject, classes, experience and monthly salary]
+
+Staff & Payroll
+
+### Every teacher, subject and salary in one place
+
+-   Store **basic pay, allowances and tax status** per teacher
+-   Monthly salary is **calculated automatically**, with no spreadsheets
+-   See experience, assigned classes and active status together
+
+[Image: Teacher's view in the Evolvora Campus phone app: 28 present, 0 on leave, 0 absent, and the Take Attendance list for Nursery, Section A]
+
+[Image: Marking each student Present, Leave or Absent in the Evolvora Campus phone app, with a Save & Send to Parents button]
+
+Attendance
+
+### A whole class marked in seconds
+
+-   Tap **Present, Leave or Absent**, clearly colour-coded
+-   "Swipe present" then flag only the exceptions
+-   Live totals and a 14-day trend keep classes on schedule
+
+_Parent · Updates_
+
+[Image: Parent notification inbox sorted by category]
+
+Communication
+
+### Reach the right parents, instantly
+
+-   Send to a **class, section, group or the whole school**
+-   Sorted for parents: Daily Diary, Fees, Marks, Attendance
+-   **Read receipts** show you exactly who has seen it
+
+_Parent · Dashboard_
+
+[Image: Parent dashboard with the Switch child menu open, listing three children, and a pending September fee with an Upload voucher button]
+
+Parent portal
+
+### Parents follow every child's progress
+
+-   Attendance, marks, fees and teachers: one tidy profile
+-   Families with siblings see all their children in one login
+-   Everything up to date, anytime, from any phone
+
+_Admin · Bulk import_
+
+[Image: Bulk import students from an Excel file]
+
+Onboarding
+
+### Add a whole class in minutes
+
+-   Import students straight from a simple **Excel file**
+-   **Parent logins created automatically**, with siblings linked
+-   Download a ready-made template so the format is always right
+
+_Support · Help Centre_
+
+[Image: In-app help centre showing search, help categories and recent support requests with their status]
+
+Support
+
+### Help is one click away, inside the app
+
+-   Raise a request **without leaving Evolvora Campus**
+-   Track every ticket from **open to resolved**
+-   Searchable help articles for the questions staff ask most
+-   Email, phone and live chat when you need a person
+
+One platform, three views
+
+## Everyone gets exactly what they need
+
+The same up-to-date information, tailored to each person, with no training required.
+
+### Admin
+
+The school office
+
+-   Set up classes, sections & staff
+-   Add students one-by-one or in bulk
+-   Track fees & salaries
+-   Message anyone in the school
+
+### Teacher
+
+In the classroom
+
+-   Take attendance in seconds
+-   Enter marks with auto percentages
+-   See students & class performance
+-   Send notes to parents
+
+### Parent
+
+At home
+
+-   Follow each child's progress
+-   See attendance, marks & fees
+-   Know who teaches their child
+-   Get instant school updates
+
+How it works
+
+## Set up once, and everything flows from there
+
+Enter information a single time and it reaches everyone who needs it, automatically.
+
+1
+
+### Admin sets up the school
+
+Add classes, sections, staff and students once. Parent accounts are created for you.
+
+→
+
+2
+
+### Teachers record daily
+
+Attendance and marks are entered from the classroom in a few taps.
+
+→
+
+3
+
+### Parents stay informed
+
+Progress, fees and announcements appear instantly on the parent's phone.
+
+By use case
+
+## Evolvora Campus for every part of your school
+
+Pick the job you need done first. It is all one system, at one [price per student](https://evolvoratech.com/products/evolvora-campus/pricing/).
+
+[School Management System](https://evolvoratech.com/school-management-system/) [Multi-Campus School Management](https://evolvoratech.com/campus-management-system/) [School ERP Software](https://evolvoratech.com/school-erp/) [Student Attendance Software](https://evolvoratech.com/student-attendance-software/) [Fee Management Software](https://evolvoratech.com/school-fee-management-software/)
+
+## Ready to make your school run itself?
+
+Let us show you Evolvora Campus with your own classes and fee structure. A quick, no-pressure walkthrough, and you'll see the time it saves from day one.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com)
+
+---
+
+# SilaaiMarkaz: Tailoring Marketplace in Lahore | Evolvora
+
+> SilaaiMarkaz, by Evolvora, is a tailoring marketplace in Lahore. Compare Darzis, save your measurements, agree the price upfront, then visit the shop.
+
+Source: https://evolvoratech.com/products/silaaimarkaz/
+
+[Home](https://evolvoratech.com/)/[Products](https://evolvoratech.com/products/)/SilaaiMarkaz
+
+Our product · Live in Lahore
+
+# SilaaiMarkaz  
+Lahore's tailoring marketplace
+
+**SilaaiMarkaz** helps you find the right tailor in Lahore. Compare shops, save your measurements, share the design and agree the price, then visit the shop when the work is ready.
+
+[Find a Darzi](https://app.silaaimarkaz.com/auth/login)[Download for Android](https://silaaimarkaz.com/downloads/silaaimarkaz.apk)
+
+_silaaimarkaz.com_
+
+[Image: How SilaaiMarkaz works: price agreed before work starts, measurements stay with you, you visit the shop, Darzis are rated and accountable]
+
+## What is SilaaiMarkaz?
+
+**SilaaiMarkaz** (also written Silaai Markaz or Silai Markaz) is a tailoring marketplace: a place where people who want clothes stitched meet the tailors, or Darzis, who stitch them. If you are looking for a tailor in Lahore, for ladies suits, bridal wear, men's shalwar kameez or simple alterations, it lets you compare shops before you visit one. It fixes the parts of getting clothes made that usually go wrong, like the price changing at the shop, measurements taken again every time, and designs lost in a chat thread.
+
+SilaaiMarkaz is built and run by [Evolvora Technologies](https://evolvoratech.com/about/), the Lahore software house behind [Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/). It works on Android and on the web at [silaaimarkaz.com](https://silaaimarkaz.com/), in English and Urdu.
+
+How it works
+
+## From choosing a Darzi to collecting your clothes
+
+1
+
+### Pick a Darzi
+
+Portfolios, prices and turnaround, side by side.
+
+→
+
+2
+
+### Send measurements
+
+Save a profile once; every later order takes ten seconds.
+
+→
+
+3
+
+### Share the design
+
+Reference photos and notes go straight to the Darzi.
+
+→
+
+4
+
+### Visit the shop
+
+When it's ready you go to the shop, and pay there if you choose.
+
+Categories
+
+## What you can get stitched
+
+From everyday wear to bridal, uniforms and alterations.
+
+[Image: Ladies formal stitched by a Darzi on SilaaiMarkaz]
+
+Ladies formal
+
+[Image: Bridal & heavy work stitched by a Darzi on SilaaiMarkaz]
+
+Bridal & heavy work
+
+[Image: Men's shalwar kameez stitched by a Darzi on SilaaiMarkaz]
+
+Men's shalwar kameez
+
+[Image: Men's suits & coats stitched by a Darzi on SilaaiMarkaz]
+
+Men's suits & coats
+
+[Image: Kids wear stitched by a Darzi on SilaaiMarkaz]
+
+Kids wear
+
+[Image: School & work uniforms stitched by a Darzi on SilaaiMarkaz]
+
+School & work uniforms
+
+[Image: Abaya & hijab stitched by a Darzi on SilaaiMarkaz]
+
+Abaya & hijab
+
+[Image: Alterations & fitting stitched by a Darzi on SilaaiMarkaz]
+
+Alterations & fitting
+
+[Image: Curtains & home decor stitched by a Darzi on SilaaiMarkaz]
+
+Curtains & home decor
+
+[Image: Ladies everyday stitched by a Darzi on SilaaiMarkaz]
+
+Ladies everyday
+
+Why SilaaiMarkaz
+
+## The part that usually goes wrong, fixed
+
+### Ratings before you choose
+
+See ratings and reviews of each Darzi before you place an order.
+
+### Price agreed upfront
+
+The price is agreed before work starts. No surprise charges at the shop.
+
+### Measurements stay with you
+
+Saved measurement profiles work with any Darzi on the platform.
+
+### You visit the shop
+
+Drop-off, fittings and collection happen at the Darzi's own shop in Lahore.
+
+## For Darzis: grow your tailoring shop
+
+Put your work in front of customers who are already looking, take orders with measurements attached, and get paid without chasing anyone.
+
+-   **Get found:** your portfolio, prices and turnaround are shown to customers searching in Lahore.
+-   **Clear orders:** measurements, reference photos and notes arrive with every order.
+-   **Price settled first:** the price is agreed before you start, so there is no haggling at the counter.
+
+[Register your shop](https://app.silaaimarkaz.com/auth/darzi/signup)
+
+FAQ
+
+## SilaaiMarkaz: common questions
+
+SilaaiMarkaz (also written Silaai Markaz or Silai Markaz) is a tailoring marketplace built by Evolvora Technologies. You compare tailors (Darzis) in Lahore, save your measurements, share your design and agree the price in the app, then visit the shop when the work is ready.
+
+SilaaiMarkaz is opening with tailors (Darzis) in Lahore. Shops appear in the app as they are listed.
+
+No. You visit the Darzi's shop yourself for fabric drop-off, fittings and collection. SilaaiMarkaz handles finding the right Darzi, the measurements, the design details and the agreed price.
+
+Each Darzi sets their own rates. The price is agreed in the app before work starts, so there is no surprise number at the shop, and you can choose to pay at the shop.
+
+Yes. There is an Android app you can download from silaaimarkaz.com, and you can also find a Darzi on the website and continue on your phone. The app is available in English and Urdu.
+
+Register your shop on the SilaaiMarkaz Darzi sign-up page at app.silaaimarkaz.com. Your work is shown to customers who are already looking, and orders arrive with measurements attached.
+
+## Need a Darzi in Lahore?
+
+Order from the app, or find a Darzi on silaaimarkaz.com and continue on your phone.
+
+[Visit silaaimarkaz.com](https://silaaimarkaz.com/) [Download for Android](https://silaaimarkaz.com/downloads/silaaimarkaz.apk)
+
+---
+
+# Evolvora Campus Pricing: Plans from Rs 50 per Student
+
+> Evolvora Campus pricing in rupees or dollars: Standard at Rs 50 per student per month with a free first month, and Enterprise for multi-campus school networks.
+
+Source: https://evolvoratech.com/products/evolvora-campus/pricing/
+
+[Home](https://evolvoratech.com/)/[Products](https://evolvoratech.com/products/)/[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)/Pricing
+
+Pricing
+
+# Simple pricing for every school
+
+Two plans, both charged per active student per month, with unlimited teacher and parent accounts. Start with a free month on Standard, or talk to us about Enterprise for a network of campuses.
+
+[Start your free month](https://evolvoratech.com/contact/)[Book a demo](https://evolvoratech.com/contact/)
+
+1 month free
+
+### Standard
+
+Every feature, for schools of any size.
+
+Rs 50/student / mo
+
+Billed monthly · no setup fee · no minimum
+
+-   Students, classes & sections
+-   Attendance & marks
+-   Fee tracking, with reminders on WhatsApp & SMS
+-   Fee payments through JazzCash & EasyPaisa
+-   Parent app & notifications
+-   Teacher payroll & salary calculation
+-   Bulk import & auto parent accounts
+-   Groups, read receipts & web push
+-   Multi-campus support
+-   Unlimited teacher & parent accounts
+-   Onboarding, data import & support
+
+[Start your free month](https://evolvoratech.com/contact/)
+
+### Enterprise
+
+For school networks with several campuses.
+
+Rs 75/student / mo
+
+Minimum Rs 49,900 a month · 10% off billed yearly
+
+-   **Everything in Standard**
+-   Head-office view across every campus
+-   A dedicated account manager
+-   On-site staff training at every campus
+-   Priority support on WhatsApp & phone
+-   99.5% uptime commitment, in writing
+-   Data migration for each campus: Rs 49,900 one-time per campus, waived on yearly billing
+
+[Talk to us about Enterprise](https://evolvoratech.com/contact/)
+
+Only active students are billed. No per-parent charge, no long-term contract. Prices are set in US dollars; rupee prices are converted at USD 1 = PKR 277.11 (28 September 2026).
+
+Questions
+
+## Pricing FAQ
+
+There are two plans, both charged per active student per month. Standard is Rs 50 (USD 0.18) with every feature included. Enterprise is Rs 75 (USD 0.27) for school networks with several campuses, and adds a dedicated account manager, on-site training and priority support. You only pay for students who are actually active in the system.
+
+Most single schools choose Standard: it has every feature, including multi-campus support, with no setup fee and no minimum. Enterprise suits school networks that want a named account manager, training at every campus, priority support on WhatsApp and phone, and a written 99.5% uptime commitment. It has a monthly minimum of Rs 49,900 (USD 180).
+
+Yes. Every school on the Standard plan starts with a full month free, with all features unlocked. You're not charged anything until the trial ends, and there's no card required to begin.
+
+Prices are set in US dollars and converted to rupees at USD 1 = PKR 277.11 (28 September 2026), so you can compare them easily. Use the switch at the top of the page to change currency.
+
+No. Both plans are billed monthly and you can adjust as your school grows. Enterprise schools can choose yearly billing for 10% off, but it is never required.
+
+Yes. On Standard, our team helps you import students, classes and staff, including bulk import from an Excel file. On Enterprise, onboarding covers data migration and on-site training for each campus, for a one-time Rs 49,900 (USD 180) per campus, waived on yearly billing.
+
+Yes. Teacher and parent access is included in both plans at no extra per-user cost. You're billed at the school level, not per parent.
+
+## Standard or Enterprise? We'll help you choose
+
+Tell us how many students and campuses you have, and we'll recommend a plan and send a clear quote.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Contact Evolvora Technologies: Book a Demo
+
+> Get in touch with Evolvora Technologies to book a free demo of Evolvora Campus, ask about pricing, or discuss moving your school onto one connected platform.
+
+Source: https://evolvoratech.com/contact/
+
+[Home](https://evolvoratech.com/)/Contact
+
+Contact
+
+# Let's get your school set up
+
+Book a free demo, ask about pricing, or tell us what you need. Call us on [+92 314 0163628](tel:+923140163628) or use the form, and we usually reply within one business day. Building something other than a school system? Tell us about your project here too.
+
+## Talk to us
+
+**Email**[contact@evolvoratech.com](mailto:contact@evolvoratech.com)
+
+**Phone**[+92 314 0163628](tel:+923140163628)
+
+**Office**Evolvora Technologies, 599-Q, Johar Town, Lahore 54000, Pakistan
+
+**Already a customer?**[Log in to Evolvora Campus](https://schoolsync.pages.dev/login)
+
+**Book a demo**See Evolvora Campus with your own classes & fees.
+
+**Response time**Usually within one business day.
+
+---
+
+# Software Development Services | Evolvora Software House
+
+> Evolvora's software services: custom software, web & mobile apps, SaaS product engineering, UI/UX design and cloud & DevOps, from idea to launch and beyond.
+
+Source: https://evolvoratech.com/services/
+
+[Home](https://evolvoratech.com/)/Services
+
+Services
+
+# Everything you need to build great software
+
+Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations.
+
+## Our software development services
+
+### Custom Software Development
+
+Bespoke systems designed around your exact workflow and business logic.
+
+-   Internal tools & admin systems
+-   Customer-facing platforms
+-   API & integration work
+
+### Web Application Development
+
+Modern, responsive web apps that are fast, secure and easy to maintain.
+
+-   Dashboards & portals
+-   Progressive web apps
+-   Clean, scalable architecture
+
+### Mobile App Development
+
+Cross-platform apps for iOS & Android from a single, efficient codebase.
+
+-   Native-feeling UX
+-   Push notifications & offline
+-   App store deployment
+
+### SaaS Product Engineering
+
+Subscription-ready, multi-tenant products designed to scale from day one.
+
+-   Multi-tenant architecture
+-   Billing & user management
+-   Built to grow with you
+
+### UI/UX Design
+
+Interfaces that are beautiful, intuitive and grounded in real user needs.
+
+-   Research & wireframes
+-   Interactive prototypes
+-   Design systems
+
+### Cloud & DevOps
+
+Reliable deployment and infrastructure that keeps your software online.
+
+-   CI/CD pipelines
+-   Monitoring & alerts
+-   Cloud hosting & scaling
+
+How we work
+
+## A clear path from idea to launch
+
+Transparent, iterative and collaborative. You're involved at every step.
+
+1
+
+### Discover
+
+We learn your goals, users and constraints, then scope the right solution.
+
+→
+
+2
+
+### Design
+
+Wireframes and UI so you shape the product before we build it.
+
+→
+
+3
+
+### Build
+
+Engineering in short, visible iterations with working demos.
+
+→
+
+4
+
+### Launch & support
+
+We deploy, monitor and keep improving after go-live.
+
+Our toolkit
+
+## A modern, proven stack
+
+[Image: Angular logo]Angular
+
+[Image: .NET logo].NET
+
+[Image: Node.js logo]Node.js
+
+[Image: TypeScript logo]TypeScript
+
+[Image: PostgreSQL logo]PostgreSQL
+
+[Image: Supabase logo]Supabase
+
+[Image: Docker logo]Docker
+
+[Image: Cloudflare logo]Cloudflare
+
+[Image: Figma logo]Figma
+
+## Let's build something great
+
+Tell us about your project and we'll get back within one business day with next steps.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# About Evolvora: A Software House Built on Craft
+
+> Evolvora is a software house that designs, builds and runs modern web, mobile and cloud software. Learn our mission, values and products like Evolvora Campus.
+
+Source: https://evolvoratech.com/about/
+
+[Home](https://evolvoratech.com/)/About
+
+About us
+
+# We're Evolvora - a software house on a mission
+
+Evolvora Technologies is the company behind Evolvora. We design, build and ship **web, mobile and cloud software** for businesses that want a partner who genuinely cares about the outcome - not just the deliverable.
+
+[Get in touch](https://evolvoratech.com/contact/)
+
+What sets us apart is that we build and run our own products too. Our flagship, **Evolvora Campus**, is a full school management system used to run real schools, so we know first-hand what it takes to design, launch and support software that people depend on every single day. Our second product, **[SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/)**, is a tailoring marketplace that connects customers in Lahore with local Darzis.
+
+That product mindset shapes everything we do for clients: clean architecture, thoughtful design, honest timelines, and a commitment to stick around long after launch.
+
+Evolvora Technologies was founded by **Sheharyar Khan** and works from 599-Q, Johar Town, Lahore 54000, Pakistan. You can reach us on [+92 314 0163628](tel:+923140163628) or at [contact@evolvoratech.com](mailto:contact@evolvoratech.com).
+
+What we value
+
+## The principles behind our work
+
+### Craft over shortcuts
+
+We write clean, maintainable code and design with care. Quality that lasts beyond the demo.
+
+### Transparency
+
+Clear scope, regular demos and honest communication. No surprises, no jargon.
+
+### Partnership
+
+We're in it for the long run, supporting and growing your software as your needs evolve.
+
+Our products
+
+## Software we've built ourselves
+
+The clearest proof of how we work is what we ship under our own name.
+
+Live
+
+### Evolvora Campus
+
+All-in-one school management system for fees, attendance, payroll and parent communication.
+
+[Explore](https://evolvoratech.com/products/evolvora-campus/)
+
+Live
+
+### SilaaiMarkaz
+
+A tailoring marketplace in Lahore that connects customers with rated local Darzis.
+
+[Explore](https://evolvoratech.com/products/silaaimarkaz/)
+
+Coming soon
+
+### Evolvora Learn
+
+A learning platform for assignments, resources and online classes.
+
+Coming soon
+
+### Evolvora Insights
+
+Analytics that turn everyday data into clear decisions.
+
+## Want to work with us?
+
+Whether it's a new product or an existing one to grow, we'd love to hear what you're building.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# School Management System in Pakistan | Evolvora Campus
+
+> A complete school management system for Pakistani schools: attendance, marks, fee collection, teacher payroll and parent alerts on WhatsApp and SMS, in one platform.
+
+Source: https://evolvoratech.com/school-management-system/
+
+[Home](https://evolvoratech.com/)/[Solutions](https://evolvoratech.com/products/)/School Management System
+
+School Management System
+
+# A school management system that does it all
+
+Evolvora Campus is a modern **school management system** that brings admissions, attendance, marks, fee collection, teacher payroll and parent communication into one simple platform so your whole school runs from a single screen.
+
+[Book a free demo](https://evolvoratech.com/contact/)[Explore the platform](https://evolvoratech.com/products/evolvora-campus/)
+
+_Evolvora Campus_
+
+[Image: School management system dashboard in Evolvora Campus]
+
+## What is a school management system?
+
+A **school management system** is software that replaces the scattered registers, spreadsheets and message groups a school uses day to day. Instead of tracking attendance in one place, fees in another and results somewhere else, everything lives in one connected system that admins, teachers and parents can all access.
+
+Evolvora Campus was built for real schools. Set it up once (your classes, sections, staff and students) and information flows automatically. Teachers record attendance and marks from the classroom, the office tracks fees and salaries, and parents are notified instantly on their phones.
+
+Capabilities
+
+## Everything a school management system should cover
+
+### Student & class records
+
+Every student, class and section in one searchable place. Add them individually or import a whole class from Excel.
+
+### Attendance tracking
+
+Mark a full class present, late or absent in seconds, with live totals and trends.
+
+### Fee management
+
+See paid, pending and outstanding fees at a glance and send reminders in a tap.
+
+### Staff & payroll
+
+Store pay, allowances and tax status per teacher, and salaries calculate automatically.
+
+## Why schools move from registers and spreadsheets to Evolvora Campus
+
+-   **All-in-one:** attendance, marks, fees, payroll and messaging in a single system, with no more disconnected tools.
+-   **Made for everyone:** tailored views for admins, teachers and parents, with no training required.
+-   **Mobile-ready:** parents get instant updates on their phones; teachers work from the classroom.
+-   **Fast to launch:** bulk-import students and auto-create parent logins in minutes.
+
+## Built for schools in Pakistan
+
+-   **WhatsApp and SMS alerts:** fee reminders, attendance and announcements reach parents on the apps they already use.
+-   **JazzCash and EasyPaisa:** parents can pay school fees online from their phones.
+-   **Priced in rupees:** Rs 50 per active student per month, with a free first month. [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **Support from Lahore:** call [+92 314 0163628](tel:+923140163628) or email [contact@evolvoratech.com](mailto:contact@evolvoratech.com), in English or Urdu.
+
+[Book a demo](https://evolvoratech.com/contact/) [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/)
+
+FAQ
+
+## School Management System: common questions
+
+It centralises the daily running of a school (student records, attendance, marks, fee collection, staff and payroll, and parent communication) into one platform so information is entered once and shared automatically with everyone who needs it.
+
+Yes. Evolvora Campus scales from small schools to large multi-section campuses. You only pay for the active students you have, and teacher and parent access is always included.
+
+Yes. Parents get their own app view showing their child's attendance, marks, fees and teachers, plus instant notifications, all created automatically when you add students.
+
+Most schools are up and running quickly. You can bulk-import students and staff from an Excel file, and parent accounts are generated for you.
+
+Related
+
+## Explore related solutions
+
+[### Student Attendance Software
+
+Learn more](https://evolvoratech.com/student-attendance-software/)[### Fee Management Software
+
+Learn more](https://evolvoratech.com/school-fee-management-software/)[### School ERP
+
+Learn more](https://evolvoratech.com/school-erp/)
+
+## See Evolvora Campus, your school management system
+
+Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Multi-Campus School Management Software | Evolvora Campus
+
+> Run every branch of your school from one account. Each campus keeps its own classes, staff and fees, and head office sees all of them in one place.
+
+Source: https://evolvoratech.com/campus-management-system/
+
+[Home](https://evolvoratech.com/)/[Solutions](https://evolvoratech.com/products/)/Multi-Campus School Management
+
+Multi-Campus School Management
+
+# Multi-campus school management  
+for schools with more than one branch
+
+Evolvora Campus is **multi-campus school management software** for school networks with several campuses or branches. Every campus keeps its own classes, staff and fee records, while head office sees the whole network in one live picture.
+
+[Book a free demo](https://evolvoratech.com/contact/)[Explore the platform](https://evolvoratech.com/products/evolvora-campus/)
+
+_Evolvora Campus_
+
+[Image: Multi-campus school management dashboard in Evolvora Campus]
+
+## What is multi-campus school management software?
+
+**Multi-campus school management software** runs a group of schools from one system: enrolment, classes and sections, attendance, fees, staff and payroll, and parent communication for every branch. What separates it from a single-school system is control: each campus runs day to day on its own, while head office can see the totals and compare branches.
+
+Evolvora Campus is structured for exactly that. Each campus keeps its own sections, staff directory and fee ledger, so a teacher only sees their own classes and a branch head only sees their branch, while head office gets one consolidated view across every campus. Networks that want a dedicated account manager and training at every campus can choose the [Enterprise plan](https://evolvoratech.com/products/evolvora-campus/pricing/).
+
+Evolvora Campus is built for schools, not universities. For a single-site school, our [school management system](https://evolvoratech.com/school-management-system/) page is the better starting point.
+
+Capabilities
+
+## What school networks get with Evolvora Campus
+
+### Every branch, one system
+
+Each campus keeps its own classes, sections, staff and fees, all inside one account.
+
+### Access by role
+
+Teachers see their own classes, branch heads their own campus, and head office sees them all.
+
+### Network-wide messaging
+
+Reach a class, a campus or every parent in the network in one message, with read receipts.
+
+### Head-office view
+
+Attendance, fee collection and outstanding dues for every campus, side by side on one dashboard.
+
+## Why school networks pick Evolvora Campus
+
+-   **Built for branches:** each campus runs on its own, and head office sees every one.
+-   **One source of truth:** admins, teachers and parents across the network share the same live data.
+-   **Instant communication:** announcements and alerts reach the right campus immediately.
+-   **Simple to run:** a clean, modern interface that staff at every branch pick up on day one.
+
+## Built for schools in Pakistan
+
+-   **An Enterprise plan for networks:** Rs 75 per active student per month, with a dedicated account manager and on-site training at every campus. [Compare plans](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **WhatsApp and SMS alerts:** fee reminders, attendance and announcements reach parents on the apps they already use.
+-   **JazzCash and EasyPaisa:** parents can pay school fees online from their phones.
+-   **Priced in rupees:** Rs 50 per active student per month, with a free first month. [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **Support from Lahore:** call [+92 314 0163628](tel:+923140163628) or email [contact@evolvoratech.com](mailto:contact@evolvoratech.com), in English or Urdu.
+
+[Book a demo](https://evolvoratech.com/contact/) [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/)
+
+FAQ
+
+## Multi-Campus School Management: common questions
+
+Single-school software runs one site. Multi-campus software adds a layer above it: each branch keeps its own classes, staff and fees, and head office sees every branch together and can compare them. Evolvora Campus does both, so a school can start with one campus and add branches later.
+
+Yes. Access is role-based: teachers see their own classes, branch heads see their own campus, and head office sees every campus in one view.
+
+Yes. The Standard plan (Rs 50 per active student per month) already includes multi-campus support. The Enterprise plan (Rs 75 per active student per month) adds a dedicated account manager, on-site training at every campus, priority support on WhatsApp and phone, and a written 99.5% uptime commitment.
+
+Yes. Marks, attendance, fee reminders and announcements reach parents instantly in the app and on WhatsApp and SMS, with read tracking so you know who has seen each message.
+
+No. The interface is intentionally simple, and we help with onboarding and data import so every campus is productive right away. Enterprise networks also get on-site training at each campus.
+
+Related
+
+## Explore related solutions
+
+[### School Management System
+
+Learn more](https://evolvoratech.com/school-management-system/)[### School ERP
+
+Learn more](https://evolvoratech.com/school-erp/)[### Student Attendance Software
+
+Learn more](https://evolvoratech.com/student-attendance-software/)
+
+## See Evolvora Campus run every branch
+
+Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# School ERP Software for Finance, HR & Payroll | Evolvora
+
+> School ERP software for the back office: staff records, automatic teacher payroll, a full fee ledger and finance reporting on one set of student data.
+
+Source: https://evolvoratech.com/school-erp/
+
+[Home](https://evolvoratech.com/)/[Solutions](https://evolvoratech.com/products/)/School ERP
+
+School ERP
+
+# School ERP software  
+for finance, HR and payroll
+
+Evolvora Campus is modern **school ERP software** for the back office: staff records, automatic teacher payroll, a full fee ledger and finance reporting, all sharing one set of student data instead of living in separate spreadsheets.
+
+[Book a free demo](https://evolvoratech.com/contact/)[Explore the platform](https://evolvoratech.com/products/evolvora-campus/)
+
+_Evolvora Campus_
+
+[Image: School ERP staff and payroll module in Evolvora Campus]
+
+## What is school ERP software?
+
+**School ERP** (Enterprise Resource Planning) software is the administrative and financial backbone of a school: staff and HR records, payroll, fee collection and the finance ledger, all reading from the same student information. The distinction from day-to-day academic tools is where the weight sits. An ERP is judged on whether the money and the staff records are right.
+
+Traditional school ERPs are powerful but painful to use. Evolvora Campus delivers the same connected control (including automatic teacher salary calculation and a full fee ledger) in a clean, modern interface your staff will actually enjoy using.
+
+_Evolvora Campus · Expenses_
+
+[Image: School expense tracker in Evolvora Campus showing this month's total of Rs. 984,000, an expense trend chart and expenses by category, with salaries the largest at 81%]
+
+The daily expense tracker: every school expense by category (salaries, bills, repairs, furniture, stationery), with monthly totals, a trend chart and recurring expenses.
+
+Capabilities
+
+## The back-office modules you get
+
+### Student information
+
+A complete, searchable record for every student, class and section.
+
+### HR & payroll
+
+Staff records with basic pay, allowances and tax status, and salaries are calculated automatically.
+
+### Finance & fees
+
+Track dues, collect fees and see your whole-school fee position in real time.
+
+### One secure system
+
+Role-based access for admins, teachers and parents. Everyone sees exactly what they should.
+
+## Why schools replace a legacy ERP with Evolvora Campus
+
+-   **Truly integrated:** academics, HR, finance and communication share one database.
+-   **Modern & usable:** none of the clutter of legacy ERP software.
+-   **Automated payroll:** teacher salaries computed from stored pay and tax settings.
+-   **Expense tracking:** record daily school expenses by category and payment method, and see monthly totals and trends at a glance.
+-   **Grows with you:** from a single school to multiple campuses.
+
+## Built for schools in Pakistan
+
+-   **WhatsApp and SMS alerts:** fee reminders, attendance and announcements reach parents on the apps they already use.
+-   **JazzCash and EasyPaisa:** parents can pay school fees online from their phones.
+-   **Priced in rupees:** Rs 50 per active student per month, with a free first month. [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **Support from Lahore:** call [+92 314 0163628](tel:+923140163628) or email [contact@evolvoratech.com](mailto:contact@evolvoratech.com), in English or Urdu.
+
+[Book a demo](https://evolvoratech.com/contact/) [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/)
+
+FAQ
+
+## School ERP: common questions
+
+A school ERP is software that integrates the core functions of running a school (student records, staff and payroll, attendance, fees and finance, and communication) into one connected system, replacing disconnected spreadsheets and tools.
+
+Yes. You store each teacher's basic pay, allowances and tax status, and monthly salary is calculated automatically, with no separate payroll spreadsheet needed.
+
+Yes. Evolvora Campus is designed around a clean, modern interface so staff can use it without lengthy training, while still giving you the connected control of an ERP.
+
+Yes. Evolvora Campus tracks fee dues and collections and shows your whole-school fee position (paid, pending and under review) in real time.
+
+Related
+
+## Explore related solutions
+
+[### School Management System
+
+Learn more](https://evolvoratech.com/school-management-system/)[### Fee Management Software
+
+Learn more](https://evolvoratech.com/school-fee-management-software/)[### Multi-Campus School Management
+
+Learn more](https://evolvoratech.com/campus-management-system/)
+
+## See Evolvora Campus, your school ERP
+
+Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Student Attendance Software | Evolvora Campus
+
+> Evolvora Campus is student attendance software that lets teachers mark a full class in seconds, with live totals, trends and instant parent alerts.
+
+Source: https://evolvoratech.com/student-attendance-software/
+
+[Home](https://evolvoratech.com/)/[Solutions](https://evolvoratech.com/products/)/Student Attendance Software
+
+Student Attendance Software
+
+# Student attendance software  
+that takes seconds a day
+
+Evolvora Campus includes fast, reliable **student attendance software** that lets teachers mark a whole class in seconds, keeps accurate daily records, and notifies parents automatically when it matters.
+
+[Book a free demo](https://evolvoratech.com/contact/)[Explore the platform](https://evolvoratech.com/products/evolvora-campus/)
+
+[Image: Teacher's view in the Evolvora Campus phone app: 28 present, 0 on leave, 0 absent, and the Take Attendance list for Nursery, Section A]
+
+[Image: Marking each student Present, Leave or Absent in the Evolvora Campus phone app, with a Save & Send to Parents button]
+
+## What is student attendance software?
+
+**Student attendance software** replaces paper registers with a digital system for recording who is present, late or absent each day. Good attendance software is quick for teachers, accurate for the office, and transparent for parents.
+
+In Evolvora Campus, a teacher opens their class, taps **Present, Late or Absent** for each student (or marks everyone present and flags the exceptions), and totals update live. Attendance feeds straight into dashboards and the parent app, so families and administrators always have the real picture.
+
+Capabilities
+
+## What marking attendance looks like day to day
+
+### Mark in seconds
+
+Tap through a class fast, or "swipe present" and flag only the exceptions.
+
+### Trends & reports
+
+Daily totals and a 14-day trend show attendance patterns at a glance.
+
+### Instant parent alerts
+
+Parents can be told about their child's attendance automatically, in the app and on WhatsApp and SMS.
+
+### Per-student history
+
+Every child has a clear attendance record parents can view anytime.
+
+## Why teachers keep using it after the first week
+
+-   **Genuinely fast:** a full class marked in under a minute.
+-   **Accurate records:** no lost registers, no double entry.
+-   **Parents in the loop:** attendance shows up in the parent app instantly.
+-   **Part of the whole:** attendance connects to dashboards, marks and reports.
+
+## Built for schools in Pakistan
+
+-   **Absence alerts on WhatsApp and SMS:** when a child is marked absent or late, parents can hear about it on the phone they already carry.
+-   **WhatsApp and SMS alerts:** fee reminders, attendance and announcements reach parents on the apps they already use.
+-   **JazzCash and EasyPaisa:** parents can pay school fees online from their phones.
+-   **Priced in rupees:** Rs 50 per active student per month, with a free first month. [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **Support from Lahore:** call [+92 314 0163628](tel:+923140163628) or email [contact@evolvoratech.com](mailto:contact@evolvoratech.com), in English or Urdu.
+
+[Book a demo](https://evolvoratech.com/contact/) [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/)
+
+FAQ
+
+## Student Attendance Software: common questions
+
+Teachers open their class and tap Present, Late or Absent for each student. They can also mark everyone present at once and only change the exceptions. Totals update live as they go.
+
+Yes. Each child's attendance record is visible in the parent app, and parents can be notified automatically about attendance updates.
+
+Yes. Evolvora Campus shows daily present/late/absent totals and a 14-day trend, so schools can spot patterns early.
+
+Yes. Attendance is one module of Evolvora Campus, which also covers marks, fees, payroll and parent communication, all connected.
+
+Related
+
+## Explore related solutions
+
+[### School Management System
+
+Learn more](https://evolvoratech.com/school-management-system/)[### Multi-Campus School Management
+
+Learn more](https://evolvoratech.com/campus-management-system/)[### Fee Management Software
+
+Learn more](https://evolvoratech.com/school-fee-management-software/)
+
+## See Evolvora Campus, your student attendance software
+
+Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# School Fee Management Software | Evolvora Campus
+
+> Evolvora Campus is school fee management software to track dues, see paid, pending and outstanding fees at a glance, and send parent reminders in a tap.
+
+Source: https://evolvoratech.com/school-fee-management-software/
+
+[Home](https://evolvoratech.com/)/[Solutions](https://evolvoratech.com/products/)/School Fee Management Software
+
+School Fee Management Software
+
+# School fee management software  
+that ends the chasing
+
+Evolvora Campus is powerful **school fee management software** that shows exactly who has paid, who is pending and what's outstanding, and lets you send fee reminders to parents in a single tap.
+
+[Book a free demo](https://evolvoratech.com/contact/)[Explore the platform](https://evolvoratech.com/products/evolvora-campus/)
+
+_Evolvora Campus_
+
+[Image: Fee Records screen in Evolvora Campus listing each student's class, fee cycle, amount and Paid, Pending or Waived status]
+
+## What is school fee management software?
+
+**School fee management software** handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents, without stacks of spreadsheets or manual follow-up calls.
+
+Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful.
+
+_Evolvora Campus · Parent_
+
+[Image: Parent dashboard in Evolvora Campus showing the September fee as Pending with an Upload voucher button]
+
+What the parent sees: the month's fee, its due date and status, and a button to upload the paid bank voucher.
+
+_Evolvora Campus · Settings_
+
+[Image: Automatic fee reminder settings in Evolvora Campus: delivery by in-app notification or email, daily, weekly or monthly, at a set time in Pakistan time (Asia/Karachi)]
+
+Fee reminders run on their own: choose the channel, how often, and the time (Pakistan time), and parents with pending fees are reminded automatically.
+
+Capabilities
+
+## How fee collection works in Evolvora Campus
+
+### See every fee at a glance
+
+Paid, pending and under-review totals plus outstanding amount on the home dashboard.
+
+### One-tap reminders
+
+Send fee reminders straight to parents instead of chasing them by phone.
+
+### Per-student fee records
+
+Parents view their child's fee status anytime in their own app.
+
+### Clear reporting
+
+Understand your collection position across the whole school in real time.
+
+## Why schools stop chasing fee payments by hand
+
+-   **No more chasing:** reminders go out in a tap, not a phone call.
+-   **Total clarity:** whole-school fee status visible instantly.
+-   **Transparent for parents:** families see exactly what's due and paid.
+-   **Connected:** fees live alongside attendance, marks and payroll.
+
+## Built for schools in Pakistan
+
+-   **Fewer trips to the office:** parents pay through JazzCash or EasyPaisa, and unpaid fees trigger reminders on WhatsApp and SMS.
+-   **WhatsApp and SMS alerts:** fee reminders, attendance and announcements reach parents on the apps they already use.
+-   **JazzCash and EasyPaisa:** parents can pay school fees online from their phones.
+-   **Priced in rupees:** Rs 50 per active student per month, with a free first month. [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/).
+-   **Support from Lahore:** call [+92 314 0163628](tel:+923140163628) or email [contact@evolvoratech.com](mailto:contact@evolvoratech.com), in English or Urdu.
+
+[Book a demo](https://evolvoratech.com/contact/) [See pricing](https://evolvoratech.com/products/evolvora-campus/pricing/)
+
+FAQ
+
+## School Fee Management Software: common questions
+
+The office sees a live view of fees across the school (paid, pending and under review), plus the total outstanding amount. Parents see their child's fee status in their app, and reminders can be sent in a tap.
+
+Yes. Fee reminders go out through the app and on WhatsApp and SMS, so they reach parents on their phones instantly.
+
+Yes. Parents can pay school fees online through JazzCash and EasyPaisa, straight from their phones.
+
+Yes. Each parent sees their child's fee records in the parent portal, so it's always clear what has been paid and what's due.
+
+It's built into Evolvora Campus alongside attendance, marks, payroll and communication, so your fee data connects to the rest of the school.
+
+Related
+
+## Explore related solutions
+
+[### School Management System
+
+Learn more](https://evolvoratech.com/school-management-system/)[### School ERP
+
+Learn more](https://evolvoratech.com/school-erp/)[### Student Attendance Software
+
+Learn more](https://evolvoratech.com/student-attendance-software/)
+
+## See Evolvora Campus, your school fee management software
+
+Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)

@@ -84,15 +84,20 @@ python -m http.server 8080
 
 ## ✏️ Editing content
 
-The HTML is generated from **`build-site.js`** (plain Node, no dependencies) so the shared nav/footer stay consistent across all pages.
+The HTML is generated from **`build-site.js`** so the shared nav/footer stay consistent across all pages. Run `npm install` once first.
 
 ```bash
-node build-site.js        # regenerates all HTML + sitemap + robots + netlify.toml
+node optimize-images.js   # after adding or replacing a photo: makes its AVIF + smaller copies
+node build-site.js        # regenerates all HTML + sitemap + robots + netlify.toml + Markdown copies
 ```
 
 Edit page copy/structure in `build-site.js`, or tweak styling in `assets/css/styles.css`. You *can* also edit the generated `.html` files directly, but a change to the nav/footer would then need repeating on every page. The generator avoids that.
 
-`brand-assets.js` regenerates the logo/social images (needs `npm i sharp`).
+- The stylesheet and the theme script are **inlined** into every page at build time, so rebuild after editing `styles.css` or `theme-init.js`. The CSP hash for the theme script is recomputed automatically.
+- New screenshots go in `assets/img/` as `.jpg` + `.webp`. Never overwrite an existing image with one of a different pixel size: the pages hardcode width and height.
+- Each page also gets a plain-text copy at `<page>/index.md`, and all of them together in `/llms-full.txt`, for AI assistants.
+
+`brand-assets.js` regenerates the logo/social images.
 
 ---
 

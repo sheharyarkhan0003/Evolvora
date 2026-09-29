@@ -408,6 +408,11 @@ section{scroll-margin-top:90px}
 .browser-bar span:nth-child(1){background:#ff5f57}.browser-bar span:nth-child(2){background:#febc2e}.browser-bar span:nth-child(3){background:#28c840}
 .browser-bar i{margin-left:12px;font-style:normal;font-size:12px;color:var(--faint);background:var(--glass);padding:4px 12px;border-radius:6px}
 .hero-shot .browser{transform:perspective(1600px) rotateY(-14deg) rotateX(4deg) translateX(38px)}
+/* Phone screenshots: two handsets side by side, the second set lower. */
+.phone-pair{display:flex;justify-content:center;align-items:flex-start;gap:22px}
+.phone{width:min(240px,44%);padding:7px;border-radius:30px;background:var(--browser-bg);border:1px solid var(--border-2);box-shadow:var(--glow)}
+.phone img{display:block;width:100%;height:auto;border-radius:23px}
+.phone:nth-child(2){margin-top:64px}
 
 /* ============ SECTIONS ============ */
 .section{padding:92px 0}
@@ -1402,6 +1407,9 @@ section{scroll-margin-top:90px}
 /* ============ REVEAL ============ */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
+/* The first screen shows at once. Hidden until main.js runs, it would push
+   Largest Contentful Paint back by the script load plus the fade. */
+main>section:first-of-type .reveal{opacity:1;transform:none;transition:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
 /* ============ RESPONSIVE ============ */

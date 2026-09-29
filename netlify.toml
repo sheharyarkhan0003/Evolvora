@@ -25,20 +25,118 @@
   status = 301
   force = true
 
+# /about/index.html and / serve the same page. The canonical tag already
+# points at the clean URL; the redirect makes it one URL for real.
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/index.html"
+  to = "/products/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/evolvora-campus/index.html"
+  to = "/products/evolvora-campus/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/silaaimarkaz/index.html"
+  to = "/products/silaaimarkaz/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/products/evolvora-campus/pricing/index.html"
+  to = "/products/evolvora-campus/pricing/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact/index.html"
+  to = "/contact/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/services/index.html"
+  to = "/services/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about/index.html"
+  to = "/about/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/school-management-system/index.html"
+  to = "/school-management-system/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/campus-management-system/index.html"
+  to = "/campus-management-system/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/school-erp/index.html"
+  to = "/school-erp/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/student-attendance-software/index.html"
+  to = "/student-attendance-software/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/school-fee-management-software/index.html"
+  to = "/school-fee-management-software/"
+  status = 301
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
     X-Content-Type-Options = "nosniff"
+    # Two years, all subdomains, and preload consent - what hstspreload.org
+    # requires. Every subdomain must serve HTTPS before this goes live.
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Referrer-Policy = "strict-origin-when-cross-origin"
     # Everything the site loads is served from this domain (fonts included), so
     # the policy can be strict. 'unsafe-inline' is for styles only: the pages
-    # use inline style attributes and small inline <style> blocks. JSON-LD
-    # blocks are data, not scripts, so script-src 'self' does not affect them.
-    Content-Security-Policy = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    # use inline style attributes and inline <style> blocks. The one inline
+    # script (theme-init.js, inlined so it does not block render) is allowed by
+    # its hash, which build-site.js computes. JSON-LD blocks are data, not
+    # scripts, so script-src does not affect them.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-i4XtCDpIb88MyUpV6qF3Wv2Fl+jOG+DX9D3NQsy4hu4='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
     Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()"
 
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+# Markdown copies of the pages, for AI tools. noindex so Google keeps
+# ranking the HTML page, not its text copy.
+[[headers]]
+  for = "/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+    X-Robots-Tag = "noindex"
+
+[[headers]]
+  for = "/llms-full.txt"
+  [headers.values]
+    X-Robots-Tag = "noindex"
