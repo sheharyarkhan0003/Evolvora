@@ -14,7 +14,9 @@ const EMAIL = "contact@evolvoratech.com";
 const PHONE = "+92-314-0163628";
 const PHONE_DISPLAY = "+92 314 0163628";
 const PHONE_TEL = "tel:+923140163628";
-const ADDRESS_TEXT = "599-Q, Johar Town, Lahore 54000, Pakistan";
+/* Evolvora is a remote team based in Lahore with no public office, so only the
+   city is published. Never add a street address that is not a real office. */
+const ADDRESS_TEXT = "Lahore, Pakistan";
 const FOUNDER = "Sheharyar Khan";
 const OG = SITE + "/assets/img/og-image.png";
 
@@ -39,6 +41,8 @@ const FONT_HEAD = `<link rel="preload" href="/assets/fonts/inter-latin.woff2" as
    freshness signal search engines learn to distrust. */
 // Local date (YYYY-MM-DD), matching the git commit dates used by pageDate().
 const BUILD_DATE = new Date().toLocaleDateString("en-CA");
+/* "2026-10-11" -> "11 October 2026", for dates shown on the page. */
+const longDate = (iso) => new Date(iso + "T00:00:00").toLocaleDateString("en-GB", { day:"numeric", month:"long", year:"numeric" });
 
 /* Per-page "last changed" date, so a header or footer tweak no longer marks
    every page as freshly updated. Only the <main> content counts:
@@ -47,7 +51,10 @@ const BUILD_DATE = new Date().toLocaleDateString("en-CA");
      3. otherwise                             -> today */
 const { execFileSync } = require("child_process");
 const norm = (s) => s.replace(/\r\n/g, "\n").trim();
-const mainOf = (html) => { const m = /<main[^>]*>([\s\S]*?)<\/main>/.exec(html || ""); return m ? norm(m[1]) : null; };
+/* A visible "Updated" date is filled in from this very comparison, so it is
+   left out of it; otherwise the date would always look like a content change. */
+const stripUpdated = (s) => s.replace(/<time class="updated"[^>]*>[^<]*<\/time>/g, "");
+const mainOf = (html) => { const m = /<main[^>]*>([\s\S]*?)<\/main>/.exec(html || ""); return m ? stripUpdated(norm(m[1])) : null; };
 const git = (args) => { try { return execFileSync("git", args, { cwd: ROOT, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] }); } catch { return null; } };
 function pageDate(file, main) {
   const rel = file.split(path.sep).join("/");
@@ -123,6 +130,7 @@ const BRAND_I = {
   linkedin:`<path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.47-.9 1.63-1.85 3.37-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/>`,
   youtube:`<path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.08 0 12 0 12s0 3.92.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>`,
   instagram:`<path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.71-2.13 1.38C1.34 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.71 1.46 1.38 2.13.67.67 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.71 2.13-1.38.67-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.71-1.46-1.38-2.13C21.32 1.34 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm7.85-10.41a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/>`,
+  google:`<path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/>`,
   github:`<path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.4-5.5-6 0-1.2.5-2.3 1.3-3.1-.2-.4-.6-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.8.1 3.2.8.8 1.3 1.9 1.3 3.1 0 4.6-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/>`,
 };
 const SOCIAL = [
@@ -130,6 +138,8 @@ const SOCIAL = [
   ["YouTube","youtube","https://www.youtube.com/@evolvoratechnologies"],
   ["Instagram","instagram","https://www.instagram.com/evolvora.tech/"],
   ["GitHub","github","https://github.com/Evolvora-Technologies"],
+  // Google Business Profile (service-area business, address hidden).
+  ["Google","google","https://share.google/IAkhc7S84drNtvts4"],
 ];
 const socialRow = () => `<ul class="footer-social">${SOCIAL.map(([name,ic,url]) =>
   `<li><a href="${url}" aria-label="Evolvora Technologies on ${name}" title="${name}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true">${BRAND_I[ic]}</svg></a></li>`).join("")}</ul>`;
@@ -477,7 +487,7 @@ const stackGrid = () =>
   `<div class="stack-grid reveal" aria-label="Technologies we use">${STACK_SKILLS.map(stackCard).join("")}</div>`;
 
 /* ---------- head ---------- */
-function head({ title, desc, url, jsonld, og }) {
+function head({ title, desc, url, jsonld, og, ogType, published }) {
   const canonical = SITE + url;
   /* A product page can carry its own share card; everything else uses the
      company one. Both are 1200x630, so the size tags below hold for either. */
@@ -490,7 +500,8 @@ function head({ title, desc, url, jsonld, og }) {
 ${url.endsWith("/") ? `<link rel="alternate" type="text/markdown" href="${url}index.md">` : ""}
 <meta name="robots" content="index,follow,max-image-preview:large">
 <meta name="theme-color" content="#070b16">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType || "website"}">${published ? `
+<meta property="article:published_time" content="${published}">` : ""}
 <meta property="og:site_name" content="Evolvora Technologies">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${desc}">
@@ -511,14 +522,14 @@ ${FONT_HEAD}
 ${THEME_INIT}
 ${NAV_MOBILE_CRITICAL}
 <style>${SITE_CSS}</style>
-<script src="/assets/js/main.js?v=7" defer></script>
+<script src="/assets/js/main.js?v=8" defer></script>
 ${(jsonld ? (Array.isArray(jsonld) ? jsonld : [jsonld]) : []).map(o => `<script type="application/ld+json">\n${JSON.stringify(o, null, 2)}\n</script>`).join("\n")}`;
 }
 
 /* ---------- header ---------- */
 /* Pages whose visitors are hiring us to build something. Everywhere else the
    visitor is looking at Evolvora Campus, so the header offers a demo instead. */
-const PROJECT_PAGES = ["services", "about"];
+const PROJECT_PAGES = ["services", "about", "guides"];
 function header(active) {
   const on = (k) => active === k ? ' class="active"' : "";
   return `<header class="nav" id="nav"><div class="container nav-inner">
@@ -558,7 +569,7 @@ function footer() {
     <div class="footer-brand">
       <a href="/" class="brand">${MARK}<span class="wm">EVOL<b>VORA</b></span></a>
       <p>Evolvora Technologies is a Lahore software company. It makes Evolvora Campus, a school management system for Pakistani schools, runs SilaaiMarkaz, a tailoring marketplace in Lahore, and builds custom software for clients. Evolvora Campus is not related to evolCampus.</p>
-      <p class="footer-contact">${ADDRESS_TEXT}<br><a href="${PHONE_TEL}">${PHONE_DISPLAY}</a> · <a href="mailto:${EMAIL}">${EMAIL}</a></p>
+      <p class="footer-contact">Remote team based in ${ADDRESS_TEXT}<br><a href="${PHONE_TEL}">${PHONE_DISPLAY}</a> · <a href="mailto:${EMAIL}">${EMAIL}</a></p>
       <span class="footer-tagline">Building a smarter tomorrow</span>
       ${socialRow()}
     </div>
@@ -567,6 +578,8 @@ function footer() {
       <li><a href="/services/">Services</a></li>
       <li><a href="/products/">Products</a></li>
       <li><a href="/about/">About</a></li>
+      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/careers/">Careers</a></li>
       <li><a href="/contact/">Contact</a></li>
     </ul></div>
     <div><p class="footer-h">Products</p><ul>
@@ -589,7 +602,7 @@ function footer() {
   </div>
   <div class="footer-base">
     <span>© <span id="year">2026</span> Evolvora Technologies. All rights reserved.</span>
-    <span><a href="mailto:${EMAIL}">${EMAIL}</a></span>
+    <span><a href="/privacy/">Privacy</a> · <a href="mailto:${EMAIL}">${EMAIL}</a></span>
   </div>
 </div></footer>`;
 }
@@ -709,6 +722,9 @@ const T = {
   sewing:      ["Sewing","https://en.wikipedia.org/wiki/Sewing"],
   shalwar:     ["Shalwar kameez","https://en.wikipedia.org/wiki/Shalwar_kameez"],
   lahore:      ["Lahore","https://en.wikipedia.org/wiki/Lahore"],
+  // Guides
+  gateway:     ["Payment gateway","https://en.wikipedia.org/wiki/Payment_gateway"],
+  raast:       ["Raast","https://en.wikipedia.org/wiki/Raast"],
 };
 
 /* "campus", "silaai" and "org" resolve to the site's own entities so a page can
@@ -740,6 +756,12 @@ const PAGE_TOPICS = {
   "/school-erp/":                       { about:["erp","sis"],   mentions:["payroll","tuition","attendance","grading","admissions","school"] },
   "/student-attendance-software/":      { about:["attendance","sis"], mentions:["school","teacher","parent","timetable","eduSoftware"] },
   "/school-fee-management-software/":   { about:["tuition","sis"],    mentions:["school","parent","payroll","eduSoftware"] },
+  "/careers/":                          { about:[], mentions:["softwareDev","lahore"] },
+  "/guides/":                           { about:["softwareDev"], mentions:["customSw","sis","lahore"] },
+  "/guides/software-development-cost-pakistan/": { about:["softwareDev","customSw"], mentions:["org","webApp","mobileApp","saas","cloud","gateway","campus"] },
+  "/guides/jazzcash-easypaisa-integration/":     { about:["gateway"], mentions:["org","webApp","mobileApp","raast","campus","tuition"] },
+  "/privacy/":                          { about:[], mentions:[] },
+  "/guides/software-company-lahore/":   { about:["softwareDev","lahore"], mentions:["org","campus","silaai","customSw","webApp","mobileApp","saas","ux","cloud","devops","gateway","raast","sis","marketplace"] },
 };
 
 /* ---- page-level entities ----
@@ -820,15 +842,12 @@ const SILAAI_LOGIN = "https://app.silaaimarkaz.com/auth/login";          // cust
 const SILAAI_LOGO = SITE + "/assets/img/silaaimarkaz/silaaimarkaz-logo.png";   // 480x480
 const SILAAI_OG = SITE + "/assets/img/silaaimarkaz/silaaimarkaz-og.png";       // 1200x630
 
-/* Registered office. One constant so the address in structured data can never
-   drift from the address published anywhere else - NAP consistency is what
-   lets Google tie the entity to a real business. */
+/* Where the company is based: city only (remote team, no public office). One
+   constant so the structured data can never drift from the visible pages. */
 const ADDRESS = {
   "@type":"PostalAddress",
-  "streetAddress":"599-Q, Johar Town",
   "addressLocality":"Lahore",
   "addressRegion":"Punjab",
-  "postalCode":"54000",
   "addressCountry":"PK",
 };
 
@@ -848,6 +867,11 @@ const SERVICES = [
   ["Cloud & DevOps","Deployment, CI/CD, monitoring and infrastructure that keeps software fast and online."],
 ];
 
+/* Working hours, shown on the contact page and in the sales contact point. */
+const HOURS_TEXT = "Monday to Friday, 9am to 6pm (PKT)";
+
+/* Plain Organization, not LocalBusiness: there is no office customers can
+   visit, and LocalBusiness markup describes a physical place. */
 const orgLD = { "@context":"https://schema.org","@type":"Organization",
   "@id":ORG_ID,
   "name":"Evolvora Technologies",
@@ -867,7 +891,7 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
   /* Two aspect ratios: the square logo and the landscape share card. Google
      prefers a choice of ratios. The logo is a reference to the node defined in
      "logo" directly above, so the graph holds one image, not two copies of it,
-     and it stands in until a real photograph of the Lahore office exists. */
+     and it stands in until a real team photograph exists. */
   "image":[
     { "@id":LOGO_ID },
     { "@type":"ImageObject","@id":OG_IMG_ID,"url":OG,"contentUrl":OG,
@@ -929,6 +953,9 @@ const orgLD = { "@context":"https://schema.org","@type":"Organization",
   "contactPoint":[
     { "@type":"ContactPoint","contactType":"sales",
       "telephone":PHONE,"email":EMAIL,
+      "hoursAvailable":{ "@type":"OpeningHoursSpecification",
+        "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens":"09:00","closes":"18:00" },
       "areaServed":["PK","Worldwide"],"availableLanguage":["en","ur"] },
     { "@type":"ContactPoint","contactType":"customer support",
       "email":EMAIL,
@@ -1199,6 +1226,27 @@ const silaaiLD = {
    ================================================================= */
 const pages = [];
 
+/* Homepage "about" block and questions. The FAQ is shown without FAQPage
+   schema: the homepage's main entity is the Organization, and Google no
+   longer shows FAQ rich results, so the markup would only displace it. */
+function homeAbout() {
+  const faq = faqBlock([
+    {q:"What does Evolvora Technologies do?",a:"Evolvora Technologies is a software company in Lahore. We design and build custom web applications, mobile apps and SaaS products, with UI/UX design and cloud and DevOps support, and we run our own products: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore."},
+    {q:"Where is Evolvora based?",a:`We are a remote team based in Lahore, Pakistan. We work with clients online and meet in person in Lahore by appointment. Call ${PHONE_DISPLAY} or email ${EMAIL}.`},
+    {q:"Who do you work with?",a:"Businesses, startups and schools across Pakistan, in English and Urdu. Most projects are web or mobile applications that need local integrations such as JazzCash and EasyPaisa payments, or WhatsApp and SMS messaging."},
+    {q:"How much does a software project cost?",a:"A first version of a custom web application typically costs Rs 1.5 to 5 million and takes 2 to 4 months; a business website costs Rs 150,000 to 600,000. We send a written scope and price in rupees after a short discovery call."},
+  ]);
+  return `<section class="section section-alt" id="about-evolvora"><div class="container">
+  <div class="prose">
+    <h2>A software company in Lahore that runs its own products</h2>
+    <p>Evolvora Technologies builds software for businesses, startups and schools in Pakistan. We are a remote team based in Lahore, working in English and Urdu, and every project is built by the same people who build and support our own products. That is why we know what it takes to keep software running after launch: payments that reconcile, messages that reach parents, and updates that do not break anything.</p>
+    <p>Comparing options? Our <a href="/guides/software-company-lahore/">guide to software companies in Lahore</a> lists well-known firms and what to check before hiring any of them, and our <a href="/guides/software-development-cost-pakistan/">software development cost guide</a> shows what projects cost in rupees.</p>
+  </div>
+  <div class="section-head" style="margin-top:40px"><h2>Common questions</h2></div>
+  ${faq.html}
+</div></section>`;
+}
+
 /* ---- HOME (software house) ---- */
 pages.push({
   file:"index.html", active:"home", url:"/", pageMainEntity:ORG_ID,
@@ -1206,7 +1254,7 @@ pages.push({
      /school-management-system/ and "Evolvora Campus" to the product page, so
      the three pages do not compete for the same search. */
   title:"Evolvora Technologies | Software Company in Lahore, Pakistan",
-  desc:"Evolvora Technologies is a Lahore software company. We make Evolvora Campus for schools, run SilaaiMarkaz, and build custom web, mobile and cloud software.",
+  desc:"Evolvora Technologies is a software company in Lahore. We build custom web, mobile and cloud software, and make Evolvora Campus and SilaaiMarkaz.",
   jsonld:[orgLD,websiteLD],
   body:`
 <section class="hero hero--visual">
@@ -1223,9 +1271,9 @@ pages.push({
       <span class="eyebrow"><span class="dot"></span> Made in Lahore · Building a smarter tomorrow</span>
       <h1 class="hero-title">
         <span class="hero-title-brand">Evolvora Technologies</span>
-        <span class="hero-title-tagline">Software Products &amp; Custom Development in Lahore</span>
+        <span class="hero-title-tagline">Software Company in Lahore, Pakistan</span>
       </h1>
-      <p class="lead">We make <strong><a href="${CAMPUS_PATH}">Evolvora Campus</a></strong>, the <a href="/school-management-system/">school management system</a> that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom <strong>web, mobile and cloud</strong> software for businesses.</p>
+      <p class="lead">We're a <strong>software company in Lahore</strong> that designs and builds custom <strong>web, mobile and cloud</strong> software for businesses in Pakistan, and runs its own products. <strong><a href="${CAMPUS_PATH}">Evolvora Campus</a></strong>, our <a href="/school-management-system/">school management system</a>, runs fees, attendance, payroll and parent updates for Pakistani schools, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa.</p>
       <div class="hero-cta">
         <a href="/contact/" class="btn btn-primary btn-lg">Book a free demo</a>
         <a href="/services/" class="btn btn-ghost btn-lg">Custom software projects</a>
@@ -1299,7 +1347,7 @@ ${solutionsGrid()}
         </div>
         <div class="cards-scroll-dots" aria-hidden="true"><span class="active"></span><span></span><span></span></div>
       </div>
-      <div class="center services-scroll-cta"><a href="/services/" class="btn btn-primary">Explore our services ${svg("arrow")}</a></div>
+      <div class="center services-scroll-cta"><a href="/services/" class="btn btn-primary">Explore our services ${svg("arrow")}</a><p class="guide-link">Comparing options? Read our <a href="/guides/software-company-lahore/">guide to software companies in Lahore</a>.</p></div>
     </div>
   </div>
 </section>
@@ -1323,6 +1371,8 @@ ${stackGrid()}
 </div></section>
 
 ${whyStorySection()}
+
+${homeAbout()}
 
 ${ctaBlock("See Evolvora Campus with your own school","Book a free walkthrough with your own classes and fee structure. Building something else? Tell us about your project and we'll reply within one business day.")}`
 });
@@ -1525,19 +1575,214 @@ ${ctaBlock("Standard or Enterprise? We'll help you choose","Tell us how many stu
       <div class="field"><label for="students">Approx. number of students</label><input id="students" name="students" type="text" placeholder="e.g. 400"></div>
       <div class="field"><label for="message">How can we help?</label><textarea id="message" name="message" required placeholder="Tell us a little about your school and what you're looking for…"></textarea></div>
       <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Send message</button>
-      <p style="color:var(--faint);font-size:12.5px;margin-top:12px;text-align:center">Prefer email? Write to <a href="mailto:${EMAIL}" style="color:var(--sky)">${EMAIL}</a></p>
+      <p style="color:var(--faint);font-size:12.5px;margin-top:12px;text-align:center">Prefer email? Write to <a href="mailto:${EMAIL}" style="color:var(--sky)">${EMAIL}</a>. See our <a href="/privacy/" style="color:var(--sky)">privacy policy</a>.</p>
     </form>
     <div class="contact-info reveal">
       <h2>Talk to us</h2>
       <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.mail}</svg></span><div><b>Email</b><a href="mailto:${EMAIL}">${EMAIL}</a></div></div>
       <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.phone}</svg></span><div><b>Phone</b><a href="${PHONE_TEL}">${PHONE_DISPLAY}</a></div></div>
-      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.globe}</svg></span><div><b>Office</b><span>Evolvora Technologies, ${ADDRESS_TEXT}</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.globe}</svg></span><div><b>Where we work</b><span>A remote team based in ${ADDRESS_TEXT}. We meet clients online, or in person in Lahore by appointment.</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.clock}</svg></span><div><b>Working hours</b><span>${HOURS_TEXT}</span></div></div>
       <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.globe}</svg></span><div><b>Already a customer?</b><a href="${APP_TARGET}" rel="noopener">Log in to Evolvora Campus</a></div></div>
       <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.cap}</svg></span><div><b>Book a demo</b><span>See Evolvora Campus with your own classes &amp; fees.</span></div></div>
       <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.clock}</svg></span><div><b>Response time</b><span>Usually within one business day.</span></div></div>
     </div>
   </div>
 </div></section>`
+  });
+}
+
+/* ---- CAREERS ----
+   Applications go through Netlify Forms, like the contact form: the form is
+   named "careers" and Netlify picks it up from the built HTML at deploy. The
+   email to admin@evolvoratech.com is a notification set on that form in the
+   Netlify dashboard (Forms > careers > Form notifications), not in this file.
+   CV uploads are stored by Netlify (8 MB per submission) and linked in the email.
+
+   JOBS drives the listings, the position dropdown and the JobPosting schema.
+   Remove a job here when it is filled, so Google drops the listing too. */
+const JOBS = [
+  { id:"dotnet-angular-developer",
+    title:".NET + Angular Developer",
+    type:"FULL_TIME", typeLabel:"Full-time",
+    remote:true, location:"Remote (Pakistan)",
+    experience:"1 year or more",
+    posted:"2026-10-11", validThrough:"2027-01-11",
+    summary:"Build features across Evolvora Campus and client projects, from Angular screens to .NET APIs and PostgreSQL.",
+    duties:[
+      "Build and maintain web applications with Angular and TypeScript on the front end and ASP.NET Core (C#) on the back end.",
+      "Design REST APIs and work with PostgreSQL databases.",
+      "Ship features for Evolvora Campus, our school management system, and for client projects.",
+      "Write clean, tested code, and review code with the rest of the team.",
+      "Join a short daily check-in and demo your work every week or two.",
+    ],
+    needs:[
+      "At least 1 year of professional experience with .NET (C#) and Angular.",
+      "Good understanding of TypeScript, HTML, CSS and SQL.",
+      "Comfortable with Git and pull-request based work.",
+      "Clear written English, a reliable internet connection and a quiet place to work.",
+    ],
+    nice:["Experience with PostgreSQL, Supabase, Docker or Cloudflare.","Payment integrations such as JazzCash or EasyPaisa."] },
+  { id:"social-media-manager",
+    title:"Social Media Manager",
+    type:"FULL_TIME", typeLabel:"Full-time",
+    remote:true, location:"Remote (Pakistan)",
+    experience:"1 year or more",
+    posted:"2026-10-11", validThrough:"2027-01-11",
+    summary:"Own Evolvora's social channels and grow the audience for Evolvora Campus and SilaaiMarkaz.",
+    duties:[
+      "Plan and publish content for LinkedIn, Instagram, Facebook, YouTube and TikTok.",
+      "Create posts, short videos and stories about Evolvora Campus, SilaaiMarkaz and our client work, in English and Urdu.",
+      "Reply to comments and messages, and pass leads to the sales team.",
+      "Run and report on paid campaigns aimed at schools and businesses in Pakistan.",
+      "Track what works each month and adjust the plan.",
+    ],
+    needs:[
+      "At least 1 year managing social media for a brand or business.",
+      "Strong writing in English and Urdu.",
+      "Basic design and video editing (Canva, CapCut or similar).",
+      "Experience with Meta Business Suite and LinkedIn pages.",
+    ],
+    nice:["Experience marketing to schools, education or software products.","Running Meta or Google ad campaigns with a budget."] },
+];
+
+{
+  const cb = crumb([["Home","/"],["Careers","/careers/"]]);
+  const jobLD = (j) => ({ "@context":"https://schema.org","@type":"JobPosting",
+    "@id":SITE+"/careers/#"+j.id,
+    "title":j.title,
+    "description":`<p>${j.summary}</p><p><strong>What you will do</strong></p><ul>${j.duties.map(d=>`<li>${d}</li>`).join("")}</ul><p><strong>What we are looking for</strong></p><ul>${j.needs.map(d=>`<li>${d}</li>`).join("")}</ul>`,
+    "datePosted":j.posted,
+    "validThrough":j.validThrough+"T23:59:59+05:00",
+    "employmentType":j.type,
+    "hiringOrganization":{ "@id":ORG_ID },
+    "directApply":true,
+    "url":SITE+"/careers/#"+j.id,
+    "experienceRequirements":{ "@type":"OccupationalExperienceRequirements","monthsOfExperience":12 },
+    ...(j.remote
+      ? { "jobLocationType":"TELECOMMUTE","applicantLocationRequirements":{ "@type":"Country","name":"Pakistan" } }
+      : { "jobLocation":{ "@type":"Place","address":ADDRESS } }) });
+  /* Every role is remote today; the jobLocation branch is kept for when an
+     office opens. */
+  const jobCard = (j) => `<article class="job" id="${j.id}">
+    <div class="job-head">
+      <div><h3>${j.title}</h3><p class="job-sum">${j.summary}</p></div>
+      <a href="#apply" class="btn btn-primary" data-apply="${j.id}">Apply now</a>
+    </div>
+    <ul class="job-tags"><li>${j.location}</li><li>${j.typeLabel}</li><li>Experience: ${j.experience}</li></ul>
+    <details class="job-more"><summary>Role details</summary>
+      <div class="prose job-prose">
+        <h4>What you will do</h4><ul>${j.duties.map(d=>`<li>${d}</li>`).join("")}</ul>
+        <h4>What we are looking for</h4><ul>${j.needs.map(d=>`<li>${d}</li>`).join("")}</ul>
+        <h4>Nice to have</h4><ul>${j.nice.map(d=>`<li>${d}</li>`).join("")}</ul>
+      </div>
+    </details>
+  </article>`;
+  pages.push({
+    file:"careers/index.html", active:"careers", url:"/careers/",
+    pageMainEntity:ORG_ID,
+    title:"Careers at Evolvora: .NET, Angular & Social Media Jobs",
+    desc:"Join Evolvora Technologies, a software company in Lahore. Open roles: a remote .NET + Angular developer and a social media manager. Apply online.",
+    jsonld:[cb.jsonld, ...JOBS.map(jobLD)],
+    body:`
+<section class="section" style="padding-top:52px"><div class="container">
+  ${cb.html}
+  <div class="section-head"><span class="kicker">Careers</span><h1>Work at Evolvora</h1><p>We're a small software company in Lahore that builds and runs its own products, <a href="${CAMPUS_PATH}">Evolvora Campus</a> and <a href="${SILAAI_PATH}">SilaaiMarkaz</a>, and builds software for clients. Your work reaches real schools, parents and businesses quickly.</p></div>
+  <h2 class="jobs-h">Open positions</h2>
+  <div class="jobs">${JOBS.map(jobCard).join("")}</div>
+</div></section>
+
+<section class="section section-alt" id="apply"><div class="container">
+  <div class="section-head"><span class="kicker">Apply</span><h2>Send us your application</h2><p>Fill in the form and attach your CV. We read every application and reply to shortlisted candidates within a week.</p></div>
+  <div class="contact-wrap">
+    <form name="careers" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" action="/careers/?sent=1#apply">
+      <input type="hidden" name="form-name" value="careers">
+      <input type="hidden" name="subject" data-remove-prefix value="New job application from evolvoratech.com">
+      <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
+      <div class="field"><label for="position">Position</label><select id="position" name="position" required><option value="" disabled selected>Choose a position</option>${JOBS.map(j=>`<option value="${j.title}" data-job="${j.id}">${j.title} (${j.location})</option>`).join("")}</select></div>
+      <div class="field"><label for="a-name">Full name</label><input id="a-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="a-email">Email</label><input id="a-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="a-phone">Phone / WhatsApp</label><input id="a-phone" name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 0300 1234567"></div>
+      <div class="field"><label for="a-city">City</label><input id="a-city" name="city" type="text" autocomplete="address-level2" placeholder="e.g. Lahore"></div>
+      <div class="field"><label for="a-exp">Years of relevant experience</label><input id="a-exp" name="experience" type="text" required placeholder="e.g. 1.5"></div>
+      <div class="field"><label for="a-link">LinkedIn, GitHub or portfolio link</label><input id="a-link" name="link" type="url" placeholder="https://"></div>
+      <div class="field"><label for="a-cv">CV (PDF or Word, up to 8 MB)</label><input id="a-cv" name="cv" type="file" accept=".pdf,.doc,.docx" required></div>
+      <div class="field"><label for="a-msg">Why do you want this role?</label><textarea id="a-msg" name="message" required placeholder="A few lines about you and your best work…"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-lg" style="width:100%">Submit application</button>
+      <p style="color:var(--faint);font-size:12.5px;margin-top:12px;text-align:center">We use your details only to assess your application. See our <a href="/privacy/" style="color:var(--sky)">privacy policy</a>.</p>
+    </form>
+    <div class="contact-info">
+      <h2>How hiring works</h2>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.send}</svg></span><div><b>1. Apply</b><span>Send the form with your CV.</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.phone}</svg></span><div><b>2. Intro call</b><span>A 20-minute call about you and the role.</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.code}</svg></span><div><b>3. Short task</b><span>A small, practical task related to the job.</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.handshake}</svg></span><div><b>4. Final interview &amp; offer</b><span>Meet the founder, then an offer.</span></div></div>
+      <div class="info-row"><span class="ii"><svg viewBox="0 0 24 24">${I.globe}</svg></span><div><b>Remote-first</b><span>The whole team works remotely from across Pakistan. We are based in ${ADDRESS_TEXT}.</span></div></div>
+    </div>
+  </div>
+</div></section>`
+  });
+}
+
+/* ---- PRIVACY ----
+   Covers this website only: the contact and careers forms (processed by
+   Netlify Forms) and the two browser-storage preferences main.js keeps.
+   Evolvora Campus and SilaaiMarkaz handle their own data under their own
+   terms. Plain language on purpose; have it reviewed before relying on it
+   legally. Retention periods are business decisions: edit them here. */
+const PRIVACY_UPDATED = "2026-10-11";
+const CV_RETENTION = "6 months";
+{
+  const cb = crumb([["Home","/"],["Privacy policy","/privacy/"]]);
+  pages.push({
+    file:"privacy/index.html", active:"", url:"/privacy/",
+    title:"Privacy Policy | Evolvora Technologies",
+    desc:"How Evolvora Technologies handles the information you send through evolvoratech.com: contact enquiries, job applications and browser preferences.",
+    jsonld:[cb.jsonld],
+    body:`
+<section class="section" style="padding-top:52px"><div class="container"><div class="prose article">
+  ${cb.html}
+  <h1>Privacy policy</h1>
+  <p class="article-meta">Last updated <time datetime="${PRIVACY_UPDATED}">${longDate(PRIVACY_UPDATED)}</time></p>
+  <p>This policy explains what information Evolvora Technologies ("we") collects through this website, evolvoratech.com, and what we do with it. It does not cover Evolvora Campus or SilaaiMarkaz, which have their own terms for the data schools, parents, customers and tailors store in them.</p>
+
+  <h2>Who we are</h2>
+  <p>Evolvora Technologies is a software company based in Lahore, Pakistan, working as a remote team. You can contact us about privacy at <a href="mailto:${EMAIL}">${EMAIL}</a> or on <a href="${PHONE_TEL}">${PHONE_DISPLAY}</a>.</p>
+
+  <h2>What we collect</h2>
+  <ul>
+    <li><strong>Contact form:</strong> your name, email, organisation, approximate number of students and your message.</li>
+    <li><strong>Careers form:</strong> the position, your name, email, phone, city, years of experience, any profile link you give, your CV and your message.</li>
+    <li><strong>Emails and calls:</strong> whatever you choose to send us.</li>
+  </ul>
+  <p>We do not use advertising or analytics cookies, and this website does not track you across other sites.</p>
+
+  <h2>How we use it</h2>
+  <ul>
+    <li>To reply to your enquiry, arrange a demo or discovery call, and send a quote you asked for.</li>
+    <li>To assess job applications and contact candidates.</li>
+    <li>To keep records of our conversations with clients.</li>
+  </ul>
+  <p>We do not sell your information, and we do not add you to marketing lists without asking.</p>
+
+  <h2>Who processes it</h2>
+  <p>This website is hosted by Netlify, which also receives and stores form submissions, including uploaded CVs, on our behalf. Submissions are then emailed to our team. We share information with no one else unless the law requires it.</p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li><strong>Enquiries:</strong> for as long as we are in contact with you, and then as long as reasonably needed for our records.</li>
+    <li><strong>Job applications:</strong> until the hiring decision, and for up to ${CV_RETENTION} afterwards in case a similar role opens. Ask us and we will delete yours sooner.</li>
+  </ul>
+
+  <h2>Preferences stored in your browser</h2>
+  <p>The site remembers two choices in your browser's local storage: light or dark theme, and whether prices are shown in rupees or dollars. They stay on your device, are never sent to us, and you can clear them in your browser settings.</p>
+
+  <h2>Your choices</h2>
+  <p>You can ask us what information we hold about you, ask us to correct it, or ask us to delete it, by emailing <a href="mailto:${EMAIL}">${EMAIL}</a>. We will reply within 30 days.</p>
+
+  <h2>Changes</h2>
+  <p>If we change this policy, we will update it on this page and change the date at the top.</p>
+</div></div></section>`
   });
 }
 
@@ -1565,7 +1810,7 @@ ${ctaBlock("Standard or Enterprise? We'll help you choose","Tell us how many stu
     body:`
 <section class="section" style="padding-top:52px;padding-bottom:20px"><div class="container">
   ${cb.html}
-  <div class="section-head reveal"><span class="kicker">Services</span><h1>Everything you need to build great software</h1><p>Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations.</p></div>
+  <div class="section-head reveal"><span class="kicker">Services</span><h1>Everything you need to build great software</h1><p>Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations. Still comparing firms? See our <a href="/guides/software-company-lahore/">guide to choosing a software company in Lahore</a>.</p></div>
 </div></section>
 
 <section class="section services-coverflow-section" style="padding-top:20px;padding-bottom:56px">
@@ -1635,7 +1880,7 @@ ${ctaBlock("Let's build something great","Tell us about your project and we'll g
     <div class="prose">
       <p>What sets us apart is that we build and run our own products too. Our flagship, <strong>Evolvora Campus</strong>, is a full school management system used to run real schools, so we know first-hand what it takes to design, launch and support software that people depend on every single day. Our second product, <strong><a href="${SILAAI_PATH}">SilaaiMarkaz</a></strong>, is a tailoring marketplace that connects customers in Lahore with local Darzis.</p>
       <p>That product mindset shapes everything we do for clients: clean architecture, thoughtful design, honest timelines, and a commitment to stick around long after launch.</p>
-      <p>Evolvora Technologies was founded by <strong>${FOUNDER}</strong> and works from ${ADDRESS_TEXT}. You can reach us on <a href="${PHONE_TEL}">${PHONE_DISPLAY}</a> or at <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
+      <p>Evolvora Technologies was founded by <strong>${FOUNDER}</strong> and works as a remote team based in ${ADDRESS_TEXT}. You can reach us on <a href="${PHONE_TEL}">${PHONE_DISPLAY}</a> or at <a href="mailto:${EMAIL}">${EMAIL}</a>.</p>
     </div>
   </div>
 </div></section>
@@ -1871,7 +2116,8 @@ pages.push(solutionPage({
   capsH:"How fee collection works in Evolvora Campus",
   whyH:"Why schools stop chasing fee payments by hand",
   whatP:["<strong>School fee management software</strong> handles the money side of running a school: recording fee dues, tracking payments, flagging outstanding balances and communicating reminders to parents, without stacks of spreadsheets or manual follow-up calls.",
-    "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful."],
+    "Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful.",
+    "Parents can also pay online through JazzCash and EasyPaisa. If you are adding wallet payments to your own system, our <a href=\"/guides/jazzcash-easypaisa-integration/\">JazzCash and EasyPaisa integration guide</a> explains how it works."],
   media:{img:"fee_records_admin.jpg",label:"Evolvora Campus",alt:"Fee Records screen in Evolvora Campus listing each student's class, fee cycle, amount and Paid, Pending or Waived status"},
   media2:{img:"parent_fee_pending.jpg",label:"Evolvora Campus · Parent",alt:"Parent dashboard in Evolvora Campus showing the September fee as Pending with an Upload voucher button",
     caption:"What the parent sees: the month's fee, its due date and status, and a button to upload the paid bank voucher."},
@@ -1898,6 +2144,552 @@ pages.push(solutionPage({
   related:[["school-management-system","School Management System","layers"],["school-erp","School ERP","shield"],["student-attendance-software","Student Attendance Software","clock"]]
 }));
 
+/* =================================================================
+   GUIDES
+   Long-form articles. Each one supports a commercial page rather than
+   competing with it: "software company Lahore" as a brand query belongs to the
+   homepage, so the guide takes the "how do I choose one" intent and links back.
+   GUIDES drives the /guides/ index and llms.txt.
+   ================================================================= */
+const GUIDES = [
+  { url:"/guides/software-company-lahore/",
+    title:"Software Companies in Lahore: 2026 List and Buyer's Guide",
+    summary:"well-known software companies in Lahore and what each is known for, plus what to check before hiring one: services, real products, payment gateway and multi-campus experience, timelines and PKR price bands.",
+    published:"2026-10-11" },
+  { url:"/guides/software-development-cost-pakistan/",
+    title:"Software Development Cost in Pakistan (2026)",
+    summary:"what websites, web apps, mobile apps and SaaS products cost in Pakistan in 2026, what drives the price, and the running costs most quotes leave out.",
+    published:"2026-10-11" },
+  { url:"/guides/jazzcash-easypaisa-integration/",
+    title:"JazzCash and EasyPaisa Integration: A Guide for Businesses",
+    summary:"how JazzCash and EasyPaisa payments are added to a website or app in Pakistan: merchant accounts, direct integration or an aggregator, callbacks, reconciliation and refunds.",
+    published:"2026-10-11" },
+];
+const guideAt = (url) => GUIDES.find(g => g.url === url);
+
+/* Shared article pieces, so every guide carries the same byline, dates,
+   author box, call to action and Article schema. */
+const articleMeta = (g) => `<p class="article-meta">By <a href="/about/">${FOUNDER}</a>, founder of Evolvora Technologies · Published <time datetime="${g.published}">${longDate(g.published)}</time> · Updated <time class="updated" datetime="@@MODIFIED@@">@@MODIFIED_LONG@@</time></p>`;
+const authorBox = () => `<section class="section"><div class="container"><div class="prose article">
+  <aside class="author-box" aria-label="About the author">
+    <p class="takeaways-h">About the author</p>
+    <p><strong>${FOUNDER}</strong> is the founder of <a href="/about/">Evolvora Technologies</a>, a software company in Lahore, and leads the team that builds and runs Evolvora Campus and SilaaiMarkaz, and the custom software projects Evolvora delivers for clients. <a href="https://www.linkedin.com/in/sheharyar-khaan/" target="_blank" rel="noopener">${FOUNDER} on LinkedIn</a>.</p>
+  </aside>
+</div></div></section>`;
+const articleCta = (h, p) => `<section class="cta"><div class="cta-glow"></div><div class="container"><div class="cta-inner reveal">
+  <h2>${h}</h2><p>${p}</p>
+  <div class="cta-actions">
+    <a href="/contact/" class="btn btn-primary btn-lg">Book a discovery call</a>
+    <a href="/contact/" class="btn btn-ghost btn-lg">Book an Evolvora Campus demo</a>
+  </div></div></div></section>`;
+const articleSchema = (g, description, about, mentions) => ({ "@context":"https://schema.org","@type":"Article",
+  "@id":SITE+g.url+"#article",
+  "headline":g.title,
+  "description":description,
+  "inLanguage":"en",
+  "mainEntityOfPage":{ "@id":SITE+g.url+"#webpage" },
+  "author":{ "@id":FOUNDER_ID },
+  "publisher":{ "@id":ORG_ID },
+  "datePublished":g.published,
+  "image":{ "@id":OG_IMG_ID },
+  "about":about.map(topic),
+  "mentions":mentions.map(topic) });
+/* Links between the guides: each article lists the others. */
+const relatedGuides = (url) => `<section class="section section-alt"><div class="container"><div class="section-head"><span class="kicker">Related guides</span><h2>Keep reading</h2></div><div class="cards">${GUIDES.filter(g => g.url !== url).map(g => `<a class="card" href="${g.url}"><span class="card-ic">${svg("book")}</span><h3>${g.title}</h3><p>${g.summary.charAt(0).toUpperCase() + g.summary.slice(1)}</p><span class="card-link">Read the guide ${svg("arrow")}</span></a>`).join("")}</div></div></section>`;
+
+/* Indicative bands for custom work in Pakistan, in rupees, for Pakistani
+   clients. These are our working estimates, not published prices: a real
+   quote follows discovery. Edit here and the table and FAQ follow. */
+const ENGAGEMENT_BANDS = [
+  ["Business website or landing site","3 to 6 weeks","Rs 150,000 to 600,000"],
+  ["UI/UX design sprint (research, wireframes, clickable prototype)","2 to 4 weeks","Rs 250,000 to 800,000"],
+  ["Custom web application, first version","8 to 14 weeks","Rs 1.5 to 5 million"],
+  ["Cross-platform mobile app (Android and iOS)","10 to 16 weeks","Rs 2 to 6 million"],
+  ["SaaS product, first version (multi-tenant, billing)","4 to 6 months","Rs 4 to 12 million and up"],
+  ["Cloud and DevOps setup or migration","2 to 6 weeks","Rs 250,000 to 1.2 million"],
+  ["Maintenance and support retainer","Monthly, ongoing","Rs 100,000 to 500,000 a month"],
+];
+
+/* Lahore software companies named in the guide: [name, website, known for, fit].
+   Kept to what each firm publicly says about itself or what Wikipedia
+   records, with no ranking, sizes or ratings. Neutral on purpose: naming
+   competitors is what the ranking pages for this keyword do, and anything
+   unfair or wrong would cost more trust than the listing earns. Recheck it
+   when the guide is updated. */
+const LAHORE_COMPANIES = [
+  ["Systems Limited","https://www.systemsltd.com/","Founded in Lahore in 1977 and listed on the Pakistan Stock Exchange. Enterprise software, cloud, data and AI, and business process outsourcing.","Banks, telecoms and large enterprises"],
+  ["NetSol Technologies","https://netsoltech.com/","Software for leasing, asset finance and automotive retail, used by finance companies worldwide. Its Pakistani arm is listed on the Pakistan Stock Exchange.","Leasing and finance companies"],
+  ["Arbisoft","https://arbisoft.com/","Custom software, AI and edtech for international product companies, with large offices in Lahore.","Funded product companies, edtech"],
+  ["Devsinc","https://devsinc.com/","Custom software, AI, cloud and team augmentation for clients in North America, Europe and the Middle East.","Mid-size and enterprise clients"],
+  ["Confiz","https://www.confiz.com/","Retail technology, ERP and Microsoft cloud platforms.","Retailers, Microsoft Dynamics projects"],
+  ["Techlogix","https://www.techlogix.com/","IT consulting, ERP and digital banking, with offices in Lahore, Karachi and Islamabad.","Banks and ERP programmes"],
+  ["Evolvora Technologies","/","Custom web, mobile and cloud software, plus its own products: Evolvora Campus for schools and SilaaiMarkaz for tailors in Lahore.","Pakistani SMEs, startups and schools"],
+];
+
+/* Client quotes, shown on the guide once real ones exist. Each entry is
+   { quote, name, role, org } and must be a genuine, approved quote: inventing
+   reviews breaks Google's policies and the reader's trust. Empty = not shown. */
+const TESTIMONIALS = [];
+
+/* ---- GUIDE: software company in Lahore ---- */
+{
+  const g = GUIDES[0];
+  const cb = crumb([["Home","/"],["Guides","/guides/"],["Choosing a software company in Lahore",g.url]]);
+  const faq = faqBlock([
+    {q:"What are the best-known software companies in Lahore?",a:"Well-known names include Systems Limited, the oldest, founded in Lahore in 1977; NetSol Technologies, which makes leasing and asset-finance software; Arbisoft and Devsinc, which build custom software and AI for international clients; Confiz, known for retail technology and Microsoft platforms; and Techlogix, known for ERP and digital banking. Smaller firms such as Evolvora Technologies focus on Pakistani businesses and schools and run their own products. The best fit depends on your project size and budget, not on a ranking."},
+    {q:"How much does it cost to hire a software company in Lahore?",a:"For Pakistani clients, a business website usually costs Rs 150,000 to 600,000, a first version of a custom web application Rs 1.5 to 5 million, and a cross-platform mobile app Rs 2 to 6 million. SaaS products start around Rs 4 million. Ongoing support is typically Rs 100,000 to 500,000 a month. A fixed quote should follow a paid or free discovery phase."},
+    {q:"How long does a custom software project take?",a:"A small website takes 3 to 6 weeks. A first version of a web or mobile application takes roughly 2 to 4 months, and a SaaS product 4 to 6 months. Discovery and design usually take the first 2 to 5 weeks, and the build then runs in one- or two-week sprints with a working demo at the end of each."},
+    {q:"Should a school build custom software or buy a school management system?",a:`Most schools should buy. A ready school management system such as Evolvora Campus costs Rs ${PRICE_PKR} per active student per month, with a free first month, and is live in days. Custom development only makes sense when a school network has a workflow no product supports, and even then it is usually cheaper to extend an existing platform.`},
+    {q:"Which payment gateways should a Pakistani software company know?",a:"At minimum JazzCash and EasyPaisa for mobile wallets, card payments through a local bank or acquirer, and bank transfers including Raast, the State Bank of Pakistan's instant payment system. Ask for a live project that takes real payments, not only a sandbox demo, and ask how they handle failed payments, refunds and reconciliation."},
+    {q:"Is Evolvora Technologies a software company in Lahore?",a:`Yes. Evolvora Technologies is a software company based in Lahore that works as a remote team. It builds custom web, mobile and cloud software, and makes its own products: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.`},
+  ]);
+  const toc = [
+    ["why-lahore","Why hire a software company in Lahore?"],
+    ["companies","Software companies in Lahore: who does what"],
+    ["services","Which services should it offer?"],
+    ["products","Why its own products matter more than a portfolio"],
+    ["checks","Practical checks before you sign"],
+    ["references","References and client feedback"],
+    ["red-flags","Red flags"],
+    ["timelines-pricing","Sample timelines and pricing bands"],
+    ["checklist","Checklist: choosing a long-term technology partner"],
+    ["faq","Common questions"],
+  ];
+  const h2 = (id) => `<h2 id="${id}">${toc.find(t => t[0] === id)[1]}</h2>`;
+  const testimonials = TESTIMONIALS.length ? `<div class="quote-list">${TESTIMONIALS.map(t =>
+    `<blockquote class="quote"><p>${t.quote}</p><footer>${t.name}, ${t.role}, ${t.org}</footer></blockquote>`).join("")}</div>` : "";
+  const articleLD = { "@context":"https://schema.org","@type":"Article",
+    "@id":SITE+g.url+"#article",
+    "headline":g.title,
+    "description":"What businesses and schools in Lahore should look for when hiring a software company, with practical checks, sample timelines and pricing bands in rupees.",
+    "inLanguage":"en",
+    "mainEntityOfPage":{ "@id":SITE+g.url+"#webpage" },
+    "author":{ "@id":FOUNDER_ID },
+    "publisher":{ "@id":ORG_ID },
+    "datePublished":g.published,
+    "image":{ "@id":OG_IMG_ID },
+    "about":[ topic("softwareDev"), topic("lahore") ],
+    "mentions":[ topic("campus"), topic("silaai"), topic("gateway"), topic("raast") ] };
+
+  pages.push({
+    file:"guides/software-company-lahore/index.html", active:"guides", url:g.url,
+    mainClass:"article-page",
+    ogType:"article", published:g.published,
+    title:"Software Company in Lahore? 2026 List & Buyer's Guide",
+    desc:"Software companies in Lahore compared, from Systems Limited to small product teams, plus what to check before hiring one: payments, timelines and PKR prices.",
+    jsonld:[cb.jsonld, faq.jsonld, articleLD],
+    body:`
+<section class="section" style="padding-top:48px;padding-bottom:24px"><div class="container"><div class="prose article">
+  ${cb.html}
+  <span class="kicker">2026 list &amp; buyer's guide</span>
+  <h1>Software companies in Lahore: a 2026 list and buyer's guide</h1>
+  <p class="article-meta">By <a href="/about/">${FOUNDER}</a>, founder of Evolvora Technologies · Published <time datetime="${g.published}">${longDate(g.published)}</time> · Updated <time class="updated" datetime="@@MODIFIED@@">@@MODIFIED_LONG@@</time></p>
+  <p class="article-lead">Lahore has hundreds of software companies, from Systems Limited, founded here in 1977, to small teams that run their own products. The right <strong>software company in Lahore</strong> for you is one that has shipped and still runs real software for Pakistani users, can show you its payment and integration work live, quotes in rupees after a proper discovery phase, and will still be supporting you two years after launch. Below is a short list of well-known Lahore firms and what each is known for, then the checks to run before you sign with any of them.</p>
+  <div class="takeaways">
+    <p class="takeaways-h">In short</p>
+    <ul>
+      <li>Ask to see software the company <strong>runs itself</strong>, not only screenshots of client work.</li>
+      <li>For anything that takes money, insist on a <strong>live JazzCash, EasyPaisa or card integration</strong> you can try.</li>
+      <li>Schools with several branches should test <strong>multi-campus</strong> handling: separate data per campus, one head-office view.</li>
+      <li>Expect a discovery phase, weekly demos, code and hosting in <strong>your name</strong>, and support terms in writing.</li>
+      <li>A first version of a custom web app typically takes <strong>2 to 4 months</strong> and costs <strong>Rs 1.5 to 5 million</strong>.</li>
+    </ul>
+  </div>
+  <nav class="toc" aria-label="Contents"><p class="takeaways-h">Contents</p><ol>${toc.map(([id,t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ol></nav>
+</div></div></section>
+
+<section class="section" style="padding-top:8px"><div class="container"><div class="prose article">
+  ${h2("why-lahore")}
+  <p>Hiring locally is about more than time zones. A software company in Lahore can sit in your office for a requirements workshop, train your staff in Urdu, and already knows how Pakistani customers pay, which phones they use and how patchy mobile data can be outside the big cities. Contracts and invoices are in rupees, and problems can be solved face to face.</p>
+  <p>Lahore also has a deep pool of engineers, from the <a href="https://en.wikipedia.org/wiki/Arfa_Software_Technology_Park" target="_blank" rel="noopener">Arfa Software Technology Park</a> to the many software houses around Johar Town, Gulberg and DHA. That choice is the problem: hundreds of firms describe themselves the same way. The rest of this guide is about telling them apart.</p>
+  <p>Compared with a freelancer, a company gives you continuity: if one developer leaves, the knowledge and the code stay with a team. Compared with an overseas agency, you usually pay less, get support in your own hours, and work with people who understand local requirements without having them explained.</p>
+
+  ${h2("companies")}
+  <p>This is not a ranking. It is a starting shortlist of well-known software companies (in Pakistan often called software houses) with large teams or offices in Lahore, with what each is publicly known for, so you can match a firm to the size and type of your project. It is published by Evolvora Technologies, which is included at the end. Details come from each company's own website and public sources as of October 2026; check them directly before you decide.</p>
+  <div class="table-wrap"><table class="price-table company-table">
+    <thead><tr><th scope="col">Company</th><th scope="col">Known for</th><th scope="col">Usually a fit for</th></tr></thead>
+    <tbody>${LAHORE_COMPANIES.map(([n,u,k,f]) => `<tr><th scope="row"><a href="${u}"${u.startsWith("http") ? ' target="_blank" rel="noopener"' : ""}>${n}</a></th><td data-label="Known for">${k}</td><td data-label="Fit">${f}</td></tr>`).join("")}</tbody>
+  </table></div>
+  <p>The big names suit large, long programmes with big budgets. Small and mid-sized Pakistani businesses and schools often get more attention, faster decisions and lower prices from a smaller firm, as long as it passes the checks below. Whoever you shortlist, compare them on the same questions rather than on who appears in a "top 10" list: many of those lists, including this one, are written by software companies.</p>
+
+  ${h2("services")}
+  <p>Most projects need more than one discipline. A capable software company should cover these in-house, or tell you plainly which parts it subcontracts.</p>
+  <h3>Custom web applications</h3>
+  <p>Dashboards, portals and internal tools built around your workflow. Ask how they structure the code so another team could maintain it, and whether they write automated tests.</p>
+  <h3>Mobile apps</h3>
+  <p>Most Pakistani users are on Android, often on mid-range phones. Ask whether the app works on a slow connection, how large the download is, and whether they have published to the Google Play Store and Apple App Store under a client's own account.</p>
+  <h3>SaaS product engineering</h3>
+  <p>If you are selling software to many customers, you need multi-tenant architecture (each customer's data kept separate inside one system), subscription billing, and role-based access. This is very different from a one-off website, so ask for a SaaS product the company has actually taken to paying customers.</p>
+  <h3>UI/UX design</h3>
+  <p>Good design starts with research and wireframes, not colours. Ask to see a clickable prototype from a past project, and whether the design handles Urdu text and right-to-left layouts if you need them.</p>
+  <h3>Cloud and DevOps</h3>
+  <p>Someone has to deploy, monitor, back up and update the software after launch. Ask how they deploy (an automated pipeline, or by hand), how they are alerted when something breaks, and how quickly they can restore from a backup.</p>
+  <p>Evolvora covers all six areas in-house. See our <a href="/services/">software development services</a> for the detail.</p>
+
+  ${h2("products")}
+  <p>A portfolio shows what a company delivered once. Its own products show what it can keep running. A firm that operates software under its own name deals every day with real users, support requests, payment failures and updates, which is exactly what you need from a long-term partner. Here are the two products Evolvora runs, as an example of what to look for.</p>
+  <h3>Evolvora Campus: a SaaS product for Pakistani schools</h3>
+  <figure class="article-fig">${shot("homepage_evolvoracampus.png","Evolvora Campus","Evolvora Campus admin dashboard: student and staff totals, attendance trend and fee submissions",false,"(max-width: 1000px) calc(100vw - 48px), 820px")}<figcaption>The Evolvora Campus admin dashboard.</figcaption></figure>
+  <p><a href="${CAMPUS_PATH}">Evolvora Campus</a> is a <a href="/school-management-system/">school management system</a> that schools use for admissions, attendance, marks, fees, teacher payroll and parent communication. Building it meant solving the problems most Pakistani clients bring to a software company:</p>
+  <ul>
+    <li><strong>Local payments:</strong> parents pay fees through JazzCash and EasyPaisa, and the school sees paid, pending and outstanding fees in one place.</li>
+    <li><strong>Messaging people actually read:</strong> fee reminders and attendance alerts go out on WhatsApp and SMS, not only email.</li>
+    <li><strong>Multi-tenant SaaS:</strong> many schools on one platform, each with its own data, and <a href="/campus-management-system/">multi-campus</a> networks with a head-office view across every branch.</li>
+    <li><strong>Role-based access:</strong> separate views for admins, teachers and parents, with parent accounts created automatically.</li>
+    <li><strong>Fast onboarding:</strong> bulk import of students and staff from Excel, so a school can go live in days.</li>
+  </ul>
+  <p>It is sold at a published price, <a href="${PRICING_PATH}">Rs ${PRICE_PKR} per active student per month</a>, which is itself a useful test: a company that publishes its own prices tends to be straightforward about yours.</p>
+  <h3>SilaaiMarkaz: a two-sided marketplace in Lahore</h3>
+  <figure class="article-fig">${shot("silaaimarkaz/tailoring-with-trust.jpg","silaaimarkaz.com","SilaaiMarkaz: price agreed before work starts, saved measurements, visit the Darzi's shop, rated Darzis",false,"(max-width: 1000px) calc(100vw - 48px), 820px")}<figcaption>SilaaiMarkaz connects customers in Lahore with local tailors.</figcaption></figure>
+  <p><a href="${SILAAI_PATH}">SilaaiMarkaz</a> connects people in Lahore with local tailors (Darzis). Customers compare shops by portfolio, price and ratings, save their measurements once, and agree the price in the app before work starts. It runs on Android and the web, in English and Urdu. A marketplace has to serve two very different users at once, here customers and shop owners, and that is the kind of product thinking to look for if you are building a platform of your own.</p>
+
+  ${h2("checks")}
+  <p>These checks take an afternoon and save months. Do them before you sign anything.</p>
+  <h3>1. Payment gateway experience</h3>
+  <p>If your software takes money, payments are where projects most often slip. In Pakistan that means mobile wallets (JazzCash, EasyPaisa), cards through a local bank or acquirer, and bank transfers, including <a href="https://en.wikipedia.org/wiki/Raast" target="_blank" rel="noopener">Raast</a>, the State Bank of Pakistan's instant payment system. Ask the company:</p>
+  <ul>
+    <li>Can I make a real payment in a live system you built?</li>
+    <li>How long did merchant onboarding with the provider take, and who handled it?</li>
+    <li>What happens when a payment succeeds at the bank but the confirmation never reaches the app?</li>
+    <li>How are refunds, partial payments and daily reconciliation handled?</li>
+  </ul>
+  <p>A team that has run payments in production will answer these in detail. A team that has only used a sandbox will talk about the API. Our <a href="/guides/jazzcash-easypaisa-integration/">JazzCash and EasyPaisa integration guide</a> explains what a reliable integration involves.</p>
+  <h3>2. Multi-campus school integrations</h3>
+  <p>School networks are a common and demanding client in Lahore. If you run more than one branch, check that the software:</p>
+  <ul>
+    <li>keeps each campus's students, staff and fee records separate, so a branch head sees only their branch;</li>
+    <li>gives head office one consolidated view, with totals and comparisons across campuses;</li>
+    <li>allows different fee structures, discounts and timetables per campus;</li>
+    <li>sends messages to one class, one campus or the whole network;</li>
+    <li>imports existing records from Excel instead of retyping them.</li>
+  </ul>
+  <p>These are the problems <a href="/campus-management-system/">Evolvora Campus's multi-campus management</a> was built for, so it is a useful benchmark when you compare vendors, or a ready answer if you would rather not build at all.</p>
+  <h3>3. Ownership of code, data and accounts</h3>
+  <p>Your contract should say that you own the source code, and that the domain, hosting, app store and payment accounts are registered in your company's name. Ask for access to the code repository from the first week, not at the end.</p>
+  <h3>4. Security and data handling</h3>
+  <p>Ask where the data is hosted, who on their team can access it, how passwords are stored and how often backups are tested. Student and payment data deserve particular care.</p>
+  <h3>5. Process and visibility</h3>
+  <p>You should see working software every week or two, not a big reveal at the end. Ask for a sample project plan and a sample weekly update.</p>
+  <h3>6. Support after launch, in writing</h3>
+  <p>Get response times, working hours, what counts as a bug versus a new feature, and the monthly cost of support agreed before launch. For example, Evolvora's Enterprise plan for school networks puts a ${ENT_UPTIME} uptime commitment in writing.</p>
+  <h3>7. Registration and standing</h3>
+  <p>Check that the company is a registered business and that you can meet the people who will build your software, on a video call or in person. A big office is not proof of quality, and many good teams, Evolvora included, work remotely; what matters is a named team, a written contract and references. Registration with the <a href="https://en.wikipedia.org/wiki/Pakistan_Software_Export_Board" target="_blank" rel="noopener">Pakistan Software Export Board</a> or membership of <a href="https://www.pasha.org.pk/" target="_blank" rel="noopener">P@SHA</a> are further signals, but they do not replace the checks above.</p>
+
+  ${h2("references")}
+  <p>Testimonials on a website are a starting point. A phone call is better. Ask for two or three clients with projects like yours and ask them three things: did it launch on time and on budget, what went wrong and how was it handled, and are they still working with the company today?</p>
+  ${testimonials}
+  <p>Evolvora is happy to put you in touch with schools that run Evolvora Campus and with the Darzis on SilaaiMarkaz. <a href="/contact/">Ask us for references</a> and we will arrange a call.</p>
+
+  ${h2("red-flags")}
+  <ul>
+    <li>A fixed price for a complex system before anyone has asked how your business works.</li>
+    <li>No live software you can use, only screenshots and mock-ups.</li>
+    <li>The code, hosting or app store account will be in the vendor's name.</li>
+    <li>No written support terms, or support "included" with no hours or response times.</li>
+    <li>You never meet the developers, only a salesperson.</li>
+    <li>Every question is answered with "yes, we can do that" and none with "here is how".</li>
+  </ul>
+
+  ${h2("timelines-pricing")}
+  <p>These are typical ranges for Pakistani clients in 2026, to help you budget and to sanity-check quotes. They are not a quote: the real figure depends on scope, integrations and who maintains the software afterwards, and should follow a discovery phase. For what drives each figure and the running costs to add, see our <a href="/guides/software-development-cost-pakistan/">guide to software development cost in Pakistan</a>.</p>
+  <div class="table-wrap"><table class="price-table">
+    <thead><tr><th scope="col">Engagement</th><th scope="col">Typical timeline</th><th scope="col">Typical price (PKR)</th></tr></thead>
+    <tbody>${ENGAGEMENT_BANDS.map(([e,t,p]) => `<tr><th scope="row">${e}</th><td data-label="Timeline">${t}</td><td data-label="Price">${p}</td></tr>`).join("")}</tbody>
+  </table></div>
+  <p>For schools, compare those figures with a ready product. Evolvora Campus costs Rs ${PRICE_PKR} per active student per month on Standard, so a 500-student school pays about Rs ${(Number(PRICE_PKR) * 500).toLocaleString("en-US")} a month with no build cost, and multi-campus networks can choose <a href="${PRICING_PATH}">Enterprise at Rs ${ENT_PRICE_PKR}</a> with an account manager and on-site training. Building from scratch only makes sense when no product fits.</p>
+  <h3>What a typical engagement looks like</h3>
+  <ol>
+    <li><strong>Discovery (1 to 2 weeks):</strong> workshops with your team, a written scope, a first estimate and the main risks.</li>
+    <li><strong>Design (2 to 3 weeks):</strong> wireframes and a clickable prototype you can test with real users before any code is written.</li>
+    <li><strong>Build (6 to 12 weeks):</strong> one- or two-week sprints, each ending with a working demo you can try.</li>
+    <li><strong>Launch (1 to 2 weeks):</strong> data migration, staff training, go-live and close monitoring.</li>
+    <li><strong>Support and growth (ongoing):</strong> fixes, updates and new features under a monthly retainer.</li>
+  </ol>
+
+  ${h2("checklist")}
+  <p>Use this before you sign. A company worth a long partnership should pass all ten.</p>
+  <ol class="checklist">
+    <li>Runs at least one live product or system you can use yourself.</li>
+    <li>Has shipped work in your sector, or a problem shaped like yours.</li>
+    <li>Can demonstrate live JazzCash, EasyPaisa, card or bank integrations if you take payments.</li>
+    <li>For schools: handles multiple campuses with separate data and a head-office view.</li>
+    <li>Offers a discovery phase before a fixed price.</li>
+    <li>Shows you working software every one or two weeks.</li>
+    <li>Puts code, domain, hosting and app store accounts in your name.</li>
+    <li>Explains where your data is hosted, who can access it and how backups work.</li>
+    <li>Agrees support hours, response times and monthly cost in writing.</li>
+    <li>Gives you references you can call, and lets you meet the actual team, online or in person in Lahore.</li>
+  </ol>
+</div></div></section>
+
+<section class="section section-alt" id="faq"><div class="container"><div class="section-head"><span class="kicker">FAQ</span><h2>Hiring a software company in Lahore: common questions</h2></div>${faq.html}</div></section>
+
+${authorBox()}
+${relatedGuides(g.url)}
+
+<section class="cta"><div class="cta-glow"></div><div class="container"><div class="cta-inner reveal">
+  <h2>Talk to a software company in Lahore that runs its own products</h2><p>Book a free 30-minute discovery call about your project, or a demo of Evolvora Campus for your school. We reply within one business day. We are a remote team based in Lahore and can meet in person by appointment. Call <a href="${PHONE_TEL}">${PHONE_DISPLAY}</a>.</p>
+  <div class="cta-actions">
+    <a href="/contact/" class="btn btn-primary btn-lg">Book a discovery call</a>
+    <a href="/contact/" class="btn btn-ghost btn-lg">Book an Evolvora Campus demo</a>
+  </div></div></div></section>`
+  });
+}
+
+/* ---- GUIDE: software development cost in Pakistan ----
+   Spoke of the "software company Lahore" guide. Search results for this
+   query are separate from the hub's, so it earns its own page. Uses the same
+   ENGAGEMENT_BANDS as the hub so the two never quote different numbers. */
+{
+  const g = guideAt("/guides/software-development-cost-pakistan/");
+  const cb = crumb([["Home","/"],["Guides","/guides/"],["Software development cost in Pakistan",g.url]]);
+  const faq = faqBlock([
+    {q:"How much does custom software cost in Pakistan?",a:"In 2026, a first version of a custom web application usually costs Rs 1.5 to 5 million, a cross-platform mobile app Rs 2 to 6 million, and a SaaS product Rs 4 to 12 million or more. A business website costs Rs 150,000 to 600,000. The figure depends mostly on the number of user roles, integrations and screens."},
+    {q:"How much does maintenance cost after launch?",a:"Budget roughly 15 to 20 percent of the build cost each year for maintenance, or a monthly retainer of about Rs 100,000 to 500,000 for ongoing fixes, updates and small features. Hosting, app store fees and SMS or WhatsApp messages are extra."},
+    {q:"Is a freelancer cheaper than a software company?",a:"Usually, at the start. A company costs more because the price includes design, testing, project management and someone to call when the developer is unavailable. For anything your business depends on every day, that continuity is usually worth the difference."},
+    {q:"Should I choose a fixed price or pay by the hour?",a:"Fixed price suits a clearly scoped first version, agreed after a discovery phase. Time and materials suits ongoing work where priorities change. Many projects use both: a fixed price for version one, then a monthly retainer."},
+  ]);
+  const toc = [
+    ["prices","What software costs in Pakistan in 2026"],
+    ["drivers","What drives the price?"],
+    ["rates","Freelancer, software company or in-house team?"],
+    ["running","Running costs most quotes leave out"],
+    ["pricing-models","Fixed price or time and materials?"],
+    ["quote","How to get an accurate quote"],
+    ["build-or-buy","Build or buy? A school example"],
+  ];
+  const h2 = (id) => `<h2 id="${id}">${toc.find(t => t[0] === id)[1]}</h2>`;
+  pages.push({
+    file:"guides/software-development-cost-pakistan/index.html", active:"guides", url:g.url,
+    mainClass:"article-page", ogType:"article", published:g.published,
+    title:"Software Development Cost in Pakistan (2026 Prices)",
+    desc:"What software costs in Pakistan in 2026: websites, web apps, mobile apps and SaaS in rupees, what drives the price, and the running costs quotes leave out.",
+    jsonld:[cb.jsonld, faq.jsonld, articleSchema(g,
+      "What websites, web applications, mobile apps and SaaS products cost in Pakistan in 2026, in rupees, with the factors that drive the price and the running costs to budget for.",
+      ["softwareDev","customSw"], ["org","webApp","mobileApp","saas","cloud","gateway","campus"])],
+    body:`
+<section class="section" style="padding-top:48px;padding-bottom:24px"><div class="container"><div class="prose article">
+  ${cb.html}
+  <span class="kicker">2026 price guide</span>
+  <h1>Software development cost in Pakistan (2026)</h1>
+  ${articleMeta(g)}
+  <p class="article-lead">In 2026, <strong>software development in Pakistan</strong> typically costs Rs 150,000 to 600,000 for a business website, Rs 1.5 to 5 million for the first version of a custom web application, Rs 2 to 6 million for a mobile app on Android and iOS, and Rs 4 million or more for a SaaS product. The biggest price drivers are the number of user roles, the integrations and who maintains the software afterwards.</p>
+  <div class="takeaways">
+    <p class="takeaways-h">In short</p>
+    <ul>
+      <li>Price follows <strong>scope</strong>: user roles, screens and integrations, more than technology choice.</li>
+      <li>Budget another <strong>15 to 20 percent a year</strong> for maintenance, plus hosting and messaging.</li>
+      <li>Payments, SMS and WhatsApp each add work <strong>and</strong> a running cost.</li>
+      <li>Get a quote only after a short <strong>discovery phase</strong>, and compare quotes on the same written scope.</li>
+    </ul>
+  </div>
+  <nav class="toc" aria-label="Contents"><p class="takeaways-h">Contents</p><ol>${toc.map(([id,t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ol></nav>
+</div></div></section>
+
+<section class="section" style="padding-top:8px"><div class="container"><div class="prose article">
+  ${h2("prices")}
+  <p>These are typical ranges for Pakistani clients working with a software company in 2026. They are the same bands we use in our <a href="/guides/software-company-lahore/">guide to software companies in Lahore</a>, and they assume a small team: a designer, two or three developers, testing and a project lead.</p>
+  <div class="table-wrap"><table class="price-table">
+    <thead><tr><th scope="col">Engagement</th><th scope="col">Typical timeline</th><th scope="col">Typical price (PKR)</th></tr></thead>
+    <tbody>${ENGAGEMENT_BANDS.map(([e,t,p]) => `<tr><th scope="row">${e}</th><td data-label="Timeline">${t}</td><td data-label="Price">${p}</td></tr>`).join("")}</tbody>
+  </table></div>
+  <p>Quotes far below these ranges usually mean a template with your logo on it, a single freelancer, or a scope that leaves out testing, deployment and support. Quotes far above usually come from firms set up for large international clients.</p>
+
+  ${h2("drivers")}
+  <h3>1. User roles and screens</h3>
+  <p>Every type of user (customer, staff, manager, admin) needs its own screens and permissions. A system with one role is far cheaper than one with four. Evolvora Campus, for example, has separate views for admins, teachers and parents, and each one is a product in its own right.</p>
+  <h3>2. Integrations</h3>
+  <p>Connecting to other systems is where estimates most often slip: <a href="/guides/jazzcash-easypaisa-integration/">JazzCash and EasyPaisa payments</a>, bank transfers, SMS and WhatsApp messaging, accounting software or an existing database. Each integration needs its own testing and error handling.</p>
+  <h3>3. Platforms</h3>
+  <p>A web app that works well on phones is the cheapest way to reach most users. Separate Android and iOS apps cost more, although a cross-platform framework keeps that to one codebase. Decide early which you really need.</p>
+  <h3>4. Design depth</h3>
+  <p>A simple, clean interface built from a design system costs far less than custom illustrations and animation. For most business software, clarity matters more than decoration.</p>
+  <h3>5. Data migration</h3>
+  <p>Moving records from spreadsheets or an old system takes real effort, especially when the data is messy. Ask whether it is included in the quote.</p>
+  <h3>6. Who maintains it afterwards</h3>
+  <p>Software needs updates, security fixes and small changes for as long as you use it. A quote that ends at launch is only part of the cost.</p>
+
+  ${h2("rates")}
+  <p>The same project can be priced very differently depending on who builds it.</p>
+  <ul>
+    <li><strong>Freelancer:</strong> the lowest price, best for small, well-defined jobs. The risk is continuity: if they become busy or unavailable, the knowledge leaves with them.</li>
+    <li><strong>Software company:</strong> costs more, because the price includes design, testing, project management and a team that stays after launch.</li>
+    <li><strong>In-house team:</strong> makes sense once software is core to your business and there is enough work to keep developers busy all year. Developer salaries in Pakistan are rising quickly; see <a href="https://emerhub.com/pakistan/how-much-does-it-cost-to-hire-software-developers-in-pakistan/" target="_blank" rel="noopener">Emerhub's salary overview</a> for current ranges, then add recruitment, equipment and management time.</li>
+  </ul>
+
+  ${h2("running")}
+  <p>These costs continue every month or year after launch. Ask for them in writing with the quote.</p>
+  <ul>
+    <li><strong>Hosting and cloud services:</strong> from a few thousand rupees a month for a small app to much more for heavy traffic or large files.</li>
+    <li><strong>App store accounts:</strong> Google Play charges a one-time USD 25 registration fee; Apple's developer programme costs USD 99 a year.</li>
+    <li><strong>Messages:</strong> SMS and WhatsApp Business messages are charged per message, which adds up quickly for alerts and reminders.</li>
+    <li><strong>Payment fees:</strong> wallet, card and bank payments carry a fee per transaction, set by the provider.</li>
+    <li><strong>Maintenance:</strong> a common rule of thumb is 15 to 20 percent of the build cost each year, or a monthly support retainer.</li>
+    <li><strong>Domain, email and third-party services:</strong> maps, email delivery, analytics and similar services often have monthly plans.</li>
+  </ul>
+
+  ${h2("pricing-models")}
+  <p><strong>Fixed price</strong> works when the scope is clear and written down, which is why it should follow a discovery phase. It protects your budget, but changes cost extra. <strong>Time and materials</strong> (paying for the hours worked) suits ongoing work where priorities change week to week. A common and fair arrangement is a fixed price for the first version, then a monthly retainer for improvements.</p>
+
+  ${h2("quote")}
+  <ol>
+    <li><strong>Write a one-page brief:</strong> the problem, who will use the software, and what success looks like.</li>
+    <li><strong>List the user roles and the main tasks</strong> each one needs to do.</li>
+    <li><strong>List every integration:</strong> payments, messaging, existing systems, data to import.</li>
+    <li><strong>Ask for a short discovery phase</strong> before a fixed price. A firm that quotes a complex system without asking questions is guessing.</li>
+    <li><strong>Compare like for like:</strong> make sure every quote covers design, testing, deployment, data migration and support, and that the code and accounts will be in your name.</li>
+  </ol>
+  <p>Our <a href="/guides/software-company-lahore/">checklist for choosing a software house in Lahore</a> covers what else to ask before you sign.</p>
+
+  ${h2("build-or-buy")}
+  <p>Before paying for custom software, check whether a product already does the job. A school, for example, could spend millions building its own system, or use a <a href="/school-management-system/">school management system</a> such as <a href="${CAMPUS_PATH}">Evolvora Campus</a> at <a href="${PRICING_PATH}">Rs ${PRICE_PKR} per active student per month</a>, with fees, attendance, payroll and parent alerts already built. A 500-student school pays about Rs ${(Number(PRICE_PKR) * 500).toLocaleString("en-US")} a month and can start within days. Custom development is the right choice when your process is what makes your business different and no product fits it.</p>
+</div></div></section>
+
+<section class="section section-alt" id="faq"><div class="container"><div class="section-head"><span class="kicker">FAQ</span><h2>Software development cost: common questions</h2></div>${faq.html}</div></section>
+${authorBox()}
+${relatedGuides(g.url)}
+${articleCta("Get a clear quote for your project","Tell us what you want to build. We'll ask the right questions, then send a written scope and price in rupees, usually within a week.")}`
+  });
+}
+
+/* ---- GUIDE: JazzCash and EasyPaisa integration ----
+   Spoke of the "software company Lahore" guide, and a link target for the fee
+   management page. Kept at the level of how integrations work in practice:
+   provider APIs change, so field names and fees are left to their own docs. */
+{
+  const g = guideAt("/guides/jazzcash-easypaisa-integration/");
+  const cb = crumb([["Home","/"],["Guides","/guides/"],["JazzCash and EasyPaisa integration",g.url]]);
+  const faq = faqBlock([
+    {q:"How do I add JazzCash and EasyPaisa to my website?",a:"Open a merchant account with each provider, or one account with a payment aggregator that covers both. Then integrate their payment API or hosted checkout, verify every payment on your own server, and reconcile payments against orders each day. A developer experienced with both usually needs one to three weeks once the merchant accounts are approved."},
+    {q:"Should I integrate directly or use an aggregator?",a:"Direct integration avoids an extra fee but means two separate accounts, APIs and settlement reports. An aggregator gives one integration for wallets, cards and bank transfers, and is faster to launch, in exchange for its own fee. For most small and mid-sized businesses an aggregator is the quicker start."},
+    {q:"What documents do I need for a merchant account?",a:"Requirements are set by each provider and change over time, but expect to provide business registration details, the owners' identity documents and a business bank account for settlement. Check the current list with the provider before you start development."},
+    {q:"Why do some wallet payments succeed but never show as paid?",a:"Usually because the provider's confirmation never reached your server, or arrived after the customer left. A reliable integration checks the payment status with the provider when no confirmation arrives, and reconciles against the daily settlement report."},
+  ]);
+  const toc = [
+    ["before","What you need before you start"],
+    ["direct-or-aggregator","Direct integration or an aggregator?"],
+    ["flow","How a wallet payment works"],
+    ["problems","The parts that go wrong"],
+    ["security","Security checklist"],
+    ["timeline","How long does integration take?"],
+    ["campus","Example: school fees in Evolvora Campus"],
+  ];
+  const h2 = (id) => `<h2 id="${id}">${toc.find(t => t[0] === id)[1]}</h2>`;
+  pages.push({
+    file:"guides/jazzcash-easypaisa-integration/index.html", active:"guides", url:g.url,
+    mainClass:"article-page", ogType:"article", published:g.published,
+    title:"JazzCash & EasyPaisa Integration Guide for Businesses",
+    desc:"How to accept JazzCash and EasyPaisa payments on your website or app: merchant accounts, direct API or aggregator, callbacks, reconciliation and refunds.",
+    jsonld:[cb.jsonld, faq.jsonld, articleSchema(g,
+      "How businesses in Pakistan add JazzCash and EasyPaisa payments to a website or app: merchant accounts, direct integration or an aggregator, payment confirmation, reconciliation and security.",
+      ["gateway"], ["org","webApp","mobileApp","raast","campus","tuition"])],
+    body:`
+<section class="section" style="padding-top:48px;padding-bottom:24px"><div class="container"><div class="prose article">
+  ${cb.html}
+  <span class="kicker">Payments guide</span>
+  <h1>JazzCash and EasyPaisa integration: a guide for businesses</h1>
+  ${articleMeta(g)}
+  <p class="article-lead">To accept <strong>JazzCash and EasyPaisa</strong> payments, you open a merchant account with each provider, or one account with an aggregator that covers both, then connect your website or app to their payment API. The part that decides whether it works in real life is on your side: confirming every payment on your own server and reconciling it against your orders each day.</p>
+  <div class="takeaways">
+    <p class="takeaways-h">In short</p>
+    <ul>
+      <li>Start the <strong>merchant account</strong> applications first: approval can take longer than the development.</li>
+      <li>An <strong>aggregator</strong> gives one integration for wallets, cards and bank transfers, for an extra fee.</li>
+      <li>Never trust the browser or app alone: <strong>verify each payment on your server</strong>.</li>
+      <li>Plan for <strong>missing confirmations, refunds and daily reconciliation</strong> from day one.</li>
+    </ul>
+  </div>
+  <nav class="toc" aria-label="Contents"><p class="takeaways-h">Contents</p><ol>${toc.map(([id,t]) => `<li><a href="#${id}">${t}</a></li>`).join("")}</ol></nav>
+</div></div></section>
+
+<section class="section" style="padding-top:8px"><div class="container"><div class="prose article">
+  ${h2("before")}
+  <ul>
+    <li><strong>A merchant account</strong> with JazzCash, EasyPaisa or an aggregator. Each provider sets its own documents; expect business registration details, the owners' identity documents and a business bank account for settlement.</li>
+    <li><strong>Sandbox (test) credentials</strong> to build against, and later separate live credentials.</li>
+    <li><strong>A server you control.</strong> Payments must be confirmed by your back end, not only by the website in the customer's browser or by the mobile app.</li>
+    <li><strong>A clear refund and cancellation policy</strong>, which providers usually expect to see on your site.</li>
+  </ul>
+  <p>Apply for the merchant accounts first. Approval often takes longer than the code.</p>
+
+  ${h2("direct-or-aggregator")}
+  <div class="table-wrap"><table class="price-table compare-table">
+    <thead><tr><th scope="col"></th><th scope="col">Direct integration</th><th scope="col">Aggregator</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Accounts</th><td data-label="Direct">One per provider</td><td data-label="Aggregator">One</td></tr>
+      <tr><th scope="row">Integration work</th><td data-label="Direct">A separate API for each provider</td><td data-label="Aggregator">One API for wallets, cards and often bank transfers</td></tr>
+      <tr><th scope="row">Fees</th><td data-label="Direct">The provider's fee only</td><td data-label="Aggregator">Provider fee plus the aggregator's</td></tr>
+      <tr><th scope="row">Reports and settlement</th><td data-label="Direct">One report per provider</td><td data-label="Aggregator">One combined report</td></tr>
+      <tr><th scope="row">Best for</th><td data-label="Direct">High volumes, where fees matter most</td><td data-label="Aggregator">Launching quickly with several payment methods</td></tr>
+    </tbody>
+  </table></div>
+  <p>Pakistani aggregators include Safepay, Simpaisa and PayFast. Compare their current fees, settlement times and supported methods directly, as these change.</p>
+
+  ${h2("flow")}
+  <p>The exact screens depend on the provider and the integration type, but a wallet payment generally follows these steps:</p>
+  <ol>
+    <li>The customer chooses JazzCash or EasyPaisa at checkout and enters their mobile account number.</li>
+    <li>Your server creates the payment with the provider, signed with your merchant credentials.</li>
+    <li>The customer approves the payment on their phone, for example with their wallet PIN or a one-time code, within a time limit.</li>
+    <li>The provider sends the result to your server, and usually redirects the customer back to your site or app.</li>
+    <li>Your server checks the result is genuine and the amount matches the order, then marks it paid and sends a receipt.</li>
+  </ol>
+
+  ${h2("problems")}
+  <h3>The confirmation never arrives</h3>
+  <p>Networks fail and customers close the page. If your server has not heard back within a few minutes, it should ask the provider for the payment's status instead of leaving the order as unpaid.</p>
+  <h3>The same confirmation arrives twice</h3>
+  <p>Providers may resend notifications. Process each payment once, using its transaction reference, so an order is never marked paid twice or a receipt sent twice.</p>
+  <h3>The customer runs out of time</h3>
+  <p>Wallet approvals expire. Show clear instructions while the customer approves on their phone, and let them retry without creating a duplicate order.</p>
+  <h3>Refunds</h3>
+  <p>Decide who can issue refunds, how they are recorded against the order, and whether they go through the provider's merchant portal or its API.</p>
+  <h3>Reconciliation</h3>
+  <p>Every day, match the provider's settlement report against your orders. This catches payments that succeeded but were never recorded, and the reverse, before a customer has to complain.</p>
+
+  ${h2("security")}
+  <ul>
+    <li>Keep merchant keys and secrets on your server only, never inside a mobile app or website code.</li>
+    <li>Verify the provider's signature or hash on every result, and check the amount and order reference yourself.</li>
+    <li>Use HTTPS everywhere, and log every payment request and response for disputes.</li>
+    <li>Keep test and live credentials separate, and switch only after a full test with real small payments.</li>
+  </ul>
+
+  ${h2("timeline")}
+  <p>Once merchant accounts are approved, an experienced developer can usually build a clean integration for one or two methods in one to three weeks, including testing with real small payments. Merchant approval itself depends on the provider and on how complete your documents are, so start it first. For a sense of the wider project cost, see our <a href="/guides/software-development-cost-pakistan/">software development cost guide</a>.</p>
+
+  ${h2("campus")}
+  <p>In <a href="${CAMPUS_PATH}">Evolvora Campus</a>, our <a href="/school-fee-management-software/">school fee management software</a>, parents pay school fees through JazzCash and EasyPaisa from their phones, and the school sees paid, pending and outstanding fees for every student in one place. Fee reminders go out on WhatsApp and SMS. It is the kind of payment work worth asking any software company to show you running live, as our <a href="/guides/software-company-lahore/">guide to choosing a software company in Lahore</a> recommends.</p>
+</div></div></section>
+
+<section class="section section-alt" id="faq"><div class="container"><div class="section-head"><span class="kicker">FAQ</span><h2>JazzCash and EasyPaisa integration: common questions</h2></div>${faq.html}</div></section>
+${authorBox()}
+${relatedGuides(g.url)}
+${articleCta("Need JazzCash or EasyPaisa in your app?","We build payment integrations that hold up in production, with confirmations, refunds and reconciliation handled. Tell us about your project.")}`
+  });
+}
+
+/* ---- GUIDES INDEX ---- */
+{
+  const cb = crumb([["Home","/"],["Guides","/guides/"]]);
+  pages.push({
+    file:"guides/index.html", active:"guides", url:"/guides/",
+    pageType:"CollectionPage",
+    pageMainEntityNode:{ "@type":"ItemList","@id":SITE+"/guides/#list","itemListElement":
+      GUIDES.map((g,i) => ({ "@type":"ListItem","position":i+1,"item":{ "@id":SITE+g.url+"#article" } })) },
+    title:"Guides for Buying Software in Pakistan | Evolvora",
+    desc:"Practical guides from Evolvora Technologies, a Lahore software company, on hiring a software partner and choosing software for schools and businesses in Pakistan.",
+    jsonld:[cb.jsonld],
+    body:`
+<section class="section" style="padding-top:52px"><div class="container">
+  ${cb.html}
+  <div class="section-head"><span class="kicker">Guides</span><h1>Guides for buying software in Pakistan</h1><p>Practical advice from the team behind Evolvora Campus and SilaaiMarkaz.</p></div>
+  <div class="cards">${GUIDES.map(g => `<a class="card" href="${g.url}"><span class="card-ic">${svg("book")}</span><h2 style="font-size:20px">${g.title}</h2><p>${g.summary.charAt(0).toUpperCase() + g.summary.slice(1)}</p><span class="card-link">Read the guide ${svg("arrow")}</span></a>`).join("")}</div>
+</div></section>
+${ctaBlock("Planning a software project?","Tell us what you need and we'll reply within one business day with next steps.")}`
+  });
+}
+
 /* ---- attach page-level entities ----
    The generated page node supersedes the older standalone AboutPage /
    ContactPage / FAQPage blocks: those described the page without an @id, so the
@@ -1909,9 +2701,11 @@ for (const p of pages) {
   /* The hand-maintained product page is dated from its own file's <main>. */
   p.date = p.skipWrite
     ? pageDate(CAMPUS_FILE, mainOf(fs.readFileSync(path.join(ROOT, CAMPUS_FILE), "utf8")))
-    : pageDate(p.file, norm(p.body));
+    : pageDate(p.file, stripUpdated(norm(p.body)));
   if (p.skipWrite) { campusPageLD.dateModified = p.date; continue; }
+  p.body = p.body.replace(/@@MODIFIED@@/g, p.date).replace(/@@MODIFIED_LONG@@/g, longDate(p.date));
   p.jsonld = p.jsonld || [];
+  for (const o of p.jsonld) if (o && o["@type"] === "Article") o.dateModified = p.date;
   const node = pageNode(p);                       // reads FAQ/breadcrumb before filtering
   p.jsonld = p.jsonld.filter(o => !(o && ["FAQPage","AboutPage","ContactPage"].includes(o["@type"])));
   p.jsonld.unshift(node);
@@ -1920,7 +2714,7 @@ for (const p of pages) {
      the page being crawled, and a crawler is not obliged to remember a node it
      saw on a different URL. Deduped, so pages that already declare them are
      left alone. */
-  const has = t => p.jsonld.some(o => o && o["@type"] === t);
+  const has = t => p.jsonld.some(o => o && [].concat(o["@type"]).includes(t));
   if (!has("WebSite")) p.jsonld.push(websiteLD);
   if (!has("Organization")) p.jsonld.push(orgLD);
 }
@@ -2131,6 +2925,10 @@ Contact: ${EMAIL} · ${PHONE_DISPLAY} · ${ADDRESS_TEXT}. Founder: ${FOUNDER}.
 - [SilaaiMarkaz](${SILAAI_URL})
 - [About](${SITE}/about/)
 - [Contact](${SITE}/contact/)
+
+## Guides
+
+${GUIDES.map(g => `- [${g.title}](${SITE}${g.url}): ${g.summary}`).join("\n")}
 
 ## Plain-text versions
 

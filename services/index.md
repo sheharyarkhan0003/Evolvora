@@ -10,7 +10,7 @@ Services
 
 # Everything you need to build great software
 
-Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations.
+Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations. Still comparing firms? See our [guide to choosing a software company in Lahore](https://evolvoratech.com/guides/software-company-lahore/).
 
 ## Our software development services
 

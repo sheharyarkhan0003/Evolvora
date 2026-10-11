@@ -6,15 +6,15 @@ Every page of https://evolvoratech.com as Markdown. The short index is https://e
 
 # Evolvora Technologies | Software Company in Lahore, Pakistan
 
-> Evolvora Technologies is a Lahore software company. We make Evolvora Campus for schools, run SilaaiMarkaz, and build custom web, mobile and cloud software.
+> Evolvora Technologies is a software company in Lahore. We build custom web, mobile and cloud software, and make Evolvora Campus and SilaaiMarkaz.
 
 Source: https://evolvoratech.com/
 
 Made in Lahore · Building a smarter tomorrow
 
-# Evolvora Technologies Software Products & Custom Development in Lahore
+# Evolvora Technologies Software Company in Lahore, Pakistan
 
-We make **[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)**, the [school management system](https://evolvoratech.com/school-management-system/) that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom **web, mobile and cloud** software for businesses.
+We're a **software company in Lahore** that designs and builds custom **web, mobile and cloud** software for businesses in Pakistan, and runs its own products. **[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)**, our [school management system](https://evolvoratech.com/school-management-system/), runs fees, attendance, payroll and parent updates for Pakistani schools, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa.
 
 [Book a free demo](https://evolvoratech.com/contact/) [Custom software projects](https://evolvoratech.com/services/)
 
@@ -124,6 +124,8 @@ Deployment, CI/CD, monitoring and infrastructure that keeps your software fast a
 
 [Explore our services](https://evolvoratech.com/services/)
 
+Comparing options? Read our [guide to software companies in Lahore](https://evolvoratech.com/guides/software-company-lahore/).
+
 How we work
 
 ## A clear path from idea to launch
@@ -227,6 +229,22 @@ We stay after launch, maintaining, improving and scaling your software as you gr
 -   Post-launch maintenance and support
 -   Iterative improvements as you grow
 -   A team that stays with you long after go-live
+
+## A software company in Lahore that runs its own products
+
+Evolvora Technologies builds software for businesses, startups and schools in Pakistan. We are a remote team based in Lahore, working in English and Urdu, and every project is built by the same people who build and support our own products. That is why we know what it takes to keep software running after launch: payments that reconcile, messages that reach parents, and updates that do not break anything.
+
+Comparing options? Our [guide to software companies in Lahore](https://evolvoratech.com/guides/software-company-lahore/) lists well-known firms and what to check before hiring any of them, and our [software development cost guide](https://evolvoratech.com/guides/software-development-cost-pakistan/) shows what projects cost in rupees.
+
+## Common questions
+
+Evolvora Technologies is a software company in Lahore. We design and build custom web applications, mobile apps and SaaS products, with UI/UX design and cloud and DevOps support, and we run our own products: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.
+
+We are a remote team based in Lahore, Pakistan. We work with clients online and meet in person in Lahore by appointment. Call +92 314 0163628 or email contact@evolvoratech.com.
+
+Businesses, startups and schools across Pakistan, in English and Urdu. Most projects are web or mobile applications that need local integrations such as JazzCash and EasyPaisa payments, or WhatsApp and SMS messaging.
+
+A first version of a custom web application typically costs Rs 1.5 to 5 million and takes 2 to 4 months; a business website costs Rs 150,000 to 600,000. We send a written scope and price in rupees after a short discovery call.
 
 ## See Evolvora Campus with your own school
 
@@ -774,13 +792,172 @@ Book a free demo, ask about pricing, or tell us what you need. Call us on [+92 3
 
 **Phone**[+92 314 0163628](tel:+923140163628)
 
-**Office**Evolvora Technologies, 599-Q, Johar Town, Lahore 54000, Pakistan
+**Where we work**A remote team based in Lahore, Pakistan. We meet clients online, or in person in Lahore by appointment.
+
+**Working hours**Monday to Friday, 9am to 6pm (PKT)
 
 **Already a customer?**[Log in to Evolvora Campus](https://schoolsync.pages.dev/login)
 
 **Book a demo**See Evolvora Campus with your own classes & fees.
 
 **Response time**Usually within one business day.
+
+---
+
+# Careers at Evolvora: .NET, Angular & Social Media Jobs
+
+> Join Evolvora Technologies, a software company in Lahore. Open roles: a remote .NET + Angular developer and a social media manager. Apply online.
+
+Source: https://evolvoratech.com/careers/
+
+[Home](https://evolvoratech.com/)/Careers
+
+Careers
+
+# Work at Evolvora
+
+We're a small software company in Lahore that builds and runs its own products, [Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/) and [SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/), and builds software for clients. Your work reaches real schools, parents and businesses quickly.
+
+## Open positions
+
+### .NET + Angular Developer
+
+Build features across Evolvora Campus and client projects, from Angular screens to .NET APIs and PostgreSQL.
+
+Apply now
+
+-   Remote (Pakistan)
+-   Full-time
+-   Experience: 1 year or more
+
+Role details
+
+#### What you will do
+
+-   Build and maintain web applications with Angular and TypeScript on the front end and ASP.NET Core (C#) on the back end.
+-   Design REST APIs and work with PostgreSQL databases.
+-   Ship features for Evolvora Campus, our school management system, and for client projects.
+-   Write clean, tested code, and review code with the rest of the team.
+-   Join a short daily check-in and demo your work every week or two.
+
+#### What we are looking for
+
+-   At least 1 year of professional experience with .NET (C#) and Angular.
+-   Good understanding of TypeScript, HTML, CSS and SQL.
+-   Comfortable with Git and pull-request based work.
+-   Clear written English, a reliable internet connection and a quiet place to work.
+
+#### Nice to have
+
+-   Experience with PostgreSQL, Supabase, Docker or Cloudflare.
+-   Payment integrations such as JazzCash or EasyPaisa.
+
+### Social Media Manager
+
+Own Evolvora's social channels and grow the audience for Evolvora Campus and SilaaiMarkaz.
+
+Apply now
+
+-   Remote (Pakistan)
+-   Full-time
+-   Experience: 1 year or more
+
+Role details
+
+#### What you will do
+
+-   Plan and publish content for LinkedIn, Instagram, Facebook, YouTube and TikTok.
+-   Create posts, short videos and stories about Evolvora Campus, SilaaiMarkaz and our client work, in English and Urdu.
+-   Reply to comments and messages, and pass leads to the sales team.
+-   Run and report on paid campaigns aimed at schools and businesses in Pakistan.
+-   Track what works each month and adjust the plan.
+
+#### What we are looking for
+
+-   At least 1 year managing social media for a brand or business.
+-   Strong writing in English and Urdu.
+-   Basic design and video editing (Canva, CapCut or similar).
+-   Experience with Meta Business Suite and LinkedIn pages.
+
+#### Nice to have
+
+-   Experience marketing to schools, education or software products.
+-   Running Meta or Google ad campaigns with a budget.
+
+Apply
+
+## Send us your application
+
+Fill in the form and attach your CV. We read every application and reply to shortlisted candidates within a week.
+
+## How hiring works
+
+**1\. Apply**Send the form with your CV.
+
+**2\. Intro call**A 20-minute call about you and the role.
+
+**3\. Short task**A small, practical task related to the job.
+
+**4\. Final interview & offer**Meet the founder, then an offer.
+
+**Remote-first**The whole team works remotely from across Pakistan. We are based in Lahore, Pakistan.
+
+---
+
+# Privacy Policy | Evolvora Technologies
+
+> How Evolvora Technologies handles the information you send through evolvoratech.com: contact enquiries, job applications and browser preferences.
+
+Source: https://evolvoratech.com/privacy/
+
+[Home](https://evolvoratech.com/)/Privacy policy
+
+# Privacy policy
+
+Last updated 11 October 2026
+
+This policy explains what information Evolvora Technologies ("we") collects through this website, evolvoratech.com, and what we do with it. It does not cover Evolvora Campus or SilaaiMarkaz, which have their own terms for the data schools, parents, customers and tailors store in them.
+
+## Who we are
+
+Evolvora Technologies is a software company based in Lahore, Pakistan, working as a remote team. You can contact us about privacy at [contact@evolvoratech.com](mailto:contact@evolvoratech.com) or on [+92 314 0163628](tel:+923140163628).
+
+## What we collect
+
+-   **Contact form:** your name, email, organisation, approximate number of students and your message.
+-   **Careers form:** the position, your name, email, phone, city, years of experience, any profile link you give, your CV and your message.
+-   **Emails and calls:** whatever you choose to send us.
+
+We do not use advertising or analytics cookies, and this website does not track you across other sites.
+
+## How we use it
+
+-   To reply to your enquiry, arrange a demo or discovery call, and send a quote you asked for.
+-   To assess job applications and contact candidates.
+-   To keep records of our conversations with clients.
+
+We do not sell your information, and we do not add you to marketing lists without asking.
+
+## Who processes it
+
+This website is hosted by Netlify, which also receives and stores form submissions, including uploaded CVs, on our behalf. Submissions are then emailed to our team. We share information with no one else unless the law requires it.
+
+## How long we keep it
+
+-   **Enquiries:** for as long as we are in contact with you, and then as long as reasonably needed for our records.
+-   **Job applications:** until the hiring decision, and for up to 6 months afterwards in case a similar role opens. Ask us and we will delete yours sooner.
+
+## Preferences stored in your browser
+
+The site remembers two choices in your browser's local storage: light or dark theme, and whether prices are shown in rupees or dollars. They stay on your device, are never sent to us, and you can clear them in your browser settings.
+
+## Your choices
+
+You can ask us what information we hold about you, ask us to correct it, or ask us to delete it, by emailing [contact@evolvoratech.com](mailto:contact@evolvoratech.com). We will reply within 30 days.
+
+## Changes
+
+If we change this policy, we will update it on this page and change the date at the top.
 
 ---
 
@@ -796,7 +973,7 @@ Services
 
 # Everything you need to build great software
 
-Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations.
+Whether you're starting from a blank page or scaling an existing product, we cover the whole journey: strategy, design, engineering and operations. Still comparing firms? See our [guide to choosing a software company in Lahore](https://evolvoratech.com/guides/software-company-lahore/).
 
 ## Our software development services
 
@@ -934,7 +1111,7 @@ What sets us apart is that we build and run our own products too. Our flagship, 
 
 That product mindset shapes everything we do for clients: clean architecture, thoughtful design, honest timelines, and a commitment to stick around long after launch.
 
-Evolvora Technologies was founded by **Sheharyar Khan** and works from 599-Q, Johar Town, Lahore 54000, Pakistan. You can reach us on [+92 314 0163628](tel:+923140163628) or at [contact@evolvoratech.com](mailto:contact@evolvoratech.com).
+Evolvora Technologies was founded by **Sheharyar Khan** and works as a remote team based in Lahore, Pakistan. You can reach us on [+92 314 0163628](tel:+923140163628) or at [contact@evolvoratech.com](mailto:contact@evolvoratech.com).
 
 What we value
 
@@ -1413,6 +1590,8 @@ _Evolvora Campus_
 
 Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful.
 
+Parents can also pay online through JazzCash and EasyPaisa. If you are adding wallet payments to your own system, our [JazzCash and EasyPaisa integration guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/) explains how it works.
+
 _Evolvora Campus · Parent_
 
 [Image: Parent dashboard in Evolvora Campus showing the September fee as Pending with an Upload voucher button]
@@ -1491,5 +1670,732 @@ Learn more](https://evolvoratech.com/student-attendance-software/)
 ## See Evolvora Campus, your school fee management software
 
 Book a free walkthrough with your own school data and see how much time Evolvora Campus saves your team.
+
+[Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)
+
+---
+
+# Software Company in Lahore? 2026 List & Buyer's Guide
+
+> Software companies in Lahore compared, from Systems Limited to small product teams, plus what to check before hiring one: payments, timelines and PKR prices.
+
+Source: https://evolvoratech.com/guides/software-company-lahore/
+
+[Home](https://evolvoratech.com/)/[Guides](https://evolvoratech.com/guides/)/Choosing a software company in Lahore
+
+2026 list & buyer's guide
+
+# Software companies in Lahore: a 2026 list and buyer's guide
+
+By [Sheharyar Khan](https://evolvoratech.com/about/), founder of Evolvora Technologies · Published 11 October 2026 · Updated 11 October 2026
+
+Lahore has hundreds of software companies, from Systems Limited, founded here in 1977, to small teams that run their own products. The right **software company in Lahore** for you is one that has shipped and still runs real software for Pakistani users, can show you its payment and integration work live, quotes in rupees after a proper discovery phase, and will still be supporting you two years after launch. Below is a short list of well-known Lahore firms and what each is known for, then the checks to run before you sign with any of them.
+
+In short
+
+-   Ask to see software the company **runs itself**, not only screenshots of client work.
+-   For anything that takes money, insist on a **live JazzCash, EasyPaisa or card integration** you can try.
+-   Schools with several branches should test **multi-campus** handling: separate data per campus, one head-office view.
+-   Expect a discovery phase, weekly demos, code and hosting in **your name**, and support terms in writing.
+-   A first version of a custom web app typically takes **2 to 4 months** and costs **Rs 1.5 to 5 million**.
+
+Contents
+
+1.  Why hire a software company in Lahore?
+2.  Software companies in Lahore: who does what
+3.  Which services should it offer?
+4.  Why its own products matter more than a portfolio
+5.  Practical checks before you sign
+6.  References and client feedback
+7.  Red flags
+8.  Sample timelines and pricing bands
+9.  Checklist: choosing a long-term technology partner
+10.  Common questions
+
+## Why hire a software company in Lahore?
+
+Hiring locally is about more than time zones. A software company in Lahore can sit in your office for a requirements workshop, train your staff in Urdu, and already knows how Pakistani customers pay, which phones they use and how patchy mobile data can be outside the big cities. Contracts and invoices are in rupees, and problems can be solved face to face.
+
+Lahore also has a deep pool of engineers, from the [Arfa Software Technology Park](https://en.wikipedia.org/wiki/Arfa_Software_Technology_Park) to the many software houses around Johar Town, Gulberg and DHA. That choice is the problem: hundreds of firms describe themselves the same way. The rest of this guide is about telling them apart.
+
+Compared with a freelancer, a company gives you continuity: if one developer leaves, the knowledge and the code stay with a team. Compared with an overseas agency, you usually pay less, get support in your own hours, and work with people who understand local requirements without having them explained.
+
+## Software companies in Lahore: who does what
+
+This is not a ranking. It is a starting shortlist of well-known software companies (in Pakistan often called software houses) with large teams or offices in Lahore, with what each is publicly known for, so you can match a firm to the size and type of your project. It is published by Evolvora Technologies, which is included at the end. Details come from each company's own website and public sources as of October 2026; check them directly before you decide.
+
+Company
+
+Known for
+
+Usually a fit for
+
+[Systems Limited](https://www.systemsltd.com/)
+
+Founded in Lahore in 1977 and listed on the Pakistan Stock Exchange. Enterprise software, cloud, data and AI, and business process outsourcing.
+
+Banks, telecoms and large enterprises
+
+[NetSol Technologies](https://netsoltech.com/)
+
+Software for leasing, asset finance and automotive retail, used by finance companies worldwide. Its Pakistani arm is listed on the Pakistan Stock Exchange.
+
+Leasing and finance companies
+
+[Arbisoft](https://arbisoft.com/)
+
+Custom software, AI and edtech for international product companies, with large offices in Lahore.
+
+Funded product companies, edtech
+
+[Devsinc](https://devsinc.com/)
+
+Custom software, AI, cloud and team augmentation for clients in North America, Europe and the Middle East.
+
+Mid-size and enterprise clients
+
+[Confiz](https://www.confiz.com/)
+
+Retail technology, ERP and Microsoft cloud platforms.
+
+Retailers, Microsoft Dynamics projects
+
+[Techlogix](https://www.techlogix.com/)
+
+IT consulting, ERP and digital banking, with offices in Lahore, Karachi and Islamabad.
+
+Banks and ERP programmes
+
+[Evolvora Technologies](https://evolvoratech.com/)
+
+Custom web, mobile and cloud software, plus its own products: Evolvora Campus for schools and SilaaiMarkaz for tailors in Lahore.
+
+Pakistani SMEs, startups and schools
+
+The big names suit large, long programmes with big budgets. Small and mid-sized Pakistani businesses and schools often get more attention, faster decisions and lower prices from a smaller firm, as long as it passes the checks below. Whoever you shortlist, compare them on the same questions rather than on who appears in a "top 10" list: many of those lists, including this one, are written by software companies.
+
+## Which services should it offer?
+
+Most projects need more than one discipline. A capable software company should cover these in-house, or tell you plainly which parts it subcontracts.
+
+### Custom web applications
+
+Dashboards, portals and internal tools built around your workflow. Ask how they structure the code so another team could maintain it, and whether they write automated tests.
+
+### Mobile apps
+
+Most Pakistani users are on Android, often on mid-range phones. Ask whether the app works on a slow connection, how large the download is, and whether they have published to the Google Play Store and Apple App Store under a client's own account.
+
+### SaaS product engineering
+
+If you are selling software to many customers, you need multi-tenant architecture (each customer's data kept separate inside one system), subscription billing, and role-based access. This is very different from a one-off website, so ask for a SaaS product the company has actually taken to paying customers.
+
+### UI/UX design
+
+Good design starts with research and wireframes, not colours. Ask to see a clickable prototype from a past project, and whether the design handles Urdu text and right-to-left layouts if you need them.
+
+### Cloud and DevOps
+
+Someone has to deploy, monitor, back up and update the software after launch. Ask how they deploy (an automated pipeline, or by hand), how they are alerted when something breaks, and how quickly they can restore from a backup.
+
+Evolvora covers all six areas in-house. See our [software development services](https://evolvoratech.com/services/) for the detail.
+
+## Why its own products matter more than a portfolio
+
+A portfolio shows what a company delivered once. Its own products show what it can keep running. A firm that operates software under its own name deals every day with real users, support requests, payment failures and updates, which is exactly what you need from a long-term partner. Here are the two products Evolvora runs, as an example of what to look for.
+
+### Evolvora Campus: a SaaS product for Pakistani schools
+
+_Evolvora Campus_
+
+[Image: Evolvora Campus admin dashboard: student and staff totals, attendance trend and fee submissions]
+
+The Evolvora Campus admin dashboard.
+
+[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/) is a [school management system](https://evolvoratech.com/school-management-system/) that schools use for admissions, attendance, marks, fees, teacher payroll and parent communication. Building it meant solving the problems most Pakistani clients bring to a software company:
+
+-   **Local payments:** parents pay fees through JazzCash and EasyPaisa, and the school sees paid, pending and outstanding fees in one place.
+-   **Messaging people actually read:** fee reminders and attendance alerts go out on WhatsApp and SMS, not only email.
+-   **Multi-tenant SaaS:** many schools on one platform, each with its own data, and [multi-campus](https://evolvoratech.com/campus-management-system/) networks with a head-office view across every branch.
+-   **Role-based access:** separate views for admins, teachers and parents, with parent accounts created automatically.
+-   **Fast onboarding:** bulk import of students and staff from Excel, so a school can go live in days.
+
+It is sold at a published price, [Rs 50 per active student per month](https://evolvoratech.com/products/evolvora-campus/pricing/), which is itself a useful test: a company that publishes its own prices tends to be straightforward about yours.
+
+### SilaaiMarkaz: a two-sided marketplace in Lahore
+
+_silaaimarkaz.com_
+
+[Image: SilaaiMarkaz: price agreed before work starts, saved measurements, visit the Darzi's shop, rated Darzis]
+
+SilaaiMarkaz connects customers in Lahore with local tailors.
+
+[SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/) connects people in Lahore with local tailors (Darzis). Customers compare shops by portfolio, price and ratings, save their measurements once, and agree the price in the app before work starts. It runs on Android and the web, in English and Urdu. A marketplace has to serve two very different users at once, here customers and shop owners, and that is the kind of product thinking to look for if you are building a platform of your own.
+
+## Practical checks before you sign
+
+These checks take an afternoon and save months. Do them before you sign anything.
+
+### 1\. Payment gateway experience
+
+If your software takes money, payments are where projects most often slip. In Pakistan that means mobile wallets (JazzCash, EasyPaisa), cards through a local bank or acquirer, and bank transfers, including [Raast](https://en.wikipedia.org/wiki/Raast), the State Bank of Pakistan's instant payment system. Ask the company:
+
+-   Can I make a real payment in a live system you built?
+-   How long did merchant onboarding with the provider take, and who handled it?
+-   What happens when a payment succeeds at the bank but the confirmation never reaches the app?
+-   How are refunds, partial payments and daily reconciliation handled?
+
+A team that has run payments in production will answer these in detail. A team that has only used a sandbox will talk about the API. Our [JazzCash and EasyPaisa integration guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/) explains what a reliable integration involves.
+
+### 2\. Multi-campus school integrations
+
+School networks are a common and demanding client in Lahore. If you run more than one branch, check that the software:
+
+-   keeps each campus's students, staff and fee records separate, so a branch head sees only their branch;
+-   gives head office one consolidated view, with totals and comparisons across campuses;
+-   allows different fee structures, discounts and timetables per campus;
+-   sends messages to one class, one campus or the whole network;
+-   imports existing records from Excel instead of retyping them.
+
+These are the problems [Evolvora Campus's multi-campus management](https://evolvoratech.com/campus-management-system/) was built for, so it is a useful benchmark when you compare vendors, or a ready answer if you would rather not build at all.
+
+### 3\. Ownership of code, data and accounts
+
+Your contract should say that you own the source code, and that the domain, hosting, app store and payment accounts are registered in your company's name. Ask for access to the code repository from the first week, not at the end.
+
+### 4\. Security and data handling
+
+Ask where the data is hosted, who on their team can access it, how passwords are stored and how often backups are tested. Student and payment data deserve particular care.
+
+### 5\. Process and visibility
+
+You should see working software every week or two, not a big reveal at the end. Ask for a sample project plan and a sample weekly update.
+
+### 6\. Support after launch, in writing
+
+Get response times, working hours, what counts as a bug versus a new feature, and the monthly cost of support agreed before launch. For example, Evolvora's Enterprise plan for school networks puts a 99.5% uptime commitment in writing.
+
+### 7\. Registration and standing
+
+Check that the company is a registered business and that you can meet the people who will build your software, on a video call or in person. A big office is not proof of quality, and many good teams, Evolvora included, work remotely; what matters is a named team, a written contract and references. Registration with the [Pakistan Software Export Board](https://en.wikipedia.org/wiki/Pakistan_Software_Export_Board) or membership of [P@SHA](https://www.pasha.org.pk/) are further signals, but they do not replace the checks above.
+
+## References and client feedback
+
+Testimonials on a website are a starting point. A phone call is better. Ask for two or three clients with projects like yours and ask them three things: did it launch on time and on budget, what went wrong and how was it handled, and are they still working with the company today?
+
+Evolvora is happy to put you in touch with schools that run Evolvora Campus and with the Darzis on SilaaiMarkaz. [Ask us for references](https://evolvoratech.com/contact/) and we will arrange a call.
+
+## Red flags
+
+-   A fixed price for a complex system before anyone has asked how your business works.
+-   No live software you can use, only screenshots and mock-ups.
+-   The code, hosting or app store account will be in the vendor's name.
+-   No written support terms, or support "included" with no hours or response times.
+-   You never meet the developers, only a salesperson.
+-   Every question is answered with "yes, we can do that" and none with "here is how".
+
+## Sample timelines and pricing bands
+
+These are typical ranges for Pakistani clients in 2026, to help you budget and to sanity-check quotes. They are not a quote: the real figure depends on scope, integrations and who maintains the software afterwards, and should follow a discovery phase. For what drives each figure and the running costs to add, see our [guide to software development cost in Pakistan](https://evolvoratech.com/guides/software-development-cost-pakistan/).
+
+Engagement
+
+Typical timeline
+
+Typical price (PKR)
+
+Business website or landing site
+
+3 to 6 weeks
+
+Rs 150,000 to 600,000
+
+UI/UX design sprint (research, wireframes, clickable prototype)
+
+2 to 4 weeks
+
+Rs 250,000 to 800,000
+
+Custom web application, first version
+
+8 to 14 weeks
+
+Rs 1.5 to 5 million
+
+Cross-platform mobile app (Android and iOS)
+
+10 to 16 weeks
+
+Rs 2 to 6 million
+
+SaaS product, first version (multi-tenant, billing)
+
+4 to 6 months
+
+Rs 4 to 12 million and up
+
+Cloud and DevOps setup or migration
+
+2 to 6 weeks
+
+Rs 250,000 to 1.2 million
+
+Maintenance and support retainer
+
+Monthly, ongoing
+
+Rs 100,000 to 500,000 a month
+
+For schools, compare those figures with a ready product. Evolvora Campus costs Rs 50 per active student per month on Standard, so a 500-student school pays about Rs 25,000 a month with no build cost, and multi-campus networks can choose [Enterprise at Rs 75](https://evolvoratech.com/products/evolvora-campus/pricing/) with an account manager and on-site training. Building from scratch only makes sense when no product fits.
+
+### What a typical engagement looks like
+
+1.  **Discovery (1 to 2 weeks):** workshops with your team, a written scope, a first estimate and the main risks.
+2.  **Design (2 to 3 weeks):** wireframes and a clickable prototype you can test with real users before any code is written.
+3.  **Build (6 to 12 weeks):** one- or two-week sprints, each ending with a working demo you can try.
+4.  **Launch (1 to 2 weeks):** data migration, staff training, go-live and close monitoring.
+5.  **Support and growth (ongoing):** fixes, updates and new features under a monthly retainer.
+
+## Checklist: choosing a long-term technology partner
+
+Use this before you sign. A company worth a long partnership should pass all ten.
+
+1.  Runs at least one live product or system you can use yourself.
+2.  Has shipped work in your sector, or a problem shaped like yours.
+3.  Can demonstrate live JazzCash, EasyPaisa, card or bank integrations if you take payments.
+4.  For schools: handles multiple campuses with separate data and a head-office view.
+5.  Offers a discovery phase before a fixed price.
+6.  Shows you working software every one or two weeks.
+7.  Puts code, domain, hosting and app store accounts in your name.
+8.  Explains where your data is hosted, who can access it and how backups work.
+9.  Agrees support hours, response times and monthly cost in writing.
+10.  Gives you references you can call, and lets you meet the actual team, online or in person in Lahore.
+
+FAQ
+
+## Hiring a software company in Lahore: common questions
+
+Well-known names include Systems Limited, the oldest, founded in Lahore in 1977; NetSol Technologies, which makes leasing and asset-finance software; Arbisoft and Devsinc, which build custom software and AI for international clients; Confiz, known for retail technology and Microsoft platforms; and Techlogix, known for ERP and digital banking. Smaller firms such as Evolvora Technologies focus on Pakistani businesses and schools and run their own products. The best fit depends on your project size and budget, not on a ranking.
+
+For Pakistani clients, a business website usually costs Rs 150,000 to 600,000, a first version of a custom web application Rs 1.5 to 5 million, and a cross-platform mobile app Rs 2 to 6 million. SaaS products start around Rs 4 million. Ongoing support is typically Rs 100,000 to 500,000 a month. A fixed quote should follow a paid or free discovery phase.
+
+A small website takes 3 to 6 weeks. A first version of a web or mobile application takes roughly 2 to 4 months, and a SaaS product 4 to 6 months. Discovery and design usually take the first 2 to 5 weeks, and the build then runs in one- or two-week sprints with a working demo at the end of each.
+
+Most schools should buy. A ready school management system such as Evolvora Campus costs Rs 50 per active student per month, with a free first month, and is live in days. Custom development only makes sense when a school network has a workflow no product supports, and even then it is usually cheaper to extend an existing platform.
+
+At minimum JazzCash and EasyPaisa for mobile wallets, card payments through a local bank or acquirer, and bank transfers including Raast, the State Bank of Pakistan's instant payment system. Ask for a live project that takes real payments, not only a sandbox demo, and ask how they handle failed payments, refunds and reconciliation.
+
+Yes. Evolvora Technologies is a software company based in Lahore that works as a remote team. It builds custom web, mobile and cloud software, and makes its own products: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.
+
+About the author
+
+**Sheharyar Khan** is the founder of [Evolvora Technologies](https://evolvoratech.com/about/), a software company in Lahore, and leads the team that builds and runs Evolvora Campus and SilaaiMarkaz, and the custom software projects Evolvora delivers for clients. [Sheharyar Khan on LinkedIn](https://www.linkedin.com/in/sheharyar-khaan/).
+
+Related guides
+
+## Keep reading
+
+[### Software Development Cost in Pakistan (2026)
+
+What websites, web apps, mobile apps and SaaS products cost in Pakistan in 2026, what drives the price, and the running costs most quotes leave out.
+
+Read the guide](https://evolvoratech.com/guides/software-development-cost-pakistan/)[### JazzCash and EasyPaisa Integration: A Guide for Businesses
+
+How JazzCash and EasyPaisa payments are added to a website or app in Pakistan: merchant accounts, direct integration or an aggregator, callbacks, reconciliation and refunds.
+
+Read the guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/)
+
+## Talk to a software company in Lahore that runs its own products
+
+Book a free 30-minute discovery call about your project, or a demo of Evolvora Campus for your school. We reply within one business day. We are a remote team based in Lahore and can meet in person by appointment. Call [+92 314 0163628](tel:+923140163628).
+
+[Book a discovery call](https://evolvoratech.com/contact/) [Book an Evolvora Campus demo](https://evolvoratech.com/contact/)
+
+---
+
+# Software Development Cost in Pakistan (2026 Prices)
+
+> What software costs in Pakistan in 2026: websites, web apps, mobile apps and SaaS in rupees, what drives the price, and the running costs quotes leave out.
+
+Source: https://evolvoratech.com/guides/software-development-cost-pakistan/
+
+[Home](https://evolvoratech.com/)/[Guides](https://evolvoratech.com/guides/)/Software development cost in Pakistan
+
+2026 price guide
+
+# Software development cost in Pakistan (2026)
+
+By [Sheharyar Khan](https://evolvoratech.com/about/), founder of Evolvora Technologies · Published 11 October 2026 · Updated 11 October 2026
+
+In 2026, **software development in Pakistan** typically costs Rs 150,000 to 600,000 for a business website, Rs 1.5 to 5 million for the first version of a custom web application, Rs 2 to 6 million for a mobile app on Android and iOS, and Rs 4 million or more for a SaaS product. The biggest price drivers are the number of user roles, the integrations and who maintains the software afterwards.
+
+In short
+
+-   Price follows **scope**: user roles, screens and integrations, more than technology choice.
+-   Budget another **15 to 20 percent a year** for maintenance, plus hosting and messaging.
+-   Payments, SMS and WhatsApp each add work **and** a running cost.
+-   Get a quote only after a short **discovery phase**, and compare quotes on the same written scope.
+
+Contents
+
+1.  What software costs in Pakistan in 2026
+2.  What drives the price?
+3.  Freelancer, software company or in-house team?
+4.  Running costs most quotes leave out
+5.  Fixed price or time and materials?
+6.  How to get an accurate quote
+7.  Build or buy? A school example
+
+## What software costs in Pakistan in 2026
+
+These are typical ranges for Pakistani clients working with a software company in 2026. They are the same bands we use in our [guide to software companies in Lahore](https://evolvoratech.com/guides/software-company-lahore/), and they assume a small team: a designer, two or three developers, testing and a project lead.
+
+Engagement
+
+Typical timeline
+
+Typical price (PKR)
+
+Business website or landing site
+
+3 to 6 weeks
+
+Rs 150,000 to 600,000
+
+UI/UX design sprint (research, wireframes, clickable prototype)
+
+2 to 4 weeks
+
+Rs 250,000 to 800,000
+
+Custom web application, first version
+
+8 to 14 weeks
+
+Rs 1.5 to 5 million
+
+Cross-platform mobile app (Android and iOS)
+
+10 to 16 weeks
+
+Rs 2 to 6 million
+
+SaaS product, first version (multi-tenant, billing)
+
+4 to 6 months
+
+Rs 4 to 12 million and up
+
+Cloud and DevOps setup or migration
+
+2 to 6 weeks
+
+Rs 250,000 to 1.2 million
+
+Maintenance and support retainer
+
+Monthly, ongoing
+
+Rs 100,000 to 500,000 a month
+
+Quotes far below these ranges usually mean a template with your logo on it, a single freelancer, or a scope that leaves out testing, deployment and support. Quotes far above usually come from firms set up for large international clients.
+
+## What drives the price?
+
+### 1\. User roles and screens
+
+Every type of user (customer, staff, manager, admin) needs its own screens and permissions. A system with one role is far cheaper than one with four. Evolvora Campus, for example, has separate views for admins, teachers and parents, and each one is a product in its own right.
+
+### 2\. Integrations
+
+Connecting to other systems is where estimates most often slip: [JazzCash and EasyPaisa payments](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/), bank transfers, SMS and WhatsApp messaging, accounting software or an existing database. Each integration needs its own testing and error handling.
+
+### 3\. Platforms
+
+A web app that works well on phones is the cheapest way to reach most users. Separate Android and iOS apps cost more, although a cross-platform framework keeps that to one codebase. Decide early which you really need.
+
+### 4\. Design depth
+
+A simple, clean interface built from a design system costs far less than custom illustrations and animation. For most business software, clarity matters more than decoration.
+
+### 5\. Data migration
+
+Moving records from spreadsheets or an old system takes real effort, especially when the data is messy. Ask whether it is included in the quote.
+
+### 6\. Who maintains it afterwards
+
+Software needs updates, security fixes and small changes for as long as you use it. A quote that ends at launch is only part of the cost.
+
+## Freelancer, software company or in-house team?
+
+The same project can be priced very differently depending on who builds it.
+
+-   **Freelancer:** the lowest price, best for small, well-defined jobs. The risk is continuity: if they become busy or unavailable, the knowledge leaves with them.
+-   **Software company:** costs more, because the price includes design, testing, project management and a team that stays after launch.
+-   **In-house team:** makes sense once software is core to your business and there is enough work to keep developers busy all year. Developer salaries in Pakistan are rising quickly; see [Emerhub's salary overview](https://emerhub.com/pakistan/how-much-does-it-cost-to-hire-software-developers-in-pakistan/) for current ranges, then add recruitment, equipment and management time.
+
+## Running costs most quotes leave out
+
+These costs continue every month or year after launch. Ask for them in writing with the quote.
+
+-   **Hosting and cloud services:** from a few thousand rupees a month for a small app to much more for heavy traffic or large files.
+-   **App store accounts:** Google Play charges a one-time USD 25 registration fee; Apple's developer programme costs USD 99 a year.
+-   **Messages:** SMS and WhatsApp Business messages are charged per message, which adds up quickly for alerts and reminders.
+-   **Payment fees:** wallet, card and bank payments carry a fee per transaction, set by the provider.
+-   **Maintenance:** a common rule of thumb is 15 to 20 percent of the build cost each year, or a monthly support retainer.
+-   **Domain, email and third-party services:** maps, email delivery, analytics and similar services often have monthly plans.
+
+## Fixed price or time and materials?
+
+**Fixed price** works when the scope is clear and written down, which is why it should follow a discovery phase. It protects your budget, but changes cost extra. **Time and materials** (paying for the hours worked) suits ongoing work where priorities change week to week. A common and fair arrangement is a fixed price for the first version, then a monthly retainer for improvements.
+
+## How to get an accurate quote
+
+1.  **Write a one-page brief:** the problem, who will use the software, and what success looks like.
+2.  **List the user roles and the main tasks** each one needs to do.
+3.  **List every integration:** payments, messaging, existing systems, data to import.
+4.  **Ask for a short discovery phase** before a fixed price. A firm that quotes a complex system without asking questions is guessing.
+5.  **Compare like for like:** make sure every quote covers design, testing, deployment, data migration and support, and that the code and accounts will be in your name.
+
+Our [checklist for choosing a software house in Lahore](https://evolvoratech.com/guides/software-company-lahore/) covers what else to ask before you sign.
+
+## Build or buy? A school example
+
+Before paying for custom software, check whether a product already does the job. A school, for example, could spend millions building its own system, or use a [school management system](https://evolvoratech.com/school-management-system/) such as [Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/) at [Rs 50 per active student per month](https://evolvoratech.com/products/evolvora-campus/pricing/), with fees, attendance, payroll and parent alerts already built. A 500-student school pays about Rs 25,000 a month and can start within days. Custom development is the right choice when your process is what makes your business different and no product fits it.
+
+FAQ
+
+## Software development cost: common questions
+
+In 2026, a first version of a custom web application usually costs Rs 1.5 to 5 million, a cross-platform mobile app Rs 2 to 6 million, and a SaaS product Rs 4 to 12 million or more. A business website costs Rs 150,000 to 600,000. The figure depends mostly on the number of user roles, integrations and screens.
+
+Budget roughly 15 to 20 percent of the build cost each year for maintenance, or a monthly retainer of about Rs 100,000 to 500,000 for ongoing fixes, updates and small features. Hosting, app store fees and SMS or WhatsApp messages are extra.
+
+Usually, at the start. A company costs more because the price includes design, testing, project management and someone to call when the developer is unavailable. For anything your business depends on every day, that continuity is usually worth the difference.
+
+Fixed price suits a clearly scoped first version, agreed after a discovery phase. Time and materials suits ongoing work where priorities change. Many projects use both: a fixed price for version one, then a monthly retainer.
+
+About the author
+
+**Sheharyar Khan** is the founder of [Evolvora Technologies](https://evolvoratech.com/about/), a software company in Lahore, and leads the team that builds and runs Evolvora Campus and SilaaiMarkaz, and the custom software projects Evolvora delivers for clients. [Sheharyar Khan on LinkedIn](https://www.linkedin.com/in/sheharyar-khaan/).
+
+Related guides
+
+## Keep reading
+
+[### Software Companies in Lahore: 2026 List and Buyer's Guide
+
+Well-known software companies in Lahore and what each is known for, plus what to check before hiring one: services, real products, payment gateway and multi-campus experience, timelines and PKR price bands.
+
+Read the guide](https://evolvoratech.com/guides/software-company-lahore/)[### JazzCash and EasyPaisa Integration: A Guide for Businesses
+
+How JazzCash and EasyPaisa payments are added to a website or app in Pakistan: merchant accounts, direct integration or an aggregator, callbacks, reconciliation and refunds.
+
+Read the guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/)
+
+## Get a clear quote for your project
+
+Tell us what you want to build. We'll ask the right questions, then send a written scope and price in rupees, usually within a week.
+
+[Book a discovery call](https://evolvoratech.com/contact/) [Book an Evolvora Campus demo](https://evolvoratech.com/contact/)
+
+---
+
+# JazzCash & EasyPaisa Integration Guide for Businesses
+
+> How to accept JazzCash and EasyPaisa payments on your website or app: merchant accounts, direct API or aggregator, callbacks, reconciliation and refunds.
+
+Source: https://evolvoratech.com/guides/jazzcash-easypaisa-integration/
+
+[Home](https://evolvoratech.com/)/[Guides](https://evolvoratech.com/guides/)/JazzCash and EasyPaisa integration
+
+Payments guide
+
+# JazzCash and EasyPaisa integration: a guide for businesses
+
+By [Sheharyar Khan](https://evolvoratech.com/about/), founder of Evolvora Technologies · Published 11 October 2026 · Updated 11 October 2026
+
+To accept **JazzCash and EasyPaisa** payments, you open a merchant account with each provider, or one account with an aggregator that covers both, then connect your website or app to their payment API. The part that decides whether it works in real life is on your side: confirming every payment on your own server and reconciling it against your orders each day.
+
+In short
+
+-   Start the **merchant account** applications first: approval can take longer than the development.
+-   An **aggregator** gives one integration for wallets, cards and bank transfers, for an extra fee.
+-   Never trust the browser or app alone: **verify each payment on your server**.
+-   Plan for **missing confirmations, refunds and daily reconciliation** from day one.
+
+Contents
+
+1.  What you need before you start
+2.  Direct integration or an aggregator?
+3.  How a wallet payment works
+4.  The parts that go wrong
+5.  Security checklist
+6.  How long does integration take?
+7.  Example: school fees in Evolvora Campus
+
+## What you need before you start
+
+-   **A merchant account** with JazzCash, EasyPaisa or an aggregator. Each provider sets its own documents; expect business registration details, the owners' identity documents and a business bank account for settlement.
+-   **Sandbox (test) credentials** to build against, and later separate live credentials.
+-   **A server you control.** Payments must be confirmed by your back end, not only by the website in the customer's browser or by the mobile app.
+-   **A clear refund and cancellation policy**, which providers usually expect to see on your site.
+
+Apply for the merchant accounts first. Approval often takes longer than the code.
+
+## Direct integration or an aggregator?
+
+Direct integration
+
+Aggregator
+
+Accounts
+
+One per provider
+
+One
+
+Integration work
+
+A separate API for each provider
+
+One API for wallets, cards and often bank transfers
+
+Fees
+
+The provider's fee only
+
+Provider fee plus the aggregator's
+
+Reports and settlement
+
+One report per provider
+
+One combined report
+
+Best for
+
+High volumes, where fees matter most
+
+Launching quickly with several payment methods
+
+Pakistani aggregators include Safepay, Simpaisa and PayFast. Compare their current fees, settlement times and supported methods directly, as these change.
+
+## How a wallet payment works
+
+The exact screens depend on the provider and the integration type, but a wallet payment generally follows these steps:
+
+1.  The customer chooses JazzCash or EasyPaisa at checkout and enters their mobile account number.
+2.  Your server creates the payment with the provider, signed with your merchant credentials.
+3.  The customer approves the payment on their phone, for example with their wallet PIN or a one-time code, within a time limit.
+4.  The provider sends the result to your server, and usually redirects the customer back to your site or app.
+5.  Your server checks the result is genuine and the amount matches the order, then marks it paid and sends a receipt.
+
+## The parts that go wrong
+
+### The confirmation never arrives
+
+Networks fail and customers close the page. If your server has not heard back within a few minutes, it should ask the provider for the payment's status instead of leaving the order as unpaid.
+
+### The same confirmation arrives twice
+
+Providers may resend notifications. Process each payment once, using its transaction reference, so an order is never marked paid twice or a receipt sent twice.
+
+### The customer runs out of time
+
+Wallet approvals expire. Show clear instructions while the customer approves on their phone, and let them retry without creating a duplicate order.
+
+### Refunds
+
+Decide who can issue refunds, how they are recorded against the order, and whether they go through the provider's merchant portal or its API.
+
+### Reconciliation
+
+Every day, match the provider's settlement report against your orders. This catches payments that succeeded but were never recorded, and the reverse, before a customer has to complain.
+
+## Security checklist
+
+-   Keep merchant keys and secrets on your server only, never inside a mobile app or website code.
+-   Verify the provider's signature or hash on every result, and check the amount and order reference yourself.
+-   Use HTTPS everywhere, and log every payment request and response for disputes.
+-   Keep test and live credentials separate, and switch only after a full test with real small payments.
+
+## How long does integration take?
+
+Once merchant accounts are approved, an experienced developer can usually build a clean integration for one or two methods in one to three weeks, including testing with real small payments. Merchant approval itself depends on the provider and on how complete your documents are, so start it first. For a sense of the wider project cost, see our [software development cost guide](https://evolvoratech.com/guides/software-development-cost-pakistan/).
+
+## Example: school fees in Evolvora Campus
+
+In [Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/), our [school fee management software](https://evolvoratech.com/school-fee-management-software/), parents pay school fees through JazzCash and EasyPaisa from their phones, and the school sees paid, pending and outstanding fees for every student in one place. Fee reminders go out on WhatsApp and SMS. It is the kind of payment work worth asking any software company to show you running live, as our [guide to choosing a software company in Lahore](https://evolvoratech.com/guides/software-company-lahore/) recommends.
+
+FAQ
+
+## JazzCash and EasyPaisa integration: common questions
+
+Open a merchant account with each provider, or one account with a payment aggregator that covers both. Then integrate their payment API or hosted checkout, verify every payment on your own server, and reconcile payments against orders each day. A developer experienced with both usually needs one to three weeks once the merchant accounts are approved.
+
+Direct integration avoids an extra fee but means two separate accounts, APIs and settlement reports. An aggregator gives one integration for wallets, cards and bank transfers, and is faster to launch, in exchange for its own fee. For most small and mid-sized businesses an aggregator is the quicker start.
+
+Requirements are set by each provider and change over time, but expect to provide business registration details, the owners' identity documents and a business bank account for settlement. Check the current list with the provider before you start development.
+
+Usually because the provider's confirmation never reached your server, or arrived after the customer left. A reliable integration checks the payment status with the provider when no confirmation arrives, and reconciles against the daily settlement report.
+
+About the author
+
+**Sheharyar Khan** is the founder of [Evolvora Technologies](https://evolvoratech.com/about/), a software company in Lahore, and leads the team that builds and runs Evolvora Campus and SilaaiMarkaz, and the custom software projects Evolvora delivers for clients. [Sheharyar Khan on LinkedIn](https://www.linkedin.com/in/sheharyar-khaan/).
+
+Related guides
+
+## Keep reading
+
+[### Software Companies in Lahore: 2026 List and Buyer's Guide
+
+Well-known software companies in Lahore and what each is known for, plus what to check before hiring one: services, real products, payment gateway and multi-campus experience, timelines and PKR price bands.
+
+Read the guide](https://evolvoratech.com/guides/software-company-lahore/)[### Software Development Cost in Pakistan (2026)
+
+What websites, web apps, mobile apps and SaaS products cost in Pakistan in 2026, what drives the price, and the running costs most quotes leave out.
+
+Read the guide](https://evolvoratech.com/guides/software-development-cost-pakistan/)
+
+## Need JazzCash or EasyPaisa in your app?
+
+We build payment integrations that hold up in production, with confirmations, refunds and reconciliation handled. Tell us about your project.
+
+[Book a discovery call](https://evolvoratech.com/contact/) [Book an Evolvora Campus demo](https://evolvoratech.com/contact/)
+
+---
+
+# Guides for Buying Software in Pakistan | Evolvora
+
+> Practical guides from Evolvora Technologies, a Lahore software company, on hiring a software partner and choosing software for schools and businesses in Pakistan.
+
+Source: https://evolvoratech.com/guides/
+
+[Home](https://evolvoratech.com/)/Guides
+
+Guides
+
+# Guides for buying software in Pakistan
+
+Practical advice from the team behind Evolvora Campus and SilaaiMarkaz.
+
+[## Software Companies in Lahore: 2026 List and Buyer's Guide
+
+Well-known software companies in Lahore and what each is known for, plus what to check before hiring one: services, real products, payment gateway and multi-campus experience, timelines and PKR price bands.
+
+Read the guide](https://evolvoratech.com/guides/software-company-lahore/)[## Software Development Cost in Pakistan (2026)
+
+What websites, web apps, mobile apps and SaaS products cost in Pakistan in 2026, what drives the price, and the running costs most quotes leave out.
+
+Read the guide](https://evolvoratech.com/guides/software-development-cost-pakistan/)[## JazzCash and EasyPaisa Integration: A Guide for Businesses
+
+How JazzCash and EasyPaisa payments are added to a website or app in Pakistan: merchant accounts, direct integration or an aggregator, callbacks, reconciliation and refunds.
+
+Read the guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/)
+
+## Planning a software project?
+
+Tell us what you need and we'll reply within one business day with next steps.
 
 [Book a free demo](https://evolvoratech.com/contact/) [contact@evolvoratech.com](mailto:contact@evolvoratech.com?subject=Evolvora%20Campus%20Enquiry)

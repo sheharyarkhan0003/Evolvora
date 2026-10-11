@@ -64,6 +64,18 @@
   force = true
 
 [[redirects]]
+  from = "/careers/index.html"
+  to = "/careers/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy/index.html"
+  to = "/privacy/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/services/index.html"
   to = "/services/"
   status = 301
@@ -102,6 +114,30 @@
 [[redirects]]
   from = "/school-fee-management-software/index.html"
   to = "/school-fee-management-software/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/software-company-lahore/index.html"
+  to = "/guides/software-company-lahore/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/software-development-cost-pakistan/index.html"
+  to = "/guides/software-development-cost-pakistan/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/jazzcash-easypaisa-integration/index.html"
+  to = "/guides/jazzcash-easypaisa-integration/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/guides/index.html"
+  to = "/guides/"
   status = 301
   force = true
 

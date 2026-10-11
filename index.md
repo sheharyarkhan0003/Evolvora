@@ -1,14 +1,14 @@
 # Evolvora Technologies | Software Company in Lahore, Pakistan
 
-> Evolvora Technologies is a Lahore software company. We make Evolvora Campus for schools, run SilaaiMarkaz, and build custom web, mobile and cloud software.
+> Evolvora Technologies is a software company in Lahore. We build custom web, mobile and cloud software, and make Evolvora Campus and SilaaiMarkaz.
 
 Source: https://evolvoratech.com/
 
 Made in Lahore · Building a smarter tomorrow
 
-# Evolvora Technologies Software Products & Custom Development in Lahore
+# Evolvora Technologies Software Company in Lahore, Pakistan
 
-We make **[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)**, the [school management system](https://evolvoratech.com/school-management-system/) that runs fees, attendance, payroll and parent updates for schools in Pakistan, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa. We also design and build custom **web, mobile and cloud** software for businesses.
+We're a **software company in Lahore** that designs and builds custom **web, mobile and cloud** software for businesses in Pakistan, and runs its own products. **[Evolvora Campus](https://evolvoratech.com/products/evolvora-campus/)**, our [school management system](https://evolvoratech.com/school-management-system/), runs fees, attendance, payroll and parent updates for Pakistani schools, with alerts on WhatsApp and SMS and fee payments through JazzCash and EasyPaisa.
 
 [Book a free demo](https://evolvoratech.com/contact/) [Custom software projects](https://evolvoratech.com/services/)
 
@@ -118,6 +118,8 @@ Deployment, CI/CD, monitoring and infrastructure that keeps your software fast a
 
 [Explore our services](https://evolvoratech.com/services/)
 
+Comparing options? Read our [guide to software companies in Lahore](https://evolvoratech.com/guides/software-company-lahore/).
+
 How we work
 
 ## A clear path from idea to launch
@@ -221,6 +223,22 @@ We stay after launch, maintaining, improving and scaling your software as you gr
 -   Post-launch maintenance and support
 -   Iterative improvements as you grow
 -   A team that stays with you long after go-live
+
+## A software company in Lahore that runs its own products
+
+Evolvora Technologies builds software for businesses, startups and schools in Pakistan. We are a remote team based in Lahore, working in English and Urdu, and every project is built by the same people who build and support our own products. That is why we know what it takes to keep software running after launch: payments that reconcile, messages that reach parents, and updates that do not break anything.
+
+Comparing options? Our [guide to software companies in Lahore](https://evolvoratech.com/guides/software-company-lahore/) lists well-known firms and what to check before hiring any of them, and our [software development cost guide](https://evolvoratech.com/guides/software-development-cost-pakistan/) shows what projects cost in rupees.
+
+## Common questions
+
+Evolvora Technologies is a software company in Lahore. We design and build custom web applications, mobile apps and SaaS products, with UI/UX design and cloud and DevOps support, and we run our own products: Evolvora Campus, a school management system, and SilaaiMarkaz, a tailoring marketplace in Lahore.
+
+We are a remote team based in Lahore, Pakistan. We work with clients online and meet in person in Lahore by appointment. Call +92 314 0163628 or email contact@evolvoratech.com.
+
+Businesses, startups and schools across Pakistan, in English and Urdu. Most projects are web or mobile applications that need local integrations such as JazzCash and EasyPaisa payments, or WhatsApp and SMS messaging.
+
+A first version of a custom web application typically costs Rs 1.5 to 5 million and takes 2 to 4 months; a business website costs Rs 150,000 to 600,000. We send a written scope and price in rupees after a short discovery call.
 
 ## See Evolvora Campus with your own school
 

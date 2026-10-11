@@ -18,7 +18,7 @@ What sets us apart is that we build and run our own products too. Our flagship, 
 
 That product mindset shapes everything we do for clients: clean architecture, thoughtful design, honest timelines, and a commitment to stick around long after launch.
 
-Evolvora Technologies was founded by **Sheharyar Khan** and works from 599-Q, Johar Town, Lahore 54000, Pakistan. You can reach us on [+92 314 0163628](tel:+923140163628) or at [contact@evolvoratech.com](mailto:contact@evolvoratech.com).
+Evolvora Technologies was founded by **Sheharyar Khan** and works as a remote team based in Lahore, Pakistan. You can reach us on [+92 314 0163628](tel:+923140163628) or at [contact@evolvoratech.com](mailto:contact@evolvoratech.com).
 
 What we value
 

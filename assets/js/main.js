@@ -684,6 +684,12 @@ const io = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
+// Careers: "Apply now" on a job pre-selects it in the application form.
+document.querySelectorAll('[data-apply]').forEach(a => a.addEventListener('click', () => {
+  const opt = document.querySelector(`#position option[data-job="${a.dataset.apply}"]`);
+  if (opt) opt.selected = true;
+}));
+
 // Footer year
 const yr = document.getElementById('year');
 if (yr) yr.textContent = new Date().getFullYear();

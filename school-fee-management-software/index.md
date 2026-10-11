@@ -25,6 +25,8 @@ _Evolvora Campus_
 
 Evolvora Campus gives your office a live, whole-school view of fees: paid, pending and under review, plus the total outstanding amount right on the dashboard. Parents see their own child's fee status in the app, and reminders go out with a tap, so collection is faster and far less stressful.
 
+Parents can also pay online through JazzCash and EasyPaisa. If you are adding wallet payments to your own system, our [JazzCash and EasyPaisa integration guide](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/) explains how it works.
+
 _Evolvora Campus · Parent_
 
 [Image: Parent dashboard in Evolvora Campus showing the September fee as Pending with an Upload voucher button]

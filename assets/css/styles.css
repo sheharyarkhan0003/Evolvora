@@ -897,6 +897,52 @@ section{scroll-margin-top:90px}
 .prose ul li{position:relative;padding-left:30px;color:var(--muted);font-size:16px;margin-bottom:11px}
 .prose ul li::before{content:"";position:absolute;left:2px;top:9px;width:8px;height:8px;border-radius:2px;background:var(--grad)}
 
+/* ============ ARTICLE (guides) ============ */
+.article h1{font-size:clamp(32px,5vw,48px);line-height:1.12;margin:0 0 16px}
+.article h2{scroll-margin-top:calc(var(--nav-h) + 16px)}
+.article-page .section[id]{scroll-margin-top:var(--nav-h)}
+.article a{color:var(--sky);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
+.article a:hover{color:var(--text)}
+.article .btn{text-decoration:none}
+.article-meta{font-size:14px!important;color:var(--faint)!important}
+.article-lead{font-size:18.5px!important;line-height:1.65;color:var(--text)!important}
+.article ol{margin:0 0 18px;padding-left:24px}
+.article ol li{color:var(--muted);font-size:16px;margin-bottom:11px;padding-left:4px}
+.article ol li::marker{color:var(--sky);font-weight:700}
+.takeaways,.toc,.author-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;margin:26px 0}
+.takeaways ul,.toc ol{margin-bottom:0}
+.takeaways-h{font-family:'Chakra Petch';font-size:12.5px!important;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)!important;margin-bottom:12px!important}
+.toc ol li{margin-bottom:6px}
+.author-box p:last-child{margin-bottom:0}
+.article-fig{margin:20px 0 26px}
+.article-fig figcaption{margin-top:10px;color:var(--faint);font-size:14px;text-align:center}
+.table-wrap{overflow-x:auto;margin:20px 0 24px;border:1px solid var(--border);border-radius:var(--radius)}
+.price-table{width:100%;border-collapse:collapse;font-size:15px;min-width:560px}
+.price-table th,.price-table td{padding:13px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
+.price-table thead th{background:var(--surface-2);color:var(--text);font-family:'Space Grotesk','Space Grotesk Fallback';font-weight:600}
+.price-table tbody th{color:var(--text);font-weight:500}
+.price-table td{color:var(--muted)}
+.price-table td:last-child{white-space:nowrap;color:var(--text)}
+.price-table tbody tr:last-child>*{border-bottom:0}
+/* Phones: each row becomes a small card, so no column hides off-screen. */
+@media (max-width:640px){
+  .table-wrap{overflow:visible;border:0}
+  .price-table{min-width:0}
+  .price-table thead{display:none}
+  .price-table tr{display:block;border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:var(--surface)}
+  .price-table th,.price-table td{display:flex;justify-content:space-between;gap:12px;padding:3px 0;border:0}
+  .price-table tbody th{font-weight:600;margin-bottom:4px}
+  .price-table td::before{content:attr(data-label);color:var(--faint)}
+  .price-table td:last-child{white-space:normal;text-align:right}
+}
+.article ol.checklist{list-style:none;padding-left:0;counter-reset:ck}
+.article ol.checklist li{counter-increment:ck;position:relative;padding:12px 14px 12px 52px;background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:10px}
+.article ol.checklist li::before{content:counter(ck);position:absolute;left:14px;top:11px;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--grad);color:#fff;font-size:13px;font-weight:700}
+.quote-list{display:grid;gap:14px;margin:20px 0}
+.quote{border-left:3px solid var(--sky);padding:6px 0 6px 18px}
+.quote p{color:var(--text)!important;font-style:italic}
+.quote footer{color:var(--faint);font-size:14px}
+
 /* breadcrumb */
 .crumb{display:flex;gap:8px;font-size:13.5px;color:var(--faint);margin-bottom:22px;flex-wrap:wrap}
 .crumb a{color:var(--muted)}.crumb a:hover{color:var(--text)}
@@ -932,6 +978,24 @@ section{scroll-margin-top:90px}
 .field input,.field textarea{width:100%;background:var(--surface);border:1px solid var(--border-2);border-radius:11px;padding:13px 15px;color:var(--text);font-family:inherit;font-size:15px;transition:border-color .2s,box-shadow .2s}
 .field input:focus,.field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--focus-ring)}
 .field textarea{min-height:130px;resize:vertical}
+.field select{width:100%;background:var(--surface);border:1px solid var(--border-2);border-radius:11px;padding:13px 15px;color:var(--text);font-family:inherit;font-size:15px}
+.field select:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--focus-ring)}
+.field input[type=file]{padding:10px 12px;cursor:pointer}
+
+/* ============ CAREERS ============ */
+.jobs-h{font-size:clamp(22px,2.6vw,28px);margin:0 0 18px}
+.jobs{display:grid;gap:18px}
+.job{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--border);border-radius:var(--radius);padding:26px}
+.job-head{display:flex;justify-content:space-between;align-items:flex-start;gap:20px}
+.job h3{font-size:22px;margin-bottom:6px}
+.job-sum{color:var(--muted);font-size:15.5px}
+.job-tags{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px}
+.job-tags li{font-size:13px;color:var(--muted);background:var(--glass);border:1px solid var(--border);padding:5px 12px;border-radius:999px}
+.job-more{margin-top:12px}
+.job-more summary{cursor:pointer;color:var(--sky);font-weight:600;font-size:15px}
+.job-prose{max-width:none;margin-top:8px}
+.job-prose h4{font-size:16px;margin:18px 0 10px}
+@media (max-width:640px){.job-head{flex-direction:column}.job-head .btn{width:100%}}
 .contact-info{background:linear-gradient(180deg,var(--surface),var(--bg-2));border:1px solid var(--border);border-radius:var(--radius);padding:30px 28px}
 .contact-info h3{font-size:20px;margin-bottom:16px}
 .info-row{display:flex;gap:13px;align-items:flex-start;margin-bottom:18px}
@@ -1740,3 +1804,11 @@ main>section:first-of-type .reveal{opacity:1;transform:none;transition:none}
 .footer-contact a{color:var(--muted)}
 .footer-contact a:hover{color:var(--text)}
 .hero-trust strong a{color:inherit}
+
+/* links inside section intros and the homepage guide link */
+.section-head p a,.guide-link a{color:var(--sky);text-decoration:underline;text-underline-offset:3px}
+.guide-link{margin-top:16px;color:var(--muted);font-size:15px}
+.info-row div a+a,.info-row span+a{display:block;margin-top:4px}
+.company-table td:last-child{white-space:normal}
+#about-evolvora .prose a{color:var(--sky);text-decoration:underline;text-underline-offset:3px}
+.compare-table td:last-child{white-space:normal}

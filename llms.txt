@@ -2,7 +2,7 @@
 
 > Evolvora Technologies is a software company in Lahore, Pakistan. It makes Evolvora Campus, a school management system for Pakistani schools, runs SilaaiMarkaz, a tailoring marketplace in Lahore, and builds custom web, mobile and cloud software for clients. Evolvora Campus is not related to evolCampus (Evolmind).
 
-Contact: contact@evolvoratech.com · +92 314 0163628 · 599-Q, Johar Town, Lahore 54000, Pakistan. Founder: Sheharyar Khan.
+Contact: contact@evolvoratech.com · +92 314 0163628 · Lahore, Pakistan. Founder: Sheharyar Khan.
 
 ## Evolvora Campus
 
@@ -22,6 +22,12 @@ Contact: contact@evolvoratech.com · +92 314 0163628 · 599-Q, Johar Town, Lahor
 - [SilaaiMarkaz](https://evolvoratech.com/products/silaaimarkaz/)
 - [About](https://evolvoratech.com/about/)
 - [Contact](https://evolvoratech.com/contact/)
+
+## Guides
+
+- [Software Companies in Lahore: 2026 List and Buyer's Guide](https://evolvoratech.com/guides/software-company-lahore/): well-known software companies in Lahore and what each is known for, plus what to check before hiring one: services, real products, payment gateway and multi-campus experience, timelines and PKR price bands.
+- [Software Development Cost in Pakistan (2026)](https://evolvoratech.com/guides/software-development-cost-pakistan/): what websites, web apps, mobile apps and SaaS products cost in Pakistan in 2026, what drives the price, and the running costs most quotes leave out.
+- [JazzCash and EasyPaisa Integration: A Guide for Businesses](https://evolvoratech.com/guides/jazzcash-easypaisa-integration/): how JazzCash and EasyPaisa payments are added to a website or app in Pakistan: merchant accounts, direct integration or an aggregator, callbacks, reconciliation and refunds.
 
 ## Plain-text versions
 

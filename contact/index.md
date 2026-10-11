@@ -18,7 +18,9 @@ Book a free demo, ask about pricing, or tell us what you need. Call us on [+92 3
 
 **Phone**[+92 314 0163628](tel:+923140163628)
 
-**Office**Evolvora Technologies, 599-Q, Johar Town, Lahore 54000, Pakistan
+**Where we work**A remote team based in Lahore, Pakistan. We meet clients online, or in person in Lahore by appointment.
+
+**Working hours**Monday to Friday, 9am to 6pm (PKT)
 
 **Already a customer?**[Log in to Evolvora Campus](https://schoolsync.pages.dev/login)
 
